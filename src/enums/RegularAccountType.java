@@ -1,16 +1,13 @@
 package enums;
 
-public enum MainAccountType {
-    REGULAR(1, "Regular"),
-    FOREIGNCURRENCY(2, "Foreign Currency"),
-    GOLD(3, "Gold"),
-    INVESTMENT(4, "Investment");
-
+public enum RegularAccountType {
+    WITHOUT_INTEREST(1, "Regular Account (TRY) without Interest"),
+    WITH_INTEREST(2, "Regular Account (TRY) with Interest");
 
     private final int value;
     private final String name;
 
-    MainAccountType(int value, String name) {
+    RegularAccountType(int value, String name) {
         this.value = value;
         this.name = name;
     }
@@ -22,7 +19,6 @@ public enum MainAccountType {
         }
         return false;
     }
-
     public int getValue() {
         return value;
     }
@@ -30,13 +26,13 @@ public enum MainAccountType {
     public String getName() {
         return name;
     }
-    
+
     public static String getNameByValue(int value) {
-        for (MainAccountType type : MainAccountType.values()) {
+        for (RegularAccountType type : RegularAccountType.values()) {
             if (type.getValue() == value) {
                 return type.getName();
             }
         }
-        throw new IllegalArgumentException("Invalid MainAccountType value: " + value);
+        throw new IllegalArgumentException("Invalid RegularAccountType value: " + value);
     }
 }

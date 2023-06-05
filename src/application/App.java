@@ -2,14 +2,15 @@ package application;
 
 import java.util.Scanner;
 
+import helpers.HelperIO;
 import menu.BankMenu;
 import menu.MainMenu;
 import user.Bank;
 import user.Client;
+import helpers.*;
 
 public class App {
     private static Bank bank;
-    private static Scanner scanner  = new Scanner(System.in);
     private static MainMenu mainMenu;
     private static BankMenu bankMenu;
     private static Client currentClient;
@@ -17,10 +18,12 @@ public class App {
 	public static void main(String[] args) {
 		bank = new Bank();
         mainMenu = new MainMenu(bank);
+        HelperIO helperIO = new HelperIO();
+        
         boolean exit = false;
         while (!exit) {
             mainMenu.printMenu();
-            int choice = readIntegerInput();
+            int choice = helperIO.readIntegerInput();
 
             switch (choice) {
             case 1:
@@ -46,21 +49,10 @@ public class App {
                 break;
 	        }
 	    }
-	    scanner.close();
             	
         }
 
 
-	
-    public static int readIntegerInput() {
-        while (true) {
-            try {
-                return Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Please enter a number!");
-            }
-        }
-    }
     
 
 }

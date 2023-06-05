@@ -1,15 +1,30 @@
  package menu;
 
+import java.util.Scanner;
+
 import application.Account;
 import application.AccountGroup;
+import helpers.HelperIO;
+import interfaces.IMenu;
+import user.Bank;
+import user.Client;
 
 public class ClientMenu implements IMenu {
-
-    private static void clientMenu() {
+	private static Scanner scanner = new Scanner(System.in);  
+	private Client client;
+	private static HelperIO helperIO = new HelperIO();
+	
+	
+	public ClientMenu(Client currentClient) {
+		this.client = currentClient;
+	}
+	
+    private void clientMenu() {
+        HelperIO helperIO = new HelperIO();
         boolean exit = false;
         while (!exit) {
-            printClientMenu();
-            int choice = readIntegerInput();
+            printMenu();
+            int choice = helperIO.readIntegerInput();
 
             switch (choice) {
                 case 1:
@@ -36,9 +51,9 @@ public class ClientMenu implements IMenu {
         }
     }
 
-    private void printMenu() {
+    public void printMenu() {
         System.out.println("--- Client Menu ---");
-        System.out.println("Client: " + currentClient.getName());
+        System.out.println("Client: " + client.getUsername());
         System.out.println("1. Create Account");
         System.out.println("2. Create Account Group");
         System.out.println("3. Check Account Balance");
@@ -47,13 +62,37 @@ public class ClientMenu implements IMenu {
         System.out.println("6. Back to Main Menu");
         System.out.print("Enter your choice: ");
     }
+    
+    
+    public void accountTypeMenu() {
+        System.out.println("---Main Account Types ---");
+        System.out.println("1. Regular Account");
+        System.out.println("2. Foreign Currency Account");
+        System.out.println("3. Gold Account");
+        System.out.println("4. Investment Account");
+        System.out.print("Enter your choice: ");
+    }
+    public void accountMenu() {
+        System.out.println("--- Account Types ---");
+        System.out.println("1. Regular Account (TRY) without Interest");
+        System.out.println("2. Regular Account (TRY) with Interest");
+        System.out.println("3. Foreign Currency Account (EUR) without Interest");
+        System.out.println("4. Foreign Currency Account (EUR) with Interest");
+        System.out.println("5. Foreign Currency Account (USD) without Interest");
+        System.out.println("6. Foreign Currency Account (USD) with Interest");
+        System.out.println("7. Gold Account (XAU) without Interest");
+        System.out.println("8. Gold Account (XAU) with Interest");
+        System.out.println("9. Investment Account");
+        System.out.print("Enter your choice: ");
+    }
 
-    private static void createAccount() {
+    private void createAccount() {
         System.out.print("Enter the account type (1-9): ");
-        int type = readIntegerInput();
+        accountTypeMenu();
+        int type = helperIO.readIntegerInput();
 
         if (type >= 1 && type <= 9) {
-            Account account = bank.createAccount(type);
+            AbstractAccount account = bank.createAccount(type);
             currentClient.addAccount(account);
             System.out.println("Account created successfully.");
         } else {
@@ -62,7 +101,7 @@ public class ClientMenu implements IMenu {
         System.out.println();
     }
 
-    private static void createAccountGroup() {
+    public void createAccountGroup() {
         System.out.print("Enter the name of the account group: ");
         String groupName = scanner.nextLine();
         AccountGroup accountGroup = new AccountGroup(groupName);

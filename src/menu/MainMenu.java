@@ -2,6 +2,7 @@ package menu;
 import java.util.List;
 import java.util.Scanner;
 
+import helpers.HelperIO;
 import interfaces.IMenu;
 import user.*;
 
@@ -14,7 +15,7 @@ public class MainMenu implements IMenu {
 	}
 	
     public void printMenu() {
-        System.out.println("Main Menu");
+        System.out.println("--- Main Menu ---");
         System.out.println("1. Create Client");
         System.out.println("2. Select Client");
         System.out.println("3. Bank Menu");
@@ -33,6 +34,7 @@ public class MainMenu implements IMenu {
     }
 
     public Client selectClient() {
+        HelperIO helperIO = new HelperIO();
     	List<Client> clients = bank.getClients();
     	Client currentClient = null;
     	
@@ -46,7 +48,7 @@ public class MainMenu implements IMenu {
                 System.out.println((i + 1) + ". " + clients.get(i).getUsername());
             }
 
-            int choice = readIntegerInput();
+            int choice = helperIO.readIntegerInput();
             if (choice >= 1 && choice <= clients.size()) {
                 currentClient = clients.get(choice - 1);
             } else {
@@ -57,14 +59,6 @@ public class MainMenu implements IMenu {
         
     }
 
-    public static int readIntegerInput() {
-        while (true) {
-            try {
-                return Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Please enter a number!");
-            }
-        }
-    }
+
     
 }

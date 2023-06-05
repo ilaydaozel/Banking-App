@@ -2,10 +2,9 @@ package account;
 
 public class InvestmentAccount extends AbstractInvestmentAccount {
 
-	@Override
-	public void getTotal() {
-		// TODO Auto-generated method stub
-		
+	public InvestmentAccount(String name) {
+		super(name);
+		// TODO Auto-generated constructor stub
 	}
 
 }

@@ -1,58 +1,68 @@
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import menu.*;
+import user.*;
 
-// User Interface
 public class BankingApplication {
     private static Bank bank;
-    //private static List<Client> clients;
-    //private static Client currentClient;
-    private static Scanner scanner;
-
+    private static Scanner scanner  = new Scanner(System.in);
+    private static MainMenu mainMenu;
+    private static BankMenu bankMenu;
+    
+    public static double readDoubleInput() {
+        while (true) {
+            try {
+                return Double.parseDouble(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a number!");
+            }
+        }
+    }
+    
+    public static int readIntegerInput() {
+        while (true) {
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a number!");
+            }
+        }
+    }
+    
     public static void main(String[] args) {
         bank = new Bank();
-        //clients = new ArrayList<>();
-        scanner = new Scanner(System.in);
-
+        mainMenu = new MainMenu(bank);
         boolean exit = false;
         while (!exit) {
-            printMainMenu();
-            int choice = readIntegerInput();
+            mainMenu.printMenu();
+            int choice = Integer.parseInt(scanner.nextLine());
 
             switch (choice) {
                 case 1:
-                    createClient();
+                    mainMenu.createClient();
                     break;
                 case 2:
-                    selectClient();
+                    //mainMenu.selectClient();
                     break;
                 case 3:
-                    bankMenu();
+                	System.out.println("bank menu");
                     break;
                 case 4:
                     exit = true;
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
+                    break;
             }
         }
         scanner.close();
     }
 
-
-
-    private static double readDoubleInput() {
-        while (true) {
-            try {
-                return Double.parseDouble(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a number.");
-            }
-        }
-    }
 }
+
 
 
 /*
@@ -211,30 +221,6 @@ public class ForeignCurrencyAccount extends Account {
         } else {
             throw new IllegalArgumentException("Invalid currency code: " + currencyCode);
         }
-    }
-}
-
-// GoldAccount class
-public class GoldAccount extends Account {
-    public GoldAccount(boolean hasInterest) {
-        super(hasInterest);
-    }
-
-    @Override
-    public int getType() {
-        return hasInterest ? 8 : 7;
-    }
-}
-
-// InvestmentAccount class
-public class InvestmentAccount extends Account {
-    public InvestmentAccount() {
-        super(false);
-    }
-
-    @Override
-    public int getType() {
-        return 9;
     }
 }
 

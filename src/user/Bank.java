@@ -11,6 +11,7 @@ import java.util.Map;
 public class Bank {
     private List<Stock> stocks;
     private List<Fund> funds;
+    private List<Client> clients;
     private Map<String, Double> currencyRates;
     private Map<Integer, Double> interestRates;
     private int currentDay;
@@ -18,11 +19,69 @@ public class Bank {
     public Bank() {
         stocks = new ArrayList<>();
         funds = new ArrayList<>();
-        currencyRates = new HashMap<>();
-        interestRates = new HashMap<>();
+        clients = new ArrayList<>();
+        //currencyRates = new HashMap<>();
+        //interestRates = new HashMap<>();
         currentDay = 0;
     }
-/*
+    
+
+    public List<Stock> getStocks() {
+		return stocks;
+	}
+
+	public void setStocks(List<Stock> stocks) {
+		this.stocks = stocks;
+	}
+
+	public List<Fund> getFunds() {
+		return funds;
+	}
+
+	public void setFunds(List<Fund> funds) {
+		this.funds = funds;
+	}
+
+	public List<Client> getClients() {
+		return clients;
+	}
+
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+
+	public Map<String, Double> getCurrencyRates() {
+		return currencyRates;
+	}
+
+	public void setCurrencyRates(Map<String, Double> currencyRates) {
+		this.currencyRates = currencyRates;
+	}
+
+	public Map<Integer, Double> getInterestRates() {
+		return interestRates;
+	}
+
+	public void setInterestRates(Map<Integer, Double> interestRates) {
+		this.interestRates = interestRates;
+	}
+
+	public int getCurrentDay() {
+		return currentDay;
+	}
+
+	public void setCurrentDay(int currentDay) {
+		this.currentDay = currentDay;
+	}
+
+	public void addNewClient(Client client) {
+		clients.add(client);
+	}
+	/*public void passTime(int days) {
+        currentDay += days;
+        calculateInterest();
+    }
+
     public void createStock(String name) {
         Stock stock = new Stock(name,);
         stocks.add(stock);
@@ -53,15 +112,10 @@ public class Bank {
 
     public void setInterestRate(int accountType, double rate) {
         interestRates.put(accountType, rate);
-    }*/
-
-    public void passTime(int days) {
-        currentDay += days;
-        calculateInterest();
     }
 
     private void calculateInterest() {
-       /* for (Client client : clients) {
+        for (Client client : clients) {
             List<AccountGroup> accounts = client.getAccounts();
             for (Account account : accounts) {
                 if (account.hasInterest() && !account.isInterestBlocked()) {
@@ -72,7 +126,7 @@ public class Bank {
                     account.addInterest(interest);
                 }
             }
-        }*/
+        }
     }
 
     private Stock getStock(String name) {
@@ -91,5 +145,5 @@ public class Bank {
             }
         }
         return null;
-    }
+    }*/
 }

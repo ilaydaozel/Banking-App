@@ -1,6 +1,7 @@
 package accountFactory;
-import account.AbstractAccount;
+
+import account.*;
 
 public abstract class AccountFactory {
-	public abstract AbstractAccount createAccount(String accounType);
+	public abstract AbstractAccount createAccount(String accountType);
 }

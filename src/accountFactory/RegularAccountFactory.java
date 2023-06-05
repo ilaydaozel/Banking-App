@@ -5,7 +5,7 @@ import account.AbstractAccount;
 public class RegularAccountFactory extends AccountFactory{
 
 	@Override
-	public AbstractAccount createAccount(String accounType) {
+	public AbstractAccount createAccount(String accountType) {
 		// TODO Auto-generated method stub
 		return null;
 	}

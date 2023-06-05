@@ -2,8 +2,8 @@ package account;
 
 public abstract class AbstractForeignCurrencyAccount extends AbstractAccount {
 
-	public AbstractForeignCurrencyAccount(String name) {
-		super(name);
+	public AbstractForeignCurrencyAccount() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

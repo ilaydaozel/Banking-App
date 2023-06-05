@@ -3,10 +3,12 @@ package account;
 import java.util.*;
 
 public class AccountGroup extends AbstractAccount{
+	private String name;
     private List<AbstractAccount> accounts;
 
 	public AccountGroup(String name) {
-		super(name);
+		super();
+		this.name = name;
 		this.accounts = new ArrayList<AbstractAccount>();
 	}
 
@@ -26,7 +28,7 @@ public class AccountGroup extends AbstractAccount{
 		this.accounts = accounts;
 	}
 
-/***  public List<Account> getAccounts() {
+/*  public List<Account> getAccounts() {
         return accounts;
     }
 
@@ -100,7 +102,7 @@ public class AccountGroup extends AbstractAccount{
         }
 
         return balance;
-    }***/
+    }*/
     
 
 }

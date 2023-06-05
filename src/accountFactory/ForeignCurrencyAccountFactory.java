@@ -14,7 +14,7 @@ public class ForeignCurrencyAccountFactory extends AccountFactory {
 			account = new ForeignCurrencyAccountWithoutInterest("");
 		}
 		else {
-			//default
+			//default option
 			account = new ForeignCurrencyAccountWithoutInterest("");
 		}
 		return account;

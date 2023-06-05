@@ -4,8 +4,8 @@ import interfaces.IWithInterest;
 
 public class GoldAccountWithInterest extends AbstractGoldAccount implements IWithInterest {
 
-	public GoldAccountWithInterest(String name) {
-		super(name);
+	public GoldAccountWithInterest() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 }

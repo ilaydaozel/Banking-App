@@ -4,8 +4,8 @@ import interfaces.IWithoutInterest;
 
 public class ForeignCurrencyAccountWithoutInterest extends AbstractForeignCurrencyAccount implements IWithoutInterest{
 
-	public ForeignCurrencyAccountWithoutInterest(String name) {
-		super(name);
+	public ForeignCurrencyAccountWithoutInterest() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

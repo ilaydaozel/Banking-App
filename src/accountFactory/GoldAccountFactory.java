@@ -1,13 +1,20 @@
 package accountFactory;
 
-import account.AbstractAccount;
+import account.*;
 
-public class GoldAccountFactory extends AccountFactory{
+public class GoldAccountFactory extends AccountFactory {
 
 	@Override
 	public AbstractAccount createAccount(String accountType) {
-		// TODO Auto-generated method stub
-		return null;
+		AbstractGoldAccount account;
+		if (accountType.equals("withInterest")) {
+			account = new GoldAccountWithInterest();
+		} else if (accountType.equals("withoutInterest")) {
+			account = new GoldAccountWithoutInterest();
+		} else {
+			// default option
+			account = new GoldAccountWithoutInterest();
+		}
+		return account;
 	}
-
 }

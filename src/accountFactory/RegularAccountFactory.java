@@ -1,13 +1,20 @@
 package accountFactory;
 
-import account.AbstractAccount;
+import account.*;
 
-public class RegularAccountFactory extends AccountFactory{
+public class RegularAccountFactory extends AccountFactory {
 
-	@Override
-	public AbstractAccount createAccount(String accountType) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+    @Override
+    public AbstractAccount createAccount(String accountType) {
+        AbstractRegularAccount account;
+        if (accountType.equals("withInterest")) {
+            account = new RegularAccountWithInterest();
+        } else if (accountType.equals("withoutInterest")) {
+            account = new RegularAccountWithoutInterest();
+        } else {
+            // default option
+            account = new RegularAccountWithoutInterest();
+        }
+        return account;
+    }
 }

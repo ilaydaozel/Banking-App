@@ -8,14 +8,14 @@ public class ForeignCurrencyAccountFactory extends AccountFactory {
 	public AbstractAccount createAccount(String accountType) {
 		AbstractForeignCurrencyAccount account;
 		if(accountType.equals("withInterest")) {
-			account = new ForeignCurrencyAccountWithInterest("");
+			account = new ForeignCurrencyAccountWithInterest();
 		}
 		else if (accountType.equals("withoutInterest")) {
-			account = new ForeignCurrencyAccountWithoutInterest("");
+			account = new ForeignCurrencyAccountWithoutInterest();
 		}
 		else {
 			//default option
-			account = new ForeignCurrencyAccountWithoutInterest("");
+			account = new ForeignCurrencyAccountWithoutInterest();
 		}
 		return account;
 	}

@@ -1,13 +1,18 @@
 package accountFactory;
 
-import account.AbstractAccount;
+import account.*;
 
 public class InvestmentAccountFactory extends AccountFactory {
 
-	@Override
-	public AbstractAccount createAccount(String accountType) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+    @Override
+    public AbstractAccount createAccount(String accountType) {
+        AbstractInvestmentAccount account;
+        if (accountType.equals("investment")) {
+            account = new InvestmentAccount();
+        } else {
+            // default option
+            account = new InvestmentAccount();
+        }
+        return account;
+    }
 }

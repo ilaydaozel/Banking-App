@@ -26,7 +26,13 @@ public class Client {
 	public void setTopAccountGroup(AccountGroup topAccountGroup) {
 		this.accountGroup = topAccountGroup;
 	}
+
+	@Override
+	public String toString() {
+		return "Client [username=" + username + ", accountGroup=" + accountGroup + "]";
+	}
     
+	
 
   
 }

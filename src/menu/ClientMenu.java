@@ -1,9 +1,9 @@
-package menu;
+ package menu;
 
 import application.Account;
 import application.AccountGroup;
 
-public class ClientMenu {
+public class ClientMenu implements IMenu {
 
     private static void clientMenu() {
         boolean exit = false;
@@ -36,7 +36,7 @@ public class ClientMenu {
         }
     }
 
-    private static void printClientMenu() {
+    private void printMenu() {
         System.out.println("--- Client Menu ---");
         System.out.println("Client: " + currentClient.getName());
         System.out.println("1. Create Account");

@@ -1,9 +1,19 @@
 package menu;
+import java.util.Scanner;
 
-public class MainMenu {
+import interfaces.IMenu;
+import user.*;
 
-    private static void printMainMenu() {
-        System.out.println("--- Main Menu ---");
+public class MainMenu implements IMenu {
+	private static Scanner scanner = new Scanner(System.in);  
+	private static Bank bank;
+	
+	public MainMenu(Bank bank) {
+		this.bank = bank;
+	}
+	
+    public void printMenu() {
+        System.out.println("Main Menu");
         System.out.println("1. Create Client");
         System.out.println("2. Select Client");
         System.out.println("3. Bank Menu");
@@ -11,17 +21,18 @@ public class MainMenu {
         System.out.print("Enter your choice: ");
     }
 
-    private static void createClient() {
+    public static void createClient() {
         System.out.print("Enter the client's name: ");
         String name = scanner.nextLine();
-        //Client client = new Client(name);
-       // clients.add(client);
+        Client client = new Client(name);
+        bank.getClients().add(client);
         System.out.println("Client created successfully.");
+        System.out.println(bank.getClients());
         System.out.println();
     }
 
-    private static void selectClient() {
-        if (clients.isEmpty()) {
+    public static void selectClient() {
+        /*if (clients.isEmpty()) {
             System.out.println("No clients found.");
             return;
         }
@@ -38,7 +49,7 @@ public class MainMenu {
             clientMenu();
         } else {
             System.out.println("Invalid choice. Please try again.");
-        }
+        }*/
     }
 
 }

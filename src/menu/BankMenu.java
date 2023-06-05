@@ -1,6 +1,6 @@
 package menu;
 
-public class BankMenu {
+public class BankMenu implements IMenu  {
 	
     private static void bankMenu() {
         boolean exit = false;
@@ -39,7 +39,7 @@ public class BankMenu {
         }
     }
 
-    private static void printBankMenu() {
+    private void printMenu() {
         System.out.println("--- Bank Menu ---");
         System.out.println("1. Create Stock");
         System.out.println("2. Create Fund");
@@ -125,5 +125,11 @@ public class BankMenu {
             }
         }
     }
+
+	@Override
+	public void printMenu() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

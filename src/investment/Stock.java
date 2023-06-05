@@ -1,24 +1,11 @@
 package investment;
 
 //Stock class
-public class Stock {
- private String name;
- private double value;
+public class Stock extends Commodity {
 
- public Stock(String name) {
-     this.name = name;
-     this.value = 0.0;
- }
+	public Stock(String name, double value) {
+		super(name, value);
+		// TODO Auto-generated constructor stub
+	}
 
- public String getName() {
-     return name;
- }
-
- public double getValue() {
-     return value;
- }
-
- public void setValue(double value) {
-     this.value = value;
- }
 }

@@ -1,24 +1,13 @@
 package investment;
 
 //Fund class
-public class Fund {
- private String name;
- private double value;
+public class Fund extends Commodity {
 
- public Fund(String name) {
-     this.name = name;
-     this.value = 0.0;
- }
+	public Fund(String name, double value) {
+		super(name, value);
+		// TODO Auto-generated constructor stub
+	}
 
- public String getName() {
-     return name;
- }
 
- public double getValue() {
-     return value;
- }
 
- public void setValue(double value) {
-     this.value = value;
- }
 }

@@ -1,16 +1,11 @@
 package user;
 
-
+import investment.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import application.Account;
-import application.AccountFactory;
-import application.Client;
-import application.Fund;
-import application.Stock;
 
 // Bank class
 public class Bank {
@@ -27,14 +22,9 @@ public class Bank {
         interestRates = new HashMap<>();
         currentDay = 0;
     }
-
-    public Account createAccount(int type) {
-        AccountFactory accountFactory = AccountFactory.getFactory(type);
-        return accountFactory.createAccount();
-    }
-
+/*
     public void createStock(String name) {
-        Stock stock = new Stock(name);
+        Stock stock = new Stock(name,);
         stocks.add(stock);
     }
 
@@ -63,7 +53,7 @@ public class Bank {
 
     public void setInterestRate(int accountType, double rate) {
         interestRates.put(accountType, rate);
-    }
+    }*/
 
     public void passTime(int days) {
         currentDay += days;
@@ -71,8 +61,8 @@ public class Bank {
     }
 
     private void calculateInterest() {
-        for (Client client : clients) {
-            List<Account> accounts = client.getAccounts();
+       /* for (Client client : clients) {
+            List<AccountGroup> accounts = client.getAccounts();
             for (Account account : accounts) {
                 if (account.hasInterest() && !account.isInterestBlocked()) {
                     int accountType = account.getType();
@@ -82,7 +72,7 @@ public class Bank {
                     account.addInterest(interest);
                 }
             }
-        }
+        }*/
     }
 
     private Stock getStock(String name) {

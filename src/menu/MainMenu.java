@@ -1,4 +1,5 @@
 package menu;
+import java.util.List;
 import java.util.Scanner;
 
 import interfaces.IMenu;
@@ -25,31 +26,45 @@ public class MainMenu implements IMenu {
         System.out.print("Enter the client's name: ");
         String name = scanner.nextLine();
         Client client = new Client(name);
-        bank.getClients().add(client);
+        bank.addNewClient(client);
         System.out.println("Client created successfully.");
         System.out.println(bank.getClients());
         System.out.println();
     }
 
-    public static void selectClient() {
-        /*if (clients.isEmpty()) {
+    public Client selectClient() {
+    	List<Client> clients = bank.getClients();
+    	Client currentClient = null;
+    	
+        if (clients.isEmpty()) {
             System.out.println("No clients found.");
-            return;
         }
+        else {
+        	System.out.println("Select a client:");
 
-        System.out.println("Select a client:");
+            for (int i = 0; i < clients.size(); i++) {
+                System.out.println((i + 1) + ". " + clients.get(i).getUsername());
+            }
 
-        for (int i = 0; i < clients.size(); i++) {
-            System.out.println((i + 1) + ". " + clients.get(i).getName());
+            int choice = readIntegerInput();
+            if (choice >= 1 && choice <= clients.size()) {
+                currentClient = clients.get(choice - 1);
+            } else {
+                System.out.println("Invalid choice. Please try again.");
+            }
         }
-
-        int choice = readIntegerInput();
-        if (choice >= 1 && choice <= clients.size()) {
-            currentClient = clients.get(choice - 1);
-            clientMenu();
-        } else {
-            System.out.println("Invalid choice. Please try again.");
-        }*/
+        return currentClient;
+        
     }
 
+    public static int readIntegerInput() {
+        while (true) {
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a number!");
+            }
+        }
+    }
+    
 }

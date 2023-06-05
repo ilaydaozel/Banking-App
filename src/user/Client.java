@@ -29,7 +29,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "Client [username=" + username + ", accountGroup=" + accountGroup + "]";
+		return "Client username=" + username + ", accountGroup=" + accountGroup + " ";
 	}
     
 	

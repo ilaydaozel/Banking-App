@@ -5,11 +5,11 @@ import account.AccountGroup;
 
 public class Client {
 	private String username;
-    private AccountGroup accountGroup;
+    private AccountGroup topAccountGroup;
 
     public Client(String username) {
     	this.username = username;
-        this.accountGroup = new AccountGroup("Top Account Group");
+        this.topAccountGroup = new AccountGroup("Top Account Group");
     }
 
 	public String getUsername() {
@@ -21,24 +21,42 @@ public class Client {
 	}
 
 	public AccountGroup getAccountGroup() {
-		return accountGroup;
+		return topAccountGroup;
 	}
 
 	public void setTopAccountGroup(AccountGroup topAccountGroup) {
-		this.accountGroup = topAccountGroup;
+		this.topAccountGroup = topAccountGroup;
 	}
 	
-	public void addToAccounts(AbstractAccount account) {
-		accountGroup.addAccount(account);
+	public void addToTopAccountGroup(AbstractAccount account) {
+		topAccountGroup.addAccount(account);
 	}
 	
-	public void removeFromAccounts(AbstractAccount account) {
-		accountGroup.removeAccount(account);
+	public void removeFromTopAccountGroup(AbstractAccount account) {
+		topAccountGroup.removeAccount(account);
+	}
+	
+	public void addToGivenAccountGroup(AbstractAccount newAccount, AccountGroup accountGroup) {
+		for(AbstractAccount element: topAccountGroup.getAccounts()) {
+			if(element.equals(accountGroup)) {
+				//add an account to the given account group
+				((AccountGroup)element).addAccount(newAccount);
+			}
+		}
+	}
+	
+	public void removeFromGivenAccountGroup(AbstractAccount newAccount, AccountGroup accountGroup) {
+		for(AbstractAccount element: topAccountGroup.getAccounts()) {
+			if(element.equals(accountGroup)) {
+				//remove an account from the given account group
+				((AccountGroup)element).removeAccount(newAccount);
+			}
+		}
 	}
 	
 	@Override
 	public String toString() {
-		return "Client username=" + username + ", accountGroup=" + accountGroup + " ";
+		return "Client username=" + username + ", accountGroup=" + topAccountGroup + " ";
 	}
     
 	

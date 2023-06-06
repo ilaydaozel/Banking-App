@@ -1,11 +1,16 @@
 package menu;
 
+import helpers.HelperIO;
+import helpers.HelperMenu;
+
 public class BankMenu{
+	HelperIO helperIO = new HelperIO();
+	HelperMenu helperMenu = new HelperMenu();
 	
-    private static void bankMenu() {
+    public void bankMenu() {
         boolean exit = false;
         while (!exit) {
-            printBankMenu();
+        	helperMenu.printBankMenu();
             int choice = readIntegerInput();
 
             switch (choice) {
@@ -39,18 +44,6 @@ public class BankMenu{
         }
     }
 
-    private void printMenu() {
-        System.out.println("--- Bank Menu ---");
-        System.out.println("1. Create Stock");
-        System.out.println("2. Create Fund");
-        System.out.println("3. Set Stock Value");
-        System.out.println("4. Set Fund Value");
-        System.out.println("5. Set Currency Rate");
-        System.out.println("6. Set Interest Rate");
-        System.out.println("7. Pass Time");
-        System.out.println("8. Back to Main Menu");
-        System.out.print("Enter your choice: ");
-    }
 
     private static void createStock() {
         System.out.print("Enter the stock name: ");
@@ -126,10 +119,5 @@ public class BankMenu{
         }
     }
 
-	@Override
-	public void printMenu() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

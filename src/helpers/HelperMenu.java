@@ -68,5 +68,18 @@ public class HelperMenu {
         System.out.println("2. Gold Account (XAU) with Interest");
         System.out.print("Enter your choice: ");
     }
+    //bank menu
+    public void printBankMenu() {
+        System.out.println("--- Bank Menu ---");
+        System.out.println("1. Create Stock");
+        System.out.println("2. Create Fund");
+        System.out.println("3. Set Stock Value");
+        System.out.println("4. Set Fund Value");
+        System.out.println("5. Set Currency Rate");
+        System.out.println("6. Set Interest Rate");
+        System.out.println("7. Pass Time");
+        System.out.println("8. Back to Main Menu");
+        System.out.print("Enter your choice: ");
+    }
 
 }

@@ -20,6 +20,7 @@ public class Bank {
         stocks = new ArrayList<>();
         funds = new ArrayList<>();
         clients = new ArrayList<>();
+        clients.add(new Client("ilayda"));
         //currencyRates = new HashMap<>();
         //interestRates = new HashMap<>();
         currentDay = 0;

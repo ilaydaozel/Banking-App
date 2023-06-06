@@ -1,6 +1,6 @@
 package menu;
 
-public class BankMenu implements IMenu  {
+public class BankMenu{
 	
     private static void bankMenu() {
         boolean exit = false;

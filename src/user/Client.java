@@ -1,5 +1,6 @@
 package user;
 
+import account.AbstractAccount;
 import account.AccountGroup;
 
 public class Client {
@@ -26,7 +27,15 @@ public class Client {
 	public void setTopAccountGroup(AccountGroup topAccountGroup) {
 		this.accountGroup = topAccountGroup;
 	}
-
+	
+	public void addToAccounts(AbstractAccount account) {
+		accountGroup.addAccount(account);
+	}
+	
+	public void removeFromAccounts(AbstractAccount account) {
+		accountGroup.removeAccount(account);
+	}
+	
 	@Override
 	public String toString() {
 		return "Client username=" + username + ", accountGroup=" + accountGroup + " ";

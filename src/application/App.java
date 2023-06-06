@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import helpers.HelperIO;
 import menu.BankMenu;
+import menu.ClientMenu;
 import menu.MainMenu;
 import user.Bank;
 import user.Client;
@@ -12,6 +13,7 @@ import helpers.*;
 public class App {
     private static Bank bank;
     private static MainMenu mainMenu;
+    private static ClientMenu clientMenu;
     private static BankMenu bankMenu;
     private static Client currentClient;
     
@@ -33,8 +35,9 @@ public class App {
             	Client client = mainMenu.selectClient();
             	if( client != null) {
             		currentClient = client;
-            		System.out.println("selected client: " + currentClient);
-            		//openClientmenu
+            		System.out.println("Selected client: " + currentClient);
+            		clientMenu = new ClientMenu(currentClient);
+            		clientMenu.clientMenu();
             	}
             	break;
             case 3:

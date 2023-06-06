@@ -11,7 +11,7 @@ public enum RegularAccountType {
         this.value = value;
         this.name = name;
     }
-    public boolean isValue(int num) {
+    public static boolean isValue(int num) {
         for (GoldAccountType type : GoldAccountType.values()) {
             if (type.getValue() == num) {
                 return true;

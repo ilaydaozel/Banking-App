@@ -3,26 +3,20 @@ import java.util.List;
 import java.util.Scanner;
 
 import helpers.HelperIO;
+import helpers.HelperMenu;
 import interfaces.IMenu;
 import user.*;
 
-public class MainMenu implements IMenu {
+public class MainMenu{
 	private static Scanner scanner = new Scanner(System.in);  
 	private static Bank bank;
+	HelperIO helperIO = new HelperIO();
+	HelperMenu helperMenu = new HelperMenu();
 	
 	public MainMenu(Bank bank) {
 		this.bank = bank;
 	}
 	
-    public void printMenu() {
-        System.out.println("--- Main Menu ---");
-        System.out.println("1. Create Client");
-        System.out.println("2. Select Client");
-        System.out.println("3. Bank Menu");
-        System.out.println("4. Exit");
-        System.out.print("Enter your choice: ");
-    }
-
     public static void createClient() {
         System.out.print("Enter the client's name: ");
         String name = scanner.nextLine();
@@ -34,7 +28,6 @@ public class MainMenu implements IMenu {
     }
 
     public Client selectClient() {
-        HelperIO helperIO = new HelperIO();
     	List<Client> clients = bank.getClients();
     	Client currentClient = null;
     	

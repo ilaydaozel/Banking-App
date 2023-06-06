@@ -1,15 +1,26 @@
 package helpers;
 
 public class HelperMenu {
-	
+	//main menu
+    public void printMainMenu() {
+        System.out.println("--- Main Menu ---");
+        System.out.println("1. Create Client");
+        System.out.println("2. Select Client");
+        System.out.println("3. Bank Menu");
+        System.out.println("4. Exit");
+        System.out.print("Enter your choice: ");
+    }
+    
+	//client menu
     public void printClientMenu() {
         System.out.println("--- Client Menu ---");
-        System.out.println("1. Create Account");
-        System.out.println("2. Create Account Group");
-        System.out.println("3. Check Account Balance");
-        System.out.println("4. Check Account Group Balance");
-        System.out.println("5. Check Expected Balance");
-        System.out.println("6. Back to Main Menu");
+        System.out.println("1. Display Accounts");
+        System.out.println("2. Create Account");
+        System.out.println("3. Create Account Group");
+        System.out.println("4. Check Account Balance");
+        System.out.println("5. Check Account Group Balance");
+        System.out.println("6. Check Expected Balance");
+        System.out.println("7. Back to Main Menu");
         System.out.print("Enter your choice: ");
     }
     

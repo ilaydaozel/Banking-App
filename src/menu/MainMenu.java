@@ -17,6 +17,10 @@ public class MainMenu{
 		this.bank = bank;
 	}
 	
+	public void printMenu() {
+		helperMenu.printMainMenu();
+	}
+	
     public static void createClient() {
         System.out.print("Enter the client's name: ");
         String name = scanner.nextLine();

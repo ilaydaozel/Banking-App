@@ -9,4 +9,10 @@ public class ForeignCurrencyAccountWithInterest extends AbstractForeignCurrencyA
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void display() {
+		System.out.println("Foreign Currency Account With Interest");
+		
+	}
+
 }

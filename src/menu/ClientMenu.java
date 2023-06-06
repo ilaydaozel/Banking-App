@@ -2,23 +2,16 @@
 
 import java.util.Scanner;
 
-import account.AbstractAccount;
-import accountFactory.AccountFactory;
-import accountFactory.AccountFactoryFactory;
-import enums.ForeignCurrencyAccountType;
-import enums.GoldAccountType;
-import enums.MainAccountType;
-import enums.RegularAccountType;
-import helpers.HelperIO;
-import helpers.HelperMenu;
-import interfaces.IMenu;
-import user.Bank;
-import user.Client;
+import account.*;
+import accountFactory.*;
+import enums.*;
+import helpers.*;
+import user.*;
 
 public class ClientMenu{
 	private static Scanner scanner = new Scanner(System.in);  
 	private Client client;
-	private static HelperIO helperIO = new HelperIO();
+	HelperIO helperIO = new HelperIO();
 	HelperMenu helperMenu = new HelperMenu();
 	
 	
@@ -34,22 +27,25 @@ public class ClientMenu{
             int choice = helperIO.readIntegerInput();
 
             switch (choice) {
-                case 1:
+            	case 1:
+            		displayAccounts();
+            		break;
+                case 2:
                     createAccount();
                     break;
-                case 2:
+                case 3:
                     createAccountGroup();
                     break;
-                case 3:
+                case 4:
                     checkAccountBalance();
                     break;
-                case 4:
+                case 5:
                     checkAccountGroupBalance();
                     break;
-                case 5:
+                case 6:
                     checkExpectedBalance();
                     break;
-                case 6:
+                case 7:
                     exit = true;
                     break;
                 default:
@@ -58,7 +54,12 @@ public class ClientMenu{
         }
     }
  
-    private void createAccount() {
+    private void displayAccounts() {
+		client.getAccountGroup().display();
+		
+	}
+
+	private void createAccount() {
         AccountFactoryFactory accountFactoryFactory = new AccountFactoryFactory();
         AbstractAccount newAccount = null;
         System.out.println("Enter the account type: ");
@@ -110,7 +111,11 @@ public class ClientMenu{
         } else {
             System.out.println("Invalid account type. Please try again.");
         }
-
+        if (newAccount != null) {
+        	client.addToAccounts(newAccount);
+        	System.out.println("New account created successfully.");
+        	System.out.println("newAccount" + newAccount.toString());
+        }
         System.out.println();
     }
 
@@ -118,13 +123,14 @@ public class ClientMenu{
         System.out.print("Enter the name of the account group: ");
         String groupName = scanner.nextLine();
         AccountGroup accountGroup = new AccountGroup(groupName);
-        currentClient.addAccountGroup(accountGroup);
+        client.addToAccounts(accountGroup);
         System.out.println("Account group created successfully.");
+        System.out.println("newAccount group" + accountGroup.toString());
         System.out.println();
     }
 
     private static void checkAccountBalance() {
-        System.out.print("Enter the account index: ");
+        /*System.out.print("Enter the account index: ");
         int accountIndex = readIntegerInput();
 
         if (accountIndex >= 0 && accountIndex < currentClient.getNumAccounts()) {
@@ -134,11 +140,11 @@ public class ClientMenu{
         } else {
             System.out.println("Invalid account index. Please try again.");
         }
-        System.out.println();
+        System.out.println();*/
     }
 
     private static void checkAccountGroupBalance() {
-        System.out.print("Enter the account group name: ");
+       /* System.out.print("Enter the account group name: ");
         String groupName = scanner.nextLine();
         AccountGroup accountGroup = currentClient.getAccountGroup(groupName);
 
@@ -148,11 +154,11 @@ public class ClientMenu{
         } else {
             System.out.println("Account group not found. Please try again.");
         }
-        System.out.println();
+        System.out.println();*/
     }
 
     private static void checkExpectedBalance() {
-        System.out.print("Enter the account index: ");
+        /*System.out.print("Enter the account index: ");
         int accountIndex = readIntegerInput();
 
         if (accountIndex >= 0 && accountIndex < currentClient.getNumAccounts()) {
@@ -164,6 +170,6 @@ public class ClientMenu{
         } else {
             System.out.println("Invalid account index. Please try again.");
         }
-        System.out.println();
+        System.out.println();*/
     }
 }

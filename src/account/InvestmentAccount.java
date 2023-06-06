@@ -6,5 +6,9 @@ public class InvestmentAccount extends AbstractInvestmentAccount {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	@Override
+	public void display() {
+		System.out.println("Investment");
+		
+	}
 }

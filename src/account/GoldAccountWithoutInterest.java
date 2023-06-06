@@ -8,5 +8,11 @@ public class GoldAccountWithoutInterest extends AbstractGoldAccount implements I
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public void display() {
+		System.out.println("Gold Account Without Interest");
+		
+	}
 
 }

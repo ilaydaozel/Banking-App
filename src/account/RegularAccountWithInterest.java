@@ -8,6 +8,10 @@ public class RegularAccountWithInterest extends AbstractRegularAccount implement
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	@Override
+	public void display() {
+		System.out.println("Regular Account With Interest");
+		
+	}
 
 }

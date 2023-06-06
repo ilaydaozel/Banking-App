@@ -8,5 +8,9 @@ public class RegularAccountWithoutInterest extends AbstractRegularAccount implem
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	@Override
+	public void display() {
+		System.out.println("Regular Account Without Interest");
+		
+	}
 }

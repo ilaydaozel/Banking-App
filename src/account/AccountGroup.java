@@ -17,7 +17,13 @@ public class AccountGroup extends AbstractAccount{
 	}
 	
 	public void removeAccount(AbstractAccount account) {
-		accounts.remove(account);
+		if(accounts.contains(account)) {
+			accounts.remove(account);
+		}
+		else {
+			System.out.println("This account can't be removed because it doesn't exist");
+		}
+
 	}
 	
 	public List<AbstractAccount> getAccounts() {
@@ -28,6 +34,16 @@ public class AccountGroup extends AbstractAccount{
 		this.accounts = accounts;
 	}
 
+	@Override
+	public void display() {
+       System.out.println("Account Group Name: " + name);
+        for (AbstractAccount component : accounts) {
+            component.display();
+        }
+	
+	}
+
+	
 /*  public List<Account> getAccounts() {
         return accounts;
     }

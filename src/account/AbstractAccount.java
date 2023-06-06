@@ -14,5 +14,6 @@ public abstract class AbstractAccount {
 		this.balance = balance;
 	}
 
+	public abstract void display();
 	
 }

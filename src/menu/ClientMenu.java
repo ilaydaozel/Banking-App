@@ -2,28 +2,35 @@
 
 import java.util.Scanner;
 
-import application.Account;
-import application.AccountGroup;
+import account.AbstractAccount;
+import accountFactory.AccountFactory;
+import accountFactory.AccountFactoryFactory;
+import enums.ForeignCurrencyAccountType;
+import enums.GoldAccountType;
+import enums.MainAccountType;
+import enums.RegularAccountType;
 import helpers.HelperIO;
+import helpers.HelperMenu;
 import interfaces.IMenu;
 import user.Bank;
 import user.Client;
 
-public class ClientMenu implements IMenu {
+public class ClientMenu{
 	private static Scanner scanner = new Scanner(System.in);  
 	private Client client;
 	private static HelperIO helperIO = new HelperIO();
+	HelperMenu helperMenu = new HelperMenu();
 	
 	
 	public ClientMenu(Client currentClient) {
 		this.client = currentClient;
 	}
 	
-    private void clientMenu() {
+    public void clientMenu() {
         HelperIO helperIO = new HelperIO();
         boolean exit = false;
         while (!exit) {
-            printMenu();
+            helperMenu.printClientMenu();
             int choice = helperIO.readIntegerInput();
 
             switch (choice) {
@@ -50,54 +57,60 @@ public class ClientMenu implements IMenu {
             }
         }
     }
-
-    public void printMenu() {
-        System.out.println("--- Client Menu ---");
-        System.out.println("Client: " + client.getUsername());
-        System.out.println("1. Create Account");
-        System.out.println("2. Create Account Group");
-        System.out.println("3. Check Account Balance");
-        System.out.println("4. Check Account Group Balance");
-        System.out.println("5. Check Expected Balance");
-        System.out.println("6. Back to Main Menu");
-        System.out.print("Enter your choice: ");
-    }
-    
-    
-    public void accountTypeMenu() {
-        System.out.println("---Main Account Types ---");
-        System.out.println("1. Regular Account");
-        System.out.println("2. Foreign Currency Account");
-        System.out.println("3. Gold Account");
-        System.out.println("4. Investment Account");
-        System.out.print("Enter your choice: ");
-    }
-    public void accountMenu() {
-        System.out.println("--- Account Types ---");
-        System.out.println("1. Regular Account (TRY) without Interest");
-        System.out.println("2. Regular Account (TRY) with Interest");
-        System.out.println("3. Foreign Currency Account (EUR) without Interest");
-        System.out.println("4. Foreign Currency Account (EUR) with Interest");
-        System.out.println("5. Foreign Currency Account (USD) without Interest");
-        System.out.println("6. Foreign Currency Account (USD) with Interest");
-        System.out.println("7. Gold Account (XAU) without Interest");
-        System.out.println("8. Gold Account (XAU) with Interest");
-        System.out.println("9. Investment Account");
-        System.out.print("Enter your choice: ");
-    }
-
+ 
     private void createAccount() {
-        System.out.print("Enter the account type (1-9): ");
-        accountTypeMenu();
+        AccountFactoryFactory accountFactoryFactory = new AccountFactoryFactory();
+        AbstractAccount newAccount = null;
+        System.out.println("Enter the account type: ");
+        helperMenu.printAccountTypeMenu();
         int type = helperIO.readIntegerInput();
+        if (type >= 1 && type <= 4) {
+        	//create the account factory according to the selection
+        	AccountFactory selectedAccountFactory = accountFactoryFactory.createAccountFactory(MainAccountType.getNameByValue(type));
+        	if(type == 1) {
+        		//regular menu
+        		helperMenu.printRegularAccountMenu();
+        		int type1 = helperIO.readIntegerInput();
+        		if(RegularAccountType.isValue(type1)) {
+            		newAccount = selectedAccountFactory.createAccount(RegularAccountType.getNameByValue(type1));
+        		}
+        		else {
+        			System.out.println("Invalid account type. Please try again.");
+        		}
 
-        if (type >= 1 && type <= 9) {
-            AbstractAccount account = bank.createAccount(type);
-            currentClient.addAccount(account);
-            System.out.println("Account created successfully.");
+        	}
+        	else if(type == 2) {
+        		//foreign currency menu
+        		helperMenu.printForeignCurrencyAccountMenu();
+        		int type2 = helperIO.readIntegerInput();
+				if (ForeignCurrencyAccountType.isValue(type2)) {
+				    newAccount = selectedAccountFactory.createAccount(ForeignCurrencyAccountType.getNameByValue(type2));
+				} else {
+				    System.out.println("Invalid account type. Please try again.");
+				}
+			}
+        	
+        	else if(type == 3) {
+        		//gold menu
+        		helperMenu.printGoldAccountMenu();
+        		int type3 = helperIO.readIntegerInput();
+        		if (GoldAccountType.isValue(type3)) {
+        		    newAccount = selectedAccountFactory.createAccount(GoldAccountType.getNameByValue(type3));
+        		} else {
+        		    System.out.println("Invalid account type. Please try again.");
+        		}
+        	}
+        	else if(type == 4) {
+        		//investment menu
+        		newAccount = selectedAccountFactory.createAccount("investment");
+        	}  
+        	else {
+        		 System.out.println("Invalid account type. Please try again.");
+        	}
         } else {
             System.out.println("Invalid account type. Please try again.");
         }
+
         System.out.println();
     }
 

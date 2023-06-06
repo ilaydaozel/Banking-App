@@ -36,11 +36,12 @@ public class AccountGroup extends AbstractAccount{
 
 	@Override
 	public void display() {
-       System.out.println("Account Group Name: " + name);
+       System.out.println("+Account Group: " + name);
         for (AbstractAccount component : accounts) {
+        	System.out.print("----");
             component.display();
         }
-	
+        System.out.println();
 	}
 
 	

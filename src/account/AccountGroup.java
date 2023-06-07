@@ -6,8 +6,7 @@ public class AccountGroup extends AbstractAccount{
 	private String name;
     private List<AbstractAccount> accounts;
 
-	public AccountGroup(String name, int id) {
-		super(id);
+	public AccountGroup(String name) {
 		this.name = name;
 		this.accounts = new ArrayList<AbstractAccount>();
 	}

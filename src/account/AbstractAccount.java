@@ -1,11 +1,14 @@
 package account;
 
+import user.Bank;
+
 public abstract class AbstractAccount {
 	private double balance;
-	private int id;
-	public AbstractAccount(int id) {
+	private Bank bank;
+	
+	public AbstractAccount() {
 		this.balance = 0;
-		this.id = id;
+		this.bank = new Bank();
 	}
 	
 	public double getBalance() {
@@ -14,7 +17,15 @@ public abstract class AbstractAccount {
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
-	
+
+	public Bank getBank() {
+		return bank;
+	}
+
+	public void setBank(Bank bank) {
+		this.bank = bank;
+	}
+
 	public abstract void display();
 	
 }

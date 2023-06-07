@@ -1,13 +1,15 @@
 package account;
 
 import currency.Currency;
+import enums.CurrencyType;
 import interfaces.IWithoutInterest;
 
 public class ForeignCurrencyAccountWithoutInterest extends AbstractForeignCurrencyAccount implements IWithoutInterest{
 
 
-	public ForeignCurrencyAccountWithoutInterest(int id, Currency currencyType) {
-		super(id, currencyType);
+
+	public ForeignCurrencyAccountWithoutInterest(int id, CurrencyType curType) {
+		super(id, curType);
 		// TODO Auto-generated constructor stub
 	}
 

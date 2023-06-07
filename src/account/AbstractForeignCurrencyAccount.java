@@ -1,21 +1,33 @@
 package account;
 
-import currency.Currency;
+import enums.CurrencyType;
 
 public abstract class AbstractForeignCurrencyAccount extends AbstractAccount {
-	Currency currencyType;
-	public AbstractForeignCurrencyAccount(int id, Currency currencyType) {
-		super(id);
-		this.currencyType = currencyType;
+	private CurrencyType currencyType;
+	private int id;
+	
+	public AbstractForeignCurrencyAccount(int id, CurrencyType curType) {
+		this.id = id;
+		this.currencyType = curType;
 		// TODO Auto-generated constructor stub
 	}
-	public Currency getCurrencyType() {
+
+	public CurrencyType getCurrencyType() {
 		return currencyType;
 	}
-	public void setCurrencyType(Currency currencyType) {
+
+	public void setCurrencyType(CurrencyType currencyType) {
 		this.currencyType = currencyType;
 	}
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	
 
 }

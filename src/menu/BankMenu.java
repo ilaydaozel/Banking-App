@@ -58,7 +58,9 @@ public class BankMenu{
     private void createStock() {
         System.out.print("Enter the stock name: ");
         String stockName = scanner.nextLine();
-        bank.createStock(stockName);
+        System.out.print("Enter the stock value: ");
+        double stockValue = helperIO.readDoubleInput();
+        bank.createStock(stockName,stockValue);
         System.out.println("Stock created successfully.");
         System.out.println();
     }
@@ -66,7 +68,9 @@ public class BankMenu{
     private void createFund() {
         System.out.print("Enter the fund name: ");
         String fundName = scanner.nextLine();
-        bank.createFund(fundName);
+        System.out.print("Enter the fund value: ");
+        double fundValue = helperIO.readDoubleInput();
+        bank.createFund(fundName,fundValue);
         System.out.println("Fund created successfully.");
         System.out.println();
     }

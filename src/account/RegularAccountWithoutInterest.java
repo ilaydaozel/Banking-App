@@ -4,8 +4,8 @@ import interfaces.IWithoutInterest;
 
 public class RegularAccountWithoutInterest extends AbstractRegularAccount implements IWithoutInterest{
 
-	public RegularAccountWithoutInterest() {
-		super();
+	public RegularAccountWithoutInterest(int id) {
+		super(id);
 		// TODO Auto-generated constructor stub
 	}
 	public void deposit(double amount) {

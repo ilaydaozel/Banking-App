@@ -4,13 +4,13 @@ import interfaces.IWithInterest;
 
 public class RegularAccountWithInterest extends AbstractRegularAccount implements IWithInterest{
 
-	public RegularAccountWithInterest() {
-		super();
+	public RegularAccountWithInterest(int id) {
+		super(id);
 		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public void display() {
-		System.out.println("Regular Account With Interest");
+		System.out.println("-Regular Account With Interest");
 		
 	}
 

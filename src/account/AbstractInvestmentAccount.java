@@ -2,8 +2,8 @@ package account;
 
 public abstract class AbstractInvestmentAccount extends AbstractAccount {
 
-	public AbstractInvestmentAccount() {
-		super();
+	public AbstractInvestmentAccount(int id) {
+		super(id);
 		// TODO Auto-generated constructor stub
 	}
 

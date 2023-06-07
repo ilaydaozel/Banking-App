@@ -1,20 +1,23 @@
 package menu;
+
 import java.util.Scanner;
+import helpers.HelperIO;
+import helpers.HelperMenu;
+import user.Client;
 
-public class ForeignCurrencyAccountEURWithoutInterestMenu {
-    public static void displayMenu() {
-        System.out.println("------ Foreign Currency Account (EUR) without Interest Menu ------");
-        System.out.println("1. Exchange to TRY Account");
-        System.out.println("0. Go back to main menu");
+public class ForeignCurrencyAccountEURWithoutInterestMenu  {
+    private static Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter your choice: ");
-    }
+    HelperIO helperIO = new HelperIO();
+    HelperMenu helperMenu = new HelperMenu();
 
-    public static void handleChoice() {
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+    public void ForeignCurrencyAccountEURWithoutInterestMenu () {
+        boolean exit = false;
+        while (!exit) {
+            helperMenu.printForeignCurrencyAccountEURWithoutInterestMenu ();
+            int choice = helperIO.readIntegerInput();
 
-        switch (choice) {
+            switch (choice) {
             case 1:
                 // Logic to exchange to a TRY account
                 System.out.println("Exchanging to a TRY account...");
@@ -25,5 +28,8 @@ public class ForeignCurrencyAccountEURWithoutInterestMenu {
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+        }
     }
 }
+
+// Similar classes for other account menus

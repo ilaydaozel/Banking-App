@@ -81,5 +81,97 @@ public class HelperMenu {
         System.out.println("8. Back to Main Menu");
         System.out.print("Enter your choice: ");
     }
+    
+
+        public  void printRegularAccountTRYWithoutInterestMenu() {
+            System.out.println("------ Regular Account (TRY) without Interest Menu ------");
+            System.out.println("1. Deposit Money");
+            System.out.println("0. Go back to main menu");
+
+            System.out.print("Enter your choice: ");
+        }
+    
+
+    
+        public void printRegularAccountTRYWithInterestMenu() {
+            System.out.println("------ Regular Account (TRY) with Interest Menu ------");
+            System.out.println("1. Deposit Money");
+            System.out.println("0. Go back to main menu");
+
+            System.out.print("Enter your choice: ");
+        }
+    
+
+  
+        public void printForeignCurrencyAccountEURWithoutInterestMenu() {
+            System.out.println("------ Foreign Currency Account (EUR) without Interest Menu ------");
+            System.out.println("1. Exchange to TRY Account");
+            System.out.println("0. Go back to main menu");
+
+            System.out.print("Enter your choice: ");
+        }
+    
+
+  
+        public void printForeignCurrencyAccountEURWithInterestMenu() {
+            System.out.println("------ Foreign Currency Account (EUR) with Interest Menu ------");
+            System.out.println("1. Exchange to another account (EUR with Interest)");
+            System.out.println("0. Go back to main menu");
+
+            System.out.print("Enter your choice: ");
+        }
+    
+
+  
+        public void printForeignCurrencyAccountUSDWithoutInterestMenu() {
+            System.out.println("------ Foreign Currency Account (USD) without Interest Menu ------");
+            System.out.println("1. Exchange to TRY Account");
+            System.out.println("0. Go back to main menu");
+
+            System.out.print("Enter your choice: ");
+        }
+    
+
+    
+        public void printForeignCurrencyAccountUSDWithInterestMenu() {
+            System.out.println("------ Foreign Currency Account (USD) with Interest Menu ------");
+            System.out.println("1. Exchange to another account (USD with Interest)");
+            System.out.println("0. Go back to main menu");
+
+            System.out.print("Enter your choice: ");
+        }
+    
+
+
+        public void printGoldAccountXAUWithoutInterestMenu() {
+            System.out.println("------ Gold Account (XAU) without Interest Menu ------");
+            System.out.println("1. Exchange to TRY Account");
+            System.out.println("0. Go back to main menu");
+
+            System.out.print("Enter your choice: ");
+        }
+    
+
+
+        public void printGoldAccountXAUWithInterestMenu() {
+            System.out.println("------ Gold Account (XAU) with Interest Menu ------");
+            System.out.println("1. Exchange to another account (XAU with Interest)");
+            System.out.println("0. Go back to main menu");
+
+            System.out.print("Enter your choice: ");
+        }
+    
+
+  
+        public void printInvestmentAccountMenu() {
+            System.out.println("------ Investment Account Menu ------");
+            System.out.println("1. Buy Stocks");
+            System.out.println("2. Buy Funds");
+            System.out.println("0. Go back to main menu");
+
+            System.out.print("Enter your choice: ");
+        }
+    
+
 
 }

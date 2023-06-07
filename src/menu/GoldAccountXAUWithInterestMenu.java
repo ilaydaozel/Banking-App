@@ -1,19 +1,23 @@
 package menu;
 
-public class GoldAccountXAUWithInterestMenu {
-    public static void displayMenu() {
-        System.out.println("------ Gold Account (XAU) with Interest Menu ------");
-        System.out.println("1. Exchange to another account (XAU with Interest)");
-        System.out.println("0. Go back to main menu");
+import java.util.Scanner;
+import helpers.HelperIO;
+import helpers.HelperMenu;
+import user.Client;
 
-        System.out.print("Enter your choice: ");
-    }
+public class GoldAccountXAUWithInterestMenu  {
+    private static Scanner scanner = new Scanner(System.in);
 
-    public static void handleChoice() {
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+    HelperIO helperIO = new HelperIO();
+    HelperMenu helperMenu = new HelperMenu();
 
-        switch (choice) {
+    public void GoldAccountXAUWithInterestMenu () {
+        boolean exit = false;
+        while (!exit) {
+            helperMenu.printGoldAccountXAUWithInterestMenu ();
+            int choice = helperIO.readIntegerInput();
+
+            switch (choice) {
             case 1:
                 // Logic to exchange to another account (XAU with interest)
                 System.out.println("Exchanging to another account (XAU with interest)...");
@@ -24,5 +28,8 @@ public class GoldAccountXAUWithInterestMenu {
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+        }
     }
 }
+
+// Similar classes for other account menus

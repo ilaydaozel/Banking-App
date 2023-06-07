@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import account.AccountGroup;
+import currency.*;
 
 
 // Bank class
@@ -14,7 +15,10 @@ public class Bank {
     private List<Stock> stocks;
     private List<Fund> funds;
     private List<Client> clients;
-    private Map<String, Double> currencyRates;
+    private EUR eurCur;
+    private USD usdCur;
+    private TRY tryCur;
+    private AUKS auxCur;		
     private Map<Integer, Double> interestRates;
     private int currentDay;
 
@@ -23,12 +27,14 @@ public class Bank {
         funds = new ArrayList<>();
         clients = new ArrayList<>();
         clients.add(new Client("ilayda"));
-        //currencyRates = new HashMap<>();
+        eurCur = new EUR(24.97);
+        usdCur = new USD(23.22);
+        tryCur = new  TRY(1);
+        auxCur = new AUKS(1.94);
         //interestRates = new HashMap<>();
         currentDay = 0;
     }
     
-
     public List<Stock> getStocks() {
 		return stocks;
 	}
@@ -53,14 +59,7 @@ public class Bank {
 		this.clients = clients;
 	}
 
-	public Map<String, Double> getCurrencyRates() {
-		return currencyRates;
-	}
-
-	public void setCurrencyRates(Map<String, Double> currencyRates) {
-		this.currencyRates = currencyRates;
-	}
-
+	
 	public Map<Integer, Double> getInterestRates() {
 		return interestRates;
 	}
@@ -76,7 +75,41 @@ public class Bank {
 	public void setCurrentDay(int currentDay) {
 		this.currentDay = currentDay;
 	}
+	
 
+	public EUR getEurCur() {
+		return eurCur;
+	}
+
+	public void setEurCur(EUR eurCur) {
+		this.eurCur = eurCur;
+	}
+
+	public USD getUsdCur() {
+		return usdCur;
+	}
+
+	public void setUsdCur(USD usdCur) {
+		this.usdCur = usdCur;
+	}
+
+	public TRY getTryCur() {
+		return tryCur;
+	}
+
+	public void setTryCur(TRY tryCur) {
+		this.tryCur = tryCur;
+	}
+
+	public AUKS getAuxCur() {
+		return auxCur;
+	}
+
+	public void setAuxCur(AUKS auxCur) {
+		this.auxCur = auxCur;
+	}
+	
+	
 	public void addNewClient(Client client) {
 		clients.add(client);
 	}
@@ -107,10 +140,6 @@ public class Bank {
         if (fund != null) {
             fund.setValue(value);
         }
-    }
-
-    public void setCurrencyRate(String currencyCode, double rate) {
-        currencyRates.put(currencyCode, rate);
     }
 
     public void setInterestRate(int accountType, double rate) {

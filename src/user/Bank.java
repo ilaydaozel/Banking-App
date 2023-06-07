@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import account.AccountGroup;
+
 
 // Bank class
 public class Bank {
@@ -78,18 +80,18 @@ public class Bank {
 	public void addNewClient(Client client) {
 		clients.add(client);
 	}
-	/*public void passTime(int days) {
+	public void passTime(int days) {
         currentDay += days;
-        calculateInterest();
+        //calculateInterest();
     }
 
-    public void createStock(String name) {
-        Stock stock = new Stock(name,);
+    public void createStock(String name,double value) {
+        Stock stock = new Stock(name,value);
         stocks.add(stock);
     }
 
-    public void createFund(String name) {
-        Fund fund = new Fund(name);
+    public void createFund(String name, double value) {
+        Fund fund = new Fund(name, value);
         funds.add(fund);
     }
 
@@ -114,13 +116,13 @@ public class Bank {
     public void setInterestRate(int accountType, double rate) {
         interestRates.put(accountType, rate);
     }
-
+/*
     private void calculateInterest() {
         for (Client client : clients) {
-            List<AccountGroup> accounts = client.getAccounts();
-            for (Account account : accounts) {
-                if (account.hasInterest() && !account.isInterestBlocked()) {
-                    int accountType = account.getType();
+            List<AccountGroup> accounts = (List<AccountGroup>) client.getAccountGroup();
+            for (AccountGroup account : accounts) {
+                if (((Account) account).hasInterest() && !((Account) account).isInterestBlocked()) {
+                    int accountType = ((Object) account).getType();
                     double interestRate = interestRates.getOrDefault(accountType, 0.0);
                     double balance = account.getBalance();
                     double interest = balance * interestRate * currentDay;
@@ -129,7 +131,7 @@ public class Bank {
             }
         }
     }
-
+*/
     private Stock getStock(String name) {
         for (Stock stock : stocks) {
             if (stock.getName().equalsIgnoreCase(name)) {
@@ -146,5 +148,5 @@ public class Bank {
             }
         }
         return null;
-    }*/
+    }
 }

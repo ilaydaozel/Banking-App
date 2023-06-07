@@ -2,6 +2,8 @@ package account;
 
 import java.util.*;
 
+import enums.ForeignCurrencyAccountType;
+
 public class AccountGroup extends AbstractAccount{
 	private String name;
     private List<AbstractAccount> accounts;
@@ -40,9 +42,64 @@ public class AccountGroup extends AbstractAccount{
         	System.out.print("----");
             component.display();
         }
-        System.out.println();
 	}
+	
+	public void displayGroupName() {
+		System.out.println("+Account Group: " + name);
+		for(int i = 0; i< accounts.size(); i++) {
+    		AbstractAccount currentAccount = accounts.get(i);
+    		if(currentAccount instanceof AccountGroup) {
+    			((AccountGroup)currentAccount).displayGroupName();
+    		}
+    	}
+	}
+	
+	public AbstractAccount getSelectedAccountById(int id) {
+        for (AbstractAccount acc : this.accounts) {
+            if (acc instanceof AbstractRegularAccount) {
+            	if (((AbstractRegularAccount) acc).getId() == id) {
+            		return acc;
+            	}
+            } 	
+        	else if (acc instanceof AbstractForeignCurrencyAccount) {
+	        	if (((AbstractForeignCurrencyAccount) acc).getId() == id) {
+	        			return acc;
+	        		}
+            }
+        	else if (acc instanceof AbstractGoldAccount) {
+	        	if (((AbstractGoldAccount) acc).getId() == id) {
+	        			return acc;
+	        		}
+            }
+        	else if (acc instanceof AbstractInvestmentAccount) {
+	        	if (((AbstractInvestmentAccount) acc).getId() == id) {
+	        			return acc;
+	        		}
+            }
+           
+        }
+        return null;
+	}
+	public AbstractAccount getSelectedAccountByIdAllGroups(int id) {
+		//first search for top account group
+		AbstractAccount resultThis = getSelectedAccountById(id);
+		if(resultThis != null) {
+			return resultThis;
+		}
+		else {
+			//if not in the top account group search all the other account groups
+			for (AbstractAccount accGroup : accounts) {
+	            if (accGroup instanceof AccountGroup) {
+	            	AbstractAccount result = ((AccountGroup)accGroup).getSelectedAccountById(id);
+	            	if(result != null) {
+	            		return result;
+	            	}
+	            } 
+			}
+		}
 
+		return null;
+	}
 	
 /*  public List<Account> getAccounts() {
         return accounts;

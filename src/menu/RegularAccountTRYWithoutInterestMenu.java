@@ -1,47 +1,36 @@
 package menu;
 
 import java.util.Scanner;
+import helpers.HelperIO;
+import helpers.HelperMenu;
+import user.Client;
 
 public class RegularAccountTRYWithoutInterestMenu {
-    public static void displayMenu() {
-        System.out.println("------ Regular Account (TRY) without Interest Menu ------");
-        System.out.println("1. Deposit Money");
-        System.out.println("0. Go back to main menu");
+    private static Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter your choice: ");
-    }
+    HelperIO helperIO = new HelperIO();
+    HelperMenu helperMenu = new HelperMenu();
 
-    public static void handleChoice() {
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+    public void displayRegularAccountTRYWithoutInterestMenu() {
+        boolean exit = false;
+        while (!exit) {
+            helperMenu.printRegularAccountTRYWithoutInterestMenu();
+            int choice = helperIO.readIntegerInput();
 
-        switch (choice) {
-            case 1:
-                // Logic to deposit money to a regular account (TRY) without interest
-                System.out.println("Depositing money to a regular account (TRY) without interest...");
-                break;
-            case 0:
-                // Go back to the main menu
-                break;
-            default:
-                System.out.println("Invalid choice. Please try again.");
+            switch (choice) {
+                case 1:
+                    // Logic to deposit money
+                    System.out.println("Depositing money...");
+                    break;
+                case 0:
+                    // Go back to the main menu
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
         }
     }
 }
 
-
-    private static void displayMainMenu() {
-        System.out.println("------ Main Menu ------");
-        System.out.println("1. Regular Account (TRY) without Interest");
-        System.out.println("2. Regular Account (TRY) with Interest");
-        // Display other account types in the menu
-        System.out.println("0. Exit");
-
-        System.out.print("Enter your choice: ");
-    }
-
-    private static int getUserChoice() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
-    }
-}
+// Similar classes for other account menus

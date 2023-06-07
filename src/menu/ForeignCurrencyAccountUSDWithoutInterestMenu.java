@@ -1,28 +1,35 @@
 package menu;
 
-public class ForeignCurrencyAccountUSDWithoutInterestMenu {
-    public static void displayMenu() {
-        System.out.println("------ Foreign Currency Account (USD) without Interest Menu ------");
-        System.out.println("1. Exchange to TRY Account");
-        System.out.println("0. Go back to main menu");
+import java.util.Scanner;
+import helpers.HelperIO;
+import helpers.HelperMenu;
+import user.Client;
 
-        System.out.print("Enter your choice: ");
-    }
+public class ForeignCurrencyAccountUSDWithoutInterestMenu   {
+    private static Scanner scanner = new Scanner(System.in);
 
-    public static void handleChoice() {
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+    HelperIO helperIO = new HelperIO();
+    HelperMenu helperMenu = new HelperMenu();
 
-        switch (choice) {
-            case 1:
-                // Logic to exchange to a TRY account
-                System.out.println("Exchanging to a TRY account...");
-                break;
-            case 0:
-                // Go back to the main menu
-                break;
-            default:
-                System.out.println("Invalid choice. Please try again.");
+    public void ForeignCurrencyAccountUSDWithoutInterestMenu  () {
+        boolean exit = false;
+        while (!exit) {
+            helperMenu.printForeignCurrencyAccountUSDWithoutInterestMenu  ();
+            int choice = helperIO.readIntegerInput();
+
+            switch (choice) {
+	            case 1:
+	                // Logic to exchange to a TRY account
+	                System.out.println("Exchanging to a TRY account...");
+	                break;
+	            case 0:
+	                // Go back to the main menu
+	                break;
+	            default:
+	                System.out.println("Invalid choice. Please try again.");
+            }
         }
     }
 }
+
+// Similar classes for other account menus

@@ -1,20 +1,22 @@
 package menu;
 
-public class InvestmentAccountMenu {
-    public static void displayMenu() {
-        System.out.println("------ Investment Account Menu ------");
-        System.out.println("1. Buy Stocks");
-        System.out.println("2. Buy Funds");
-        System.out.println("0. Go back to main menu");
+import java.util.Scanner;
+import helpers.HelperIO;
+import helpers.HelperMenu;
 
-        System.out.print("Enter your choice: ");
-    }
+public class InvestmentAccountMenu  {
+    private static Scanner scanner = new Scanner(System.in);
 
-    public static void handleChoice() {
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+    HelperIO helperIO = new HelperIO();
+    HelperMenu helperMenu = new HelperMenu();
 
-        switch (choice) {
+    public void InvestmentAccountMenu () {
+        boolean exit = false;
+        while (!exit) {
+            helperMenu.printInvestmentAccountMenu();
+            int choice = helperIO.readIntegerInput();
+
+            switch (choice) {
             case 1:
                 // Logic to buy stocks
                 System.out.println("Buying stocks...");
@@ -29,5 +31,9 @@ public class InvestmentAccountMenu {
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+
+        }
     }
 }
+
+// Similar classes for other account menus

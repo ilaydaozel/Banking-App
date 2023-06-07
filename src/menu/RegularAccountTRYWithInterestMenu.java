@@ -1,33 +1,36 @@
 package menu;
 
-public class RegularAccountTRYWithInterestMenu {
-    public static void displayMenu() {
-        System.out.println("------ Regular Account (TRY) with Interest Menu ------");
-        System.out.println("1. Deposit Money");
-        System.out.println("2. Exchange to another account (TRY with Interest)");
-        System.out.println("0. Go back to main menu");
+import java.util.Scanner;
+import helpers.HelperIO;
+import helpers.HelperMenu;
+import user.Client;
 
-        System.out.print("Enter your choice: ");
-    }
+public class RegularAccountTRYWithInterestMenu  {
+    private static Scanner scanner = new Scanner(System.in);
 
-    public static void handleChoice() {
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+    HelperIO helperIO = new HelperIO();
+    HelperMenu helperMenu = new HelperMenu();
 
-        switch (choice) {
-            case 1:
-                // Logic to deposit money to a regular account (TRY) with interest
-                System.out.println("Depositing money to a regular account (TRY) with interest...");
-                break;
-            case 2:
-                // Logic to exchange to another account (TRY with interest)
-                System.out.println("Exchanging to another account (TRY with interest)...");
-                break;
-            case 0:
-                // Go back to the main menu
-                break;
-            default:
-                System.out.println("Invalid choice. Please try again.");
+    public void RegularAccountTRYWithInterestMenu () {
+        boolean exit = false;
+        while (!exit) {
+            helperMenu.printRegularAccountTRYWithInterestMenu ();
+            int choice = helperIO.readIntegerInput();
+
+            switch (choice) {
+                case 1:
+                    // Logic to deposit money
+                    System.out.println("Depositing money...");
+                    break;
+                case 0:
+                    // Go back to the main menu
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
         }
     }
 }
+
+// Similar classes for other account menus

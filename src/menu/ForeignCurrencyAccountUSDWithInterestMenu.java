@@ -1,19 +1,23 @@
 package menu;
 
-public class ForeignCurrencyAccountUSDWithInterestMenu {
-    public static void displayMenu() {
-        System.out.println("------ Foreign Currency Account (USD) with Interest Menu ------");
-        System.out.println("1. Exchange to another account (USD with Interest)");
-        System.out.println("0. Go back to main menu");
+import java.util.Scanner;
+import helpers.HelperIO;
+import helpers.HelperMenu;
+import user.Client;
 
-        System.out.print("Enter your choice: ");
-    }
+public class ForeignCurrencyAccountUSDWithInterestMenu  {
+    private static Scanner scanner = new Scanner(System.in);
 
-    public static void handleChoice() {
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+    HelperIO helperIO = new HelperIO();
+    HelperMenu helperMenu = new HelperMenu();
 
-        switch (choice) {
+    public void ForeignCurrencyAccountUSDWithInterestMenu () {
+        boolean exit = false;
+        while (!exit) {
+            helperMenu.printForeignCurrencyAccountUSDWithInterestMenu ();
+            int choice = helperIO.readIntegerInput();
+
+            switch (choice) {
             case 1:
                 // Logic to exchange to another account (USD with interest)
                 System.out.println("Exchanging to another account (USD with interest)...");
@@ -24,5 +28,8 @@ public class ForeignCurrencyAccountUSDWithInterestMenu {
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+        }
     }
 }
+
+// Similar classes for other account menus

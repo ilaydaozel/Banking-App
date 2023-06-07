@@ -8,9 +8,12 @@ public class RegularAccountWithoutInterest extends AbstractRegularAccount implem
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	public void deposit(double amount) {
+		super.setBalance(getBalance() + amount);
+	}
 	@Override
 	public void display() {
-		System.out.println("Regular Account Without Interest");
+		System.out.println("-Regular Account Without Interest");
 		
 	}
 }

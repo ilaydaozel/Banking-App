@@ -17,10 +17,12 @@ public class HelperMenu {
         System.out.println("1. Display Accounts");
         System.out.println("2. Create Account");
         System.out.println("3. Create Account Group");
-        System.out.println("4. Check Account Balance");
-        System.out.println("5. Check Account Group Balance");
-        System.out.println("6. Check Expected Balance");
-        System.out.println("7. Back to Main Menu");
+        System.out.println("4. Select An Account For Operation");
+        System.out.println("5. Select An Account Group For Operation");
+        System.out.println("6. Check Account Balance");
+        System.out.println("7. Check Account Group Balance");
+        System.out.println("8. Check Expected Balance");
+        System.out.println("9. Back to Main Menu");
         System.out.print("Enter your choice: ");
     }
     

@@ -39,15 +39,21 @@ public class ClientMenu{
                     createAccountGroup();
                     break;
                 case 4:
+                	selectAccountAll();
+                	break;
+                case 5:
+                	selectAccountGroupAll();
+                	break;
+                case 6:
                     checkAccountBalance();
                     break;
-                case 5:
+                case 7:
                     checkAccountGroupBalance();
                     break;
-                case 6:
+                case 8:
                     checkExpectedBalance();
                     break;
-                case 7:
+                case 9:
                     exit = true;
                     break;
                 default:
@@ -174,6 +180,24 @@ public class ClientMenu{
         System.out.println();
     }
 
+    public void selectAccountAll() {
+    	client.getAccountGroup().display();
+        System.out.print("Enter the id of the account: ");
+        int selectedAccountId = HelperIO.readIntegerInput();
+        AbstractAccount selectedAccount = client.getAccountGroup().getSelectedAccountByIdAllGroups(selectedAccountId);
+        if(selectedAccount != null) {
+        	System.out.println("selected acc:"+ selectedAccount);
+        }
+        else {
+        	System.out.println("Please enter a valid ID!");
+        	System.out.println();
+        }
+    }
+    
+    public void selectAccountGroupAll() {
+    	client.getAccountGroup().displayGroupName();
+    }
+    
     private static void checkAccountBalance() {
         /*System.out.print("Enter the account index: ");
         int accountIndex = readIntegerInput();

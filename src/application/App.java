@@ -20,6 +20,7 @@ public class App {
 	public static void main(String[] args) {
 		bank = new Bank();
         mainMenu = new MainMenu(bank);
+        bankMenu = new BankMenu(bank);
         HelperIO helperIO = new HelperIO();
         
         boolean exit = false;
@@ -41,7 +42,8 @@ public class App {
             	}
             	break;
             case 3:
-            	//
+            	bankMenu.bankMenu();
+            	break;
             case 4:
             	exit =true;
             	System.out.println("You exit the app!");

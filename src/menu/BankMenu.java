@@ -1,11 +1,21 @@
 package menu;
 
+import java.util.Scanner;
+
 import helpers.HelperIO;
 import helpers.HelperMenu;
+import user.Bank;
+import user.Client;
 
 public class BankMenu{
+	private Bank bank;
+	private static Scanner scanner = new Scanner(System.in);  
 	HelperIO helperIO = new HelperIO();
 	HelperMenu helperMenu = new HelperMenu();
+	
+	public BankMenu(Bank bank) {
+		this.bank = bank;
+	}
 	
     public void bankMenu() {
         boolean exit = false;
@@ -45,7 +55,7 @@ public class BankMenu{
     }
 
 
-    private static void createStock() {
+    private void createStock() {
         System.out.print("Enter the stock name: ");
         String stockName = scanner.nextLine();
         bank.createStock(stockName);
@@ -53,7 +63,7 @@ public class BankMenu{
         System.out.println();
     }
 
-    private static void createFund() {
+    private void createFund() {
         System.out.print("Enter the fund name: ");
         String fundName = scanner.nextLine();
         bank.createFund(fundName);
@@ -61,47 +71,47 @@ public class BankMenu{
         System.out.println();
     }
 
-    private static void setStockValue() {
+    private void setStockValue() {
         System.out.print("Enter the stock name: ");
         String stockName = scanner.nextLine();
         System.out.print("Enter the stock value: ");
-        double stockValue = readDoubleInput();
+        double stockValue = helperIO.readDoubleInput();
         bank.setStockValue(stockName, stockValue);
         System.out.println("Stock value set successfully.");
         System.out.println();
     }
 
-    private static void setFundValue() {
+    private void setFundValue() {
         System.out.print("Enter the fund name: ");
         String fundName = scanner.nextLine();
         System.out.print("Enter the fund value: ");
-        double fundValue = readDoubleInput();
+        double fundValue = helperIO.readDoubleInput();
         bank.setFundValue(fundName, fundValue);
         System.out.println("Fund value set successfully.");
         System.out.println();
     }
 
-    private static void setCurrencyRate() {
+    private void setCurrencyRate() {
         System.out.print("Enter the currency code (TRY, EUR, USD): ");
         String currencyCode = scanner.nextLine();
         System.out.print("Enter the currency rate: ");
-        double currencyRate = readDoubleInput();
+        double currencyRate = helperIO.readDoubleInput();
         bank.setCurrencyRate(currencyCode, currencyRate);
         System.out.println("Currency rate set successfully.");
         System.out.println();
     }
 
-    private static void setInterestRate() {
+    private void setInterestRate() {
         System.out.print("Enter the account type (1-9): ");
         int accountType = readIntegerInput();
         System.out.print("Enter the interest rate: ");
-        double interestRate = readDoubleInput();
+        double interestRate = helperIO.readDoubleInput();
         bank.setInterestRate(accountType, interestRate);
         System.out.println("Interest rate set successfully.");
         System.out.println();
     }
 
-    private static void passTime() {
+    private void passTime() {
         System.out.print("Enter the number of days to pass: ");
         int days = readIntegerInput();
         bank.passTime(days);

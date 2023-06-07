@@ -11,7 +11,7 @@ public class GoldAccountWithInterest extends AbstractGoldAccount implements IWit
 	
 	@Override
 	public void display() {
-		System.out.println("-Gold Account With Interest");
+		System.out.println("- id:" + super.getId() +" Gold Account With Interest");
 		
 	}
 }

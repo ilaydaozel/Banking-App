@@ -10,7 +10,7 @@ public class RegularAccountWithInterest extends AbstractRegularAccount implement
 	}
 	@Override
 	public void display() {
-		System.out.println("-Regular Account With Interest");
+		System.out.println("- id:" + super.getId() +" Regular Account With Interest");
 		
 	}
 

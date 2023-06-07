@@ -11,7 +11,7 @@ public class GoldAccountWithoutInterest extends AbstractGoldAccount implements I
 	
 	@Override
 	public void display() {
-		System.out.println("-Gold Account Without Interest");
+		System.out.println("- id:" + super.getId() +" Gold Account Without Interest");
 		
 	}
 

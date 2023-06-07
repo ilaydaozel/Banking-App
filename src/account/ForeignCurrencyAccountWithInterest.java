@@ -13,7 +13,7 @@ public class ForeignCurrencyAccountWithInterest extends AbstractForeignCurrencyA
 
 	@Override
 	public void display() {
-		System.out.println("-Foreign Currency Account With Interest");
+		System.out.println("- id:" + super.getId() + " Foreign Currency Account With Interest ");
 		
 	}
 

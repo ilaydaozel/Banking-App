@@ -3,17 +3,21 @@ package accountFactory;
 import account.*;
 
 public class RegularAccountFactory extends AccountFactory {
+	public RegularAccountFactory(int accountId) {
+		super(accountId);
+		// TODO Auto-generated constructor stub
+	}
 
     @Override
     public AbstractAccount createAccount(String accountType) {
         AbstractRegularAccount account;
         if (accountType.equals("withInterest")) {
-            account = new RegularAccountWithInterest();
+            account = new RegularAccountWithInterest(super.getAccountIdCounter());
         } else if (accountType.equals("withoutInterest")) {
-            account = new RegularAccountWithoutInterest();
+            account = new RegularAccountWithoutInterest(super.getAccountIdCounter());
         } else {
             // default option
-            account = new RegularAccountWithoutInterest();
+            account = new RegularAccountWithoutInterest(super.getAccountIdCounter());
         }
         return account;
     }

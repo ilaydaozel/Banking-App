@@ -15,7 +15,7 @@ public class ClientMenu{
 	private Client client;
 	HelperIO helperIO = new HelperIO();
 	HelperMenu helperMenu = new HelperMenu();
-	
+    AccountFactoryFactory accountFactoryFactory = new AccountFactoryFactory();
 	
 	public ClientMenu(Client currentClient) {
 		this.client = currentClient;
@@ -88,7 +88,7 @@ public class ClientMenu{
     }
 
 	private void createAccount() {
-        AccountFactoryFactory accountFactoryFactory = new AccountFactoryFactory();
+
         AbstractAccount newAccount = null;
         AccountGroup selectedGroup = null;
         

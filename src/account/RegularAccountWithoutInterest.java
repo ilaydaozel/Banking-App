@@ -13,7 +13,7 @@ public class RegularAccountWithoutInterest extends AbstractRegularAccount implem
 	}
 	@Override
 	public void display() {
-		System.out.println("-Regular Account Without Interest");
+		System.out.println("- id:" + super.getId() +" Regular Account Without Interest");
 		
 	}
 }

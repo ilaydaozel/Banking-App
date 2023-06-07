@@ -8,7 +8,7 @@ public class InvestmentAccount extends AbstractInvestmentAccount {
 	}
 	@Override
 	public void display() {
-		System.out.println("-Investment");
+		System.out.println("- id:" + super.getId() +" Investment");
 		
 	}
 }

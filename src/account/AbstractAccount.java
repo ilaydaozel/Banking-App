@@ -8,7 +8,6 @@ public abstract class AbstractAccount {
 	
 	public AbstractAccount() {
 		this.balance = 0;
-		this.bank = new Bank();
 	}
 	
 	public double getBalance() {

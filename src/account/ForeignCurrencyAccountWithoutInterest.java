@@ -15,7 +15,7 @@ public class ForeignCurrencyAccountWithoutInterest extends AbstractForeignCurren
 
 	@Override
 	public void display() {
-		System.out.println("-Foreign Currency Account Without Interest");
+		System.out.println("- id:" + super.getId() +" Foreign Currency Account Without Interest");
 		
 	}
 

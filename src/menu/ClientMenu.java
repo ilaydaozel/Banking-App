@@ -186,7 +186,36 @@ public class ClientMenu{
         int selectedAccountId = HelperIO.readIntegerInput();
         AbstractAccount selectedAccount = client.getAccountGroup().getSelectedAccountByIdAllGroups(selectedAccountId);
         if(selectedAccount != null) {
-        	System.out.println("selected acc:"+ selectedAccount);
+        	if (selectedAccount instanceof RegularAccountWithInterest) {
+        		RegularAccountTRYWithInterestMenu menu = new RegularAccountTRYWithInterestMenu();
+        		menu.RegularAccountTRYWithInterestMenu();
+            } 	
+        	else if (selectedAccount instanceof RegularAccountWithoutInterest) {
+        		RegularAccountTRYWithoutInterestMenu menu = new RegularAccountTRYWithoutInterestMenu();
+        		menu.displayRegularAccountTRYWithoutInterestMenu();
+            }
+        	else if (selectedAccount instanceof GoldAccountWithInterest) {
+        		GoldAccountXAUWithInterestMenu menu = new GoldAccountXAUWithInterestMenu();
+        		menu.GoldAccountXAUWithInterestMenu();
+            }
+        	else if (selectedAccount instanceof GoldAccountWithoutInterest) {
+        		GoldAccountXAUWithoutInterestMenu menu = new GoldAccountXAUWithoutInterestMenu();
+        		menu.GoldAccountXAUWithoutInterestMenu();
+            }
+        	else if (selectedAccount instanceof ForeignCurrencyAccountWithInterest) {
+        		ForeignCurrencyAccountWithInterestMenu menu = new ForeignCurrencyAccountWithInterestMenu();
+        		menu.displayMenu();
+            }
+        	else if (selectedAccount instanceof ForeignCurrencyAccountWithoutInterest) {
+        		ForeignCurrencyAccountWithoutInterestMenu menu = new ForeignCurrencyAccountWithoutInterestMenu();
+        		menu.ForeignCurrencyAccountEURWithoutInterestMenu();
+            }
+
+        	else if (selectedAccount instanceof InvestmentAccount) {
+        		InvestmentAccountMenu menu = new InvestmentAccountMenu();
+        		menu.InvestmentAccountMenu();
+            }
+
         }
         else {
         	System.out.println("Please enter a valid ID!");

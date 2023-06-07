@@ -5,7 +5,7 @@ import helpers.HelperIO;
 import helpers.HelperMenu;
 import user.Client;
 
-public class ForeignCurrencyAccountEURWithoutInterestMenu  {
+public class ForeignCurrencyAccountWithoutInterestMenu  {
     private static Scanner scanner = new Scanner(System.in);
 
     HelperIO helperIO = new HelperIO();

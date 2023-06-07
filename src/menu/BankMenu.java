@@ -96,14 +96,39 @@ public class BankMenu{
     }
 
     private void setCurrencyRate() {
-        System.out.print("Enter the currency code (TRY, EUR, USD): ");
-        String currencyCode = scanner.nextLine();
-        System.out.print("Enter the currency rate: ");
-        double currencyRate = helperIO.readDoubleInput();
-        bank.setCurrencyRate(currencyCode, currencyRate);
-        System.out.println("Currency rate set successfully.");
-        System.out.println();
+        System.out.println("1. EUR");
+        System.out.println("2. USD");
+        System.out.println("3. AUX");
+        System.out.println("4. TRY");
+        System.out.print("Enter the currency: ");
+        int currencyCode = helperIO.readIntegerInput();
+
+        if (currencyCode < 1 || currencyCode > 4) {
+            System.out.println("Please enter a valid choice!");
+        } else {
+            System.out.print("Enter the currency rate: ");
+            double currencyRate = helperIO.readDoubleInput();
+            
+            switch (currencyCode) {
+                case 1:
+                    bank.getEurCur().setRate(currencyRate);
+                    break;
+                case 2:
+                    bank.getUsdCur().setRate(currencyRate);
+                    break;
+                case 3:
+                    bank.getAuxCur().setRate(currencyRate);
+                    break;
+                case 4:
+                    bank.getTryCur().setRate(currencyRate);
+                    break;
+            }
+
+            System.out.println("Currency rate set successfully.");
+            System.out.println();
+        }
     }
+
 
     private void setInterestRate() {
         System.out.print("Enter the account type (1-9): ");

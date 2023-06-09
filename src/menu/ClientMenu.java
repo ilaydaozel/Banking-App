@@ -45,15 +45,9 @@ public class ClientMenu{
                 	selectAccountGroupAll();
                 	break;
                 case 6:
-                    checkAccountBalance();
-                    break;
-                case 7:
-                    checkAccountGroupBalance();
-                    break;
-                case 8:
                     checkExpectedBalance();
                     break;
-                case 9:
+                case 7:
                     exit = true;
                     break;
                 default:
@@ -237,33 +231,6 @@ public class ClientMenu{
     	}
     }
     
-    private static void checkAccountBalance() {
-        /*System.out.print("Enter the account index: ");
-        int accountIndex = readIntegerInput();
-
-        if (accountIndex >= 0 && accountIndex < currentClient.getNumAccounts()) {
-            Account account = currentClient.getAccount(accountIndex);
-            double balance = account.getBalance();
-            System.out.println("Account Balance: " + balance);
-        } else {
-            System.out.println("Invalid account index. Please try again.");
-        }
-        System.out.println();*/
-    }
-
-    private static void checkAccountGroupBalance() {
-       /* System.out.print("Enter the account group name: ");
-        String groupName = scanner.nextLine();
-        AccountGroup accountGroup = currentClient.getAccountGroup(groupName);
-
-        if (accountGroup != null) {
-            double balance = accountGroup.getTotalBalance();
-            System.out.println("Account Group Balance (TRY): " + balance);
-        } else {
-            System.out.println("Account group not found. Please try again.");
-        }
-        System.out.println();*/
-    }
 
     private static void checkExpectedBalance() {
         /*System.out.print("Enter the account index: ");

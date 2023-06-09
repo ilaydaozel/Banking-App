@@ -35,11 +35,39 @@ public class Bank {
         currentDay = 0;
     }
     public double convert(Currency sourceCurrency, Currency targetCurrency, double amount) {
-        double sourceRate = sourceCurrency.getRate();
-        double targetRate = targetCurrency.getRate();
+        double sourceRate = getSourceRate(sourceCurrency);
+        double targetRate = getTargetRate(targetCurrency);
         
         double targetAmount = amount * sourceRate / targetRate;
         return targetAmount;
+    }
+    
+    private double getSourceRate(Currency sourceCurrency) {
+        if (sourceCurrency instanceof EUR) {
+            return eurCur.getRate();
+        } else if (sourceCurrency instanceof USD) {
+            return usdCur.getRate();
+        } else if (sourceCurrency instanceof TRY) {
+            return tryCur.getRate();
+        } else if (sourceCurrency instanceof XAU) {
+            return xauCur.getRate();
+        }
+        
+        return 0.0;
+    }
+    
+    private double getTargetRate(Currency targetCurrency) {
+        if (targetCurrency instanceof EUR) {
+            return eurCur.getRate();
+        } else if (targetCurrency instanceof USD) {
+            return usdCur.getRate();
+        } else if (targetCurrency instanceof TRY) {
+            return tryCur.getRate();
+        } else if (targetCurrency instanceof XAU) {
+            return xauCur.getRate();
+        }
+        
+        return 0.0;
     }
     public List<Stock> getStocks() {
 		return stocks;

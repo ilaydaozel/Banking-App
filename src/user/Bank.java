@@ -18,7 +18,7 @@ public class Bank {
     private EUR eurCur;
     private USD usdCur;
     private TRY tryCur;
-    private AUKS auxCur;		
+    private XAU auxCur;		
     private Map<Integer, Double> interestRates;
     private int currentDay;
 
@@ -30,7 +30,7 @@ public class Bank {
         eurCur = new EUR(24.97);
         usdCur = new USD(23.22);
         tryCur = new  TRY(1);
-        auxCur = new AUKS(1.94);
+        auxCur = new XAU(1.94);
         //interestRates = new HashMap<>();
         currentDay = 0;
     }
@@ -101,11 +101,11 @@ public class Bank {
 		this.tryCur = tryCur;
 	}
 
-	public AUKS getAuxCur() {
+	public XAU getAuxCur() {
 		return auxCur;
 	}
 
-	public void setAuxCur(AUKS auxCur) {
+	public void setAuxCur(XAU auxCur) {
 		this.auxCur = auxCur;
 	}
 	

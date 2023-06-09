@@ -1,8 +1,8 @@
 package currency;
 
-public class AUKS extends Currency {
+public class XAU extends Currency {
 
-	public AUKS(double rate) {
+	public XAU(double rate) {
 		super(rate);
 		// TODO Auto-generated constructor stub
 	}

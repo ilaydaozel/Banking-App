@@ -130,7 +130,6 @@ public class AccountGroup extends AbstractAccount{
 	    if (this.name.toLowerCase().equals(name.toLowerCase())) {
 	        return this;
 	    }
-
 	    for (AbstractAccount account : accounts) {
 	        if (account instanceof AccountGroup) {
 	            AccountGroup group = ((AccountGroup) account).getAccountGroupByName(name);

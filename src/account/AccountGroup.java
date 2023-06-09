@@ -126,6 +126,22 @@ public class AccountGroup extends AbstractAccount{
 		return null;
 	}
 	
+	public AccountGroup getAccountGroupByName(String name) {
+	    if (this.name.toLowerCase().equals(name.toLowerCase())) {
+	        return this;
+	    }
+
+	    for (AbstractAccount account : accounts) {
+	        if (account instanceof AccountGroup) {
+	            AccountGroup group = ((AccountGroup) account).getAccountGroupByName(name);
+	            if (group != null) {
+	                return group;
+	            }
+	        }
+	    }
+
+	    return null; // Account group with the given name not found
+	}
 /*  public List<Account> getAccounts() {
         return accounts;
     }

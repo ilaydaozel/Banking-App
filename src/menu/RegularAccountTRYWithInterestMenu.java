@@ -31,4 +31,3 @@ public class RegularAccountTRYWithInterestMenu  {
     }
 }
 
-// Similar classes for other account menus

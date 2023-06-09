@@ -225,6 +225,15 @@ public class ClientMenu{
     
     public void selectAccountGroupAll() {
     	client.getAccountGroup().displayGroupName();
+    	System.out.print("Enter the name of the account group: ");
+    	String groupName = scanner.nextLine();
+    	AccountGroup selectedGroup = client.getAccountGroup().getAccountGroupByName(groupName);
+    	if(selectedGroup != null) {
+    		System.out.println("selectedGroup" +selectedGroup);
+    	}
+    	else {
+    		System.out.println("There is no group named as " + groupName + "! ");
+    	}
     }
     
     private static void checkAccountBalance() {

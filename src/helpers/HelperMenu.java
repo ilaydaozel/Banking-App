@@ -105,7 +105,7 @@ public class HelperMenu {
 
   
         public void printForeignCurrencyAccountEURWithoutInterestMenu() {
-            System.out.println("------ Foreign Currency Account (EUR) without Interest Menu ------");
+        System.out.println("------ Foreign Currency Account (EUR) without Interest Menu ------");
         System.out.println("1. Exchange to TRY Account");
         System.out.println("0. Go back to main menu");
 
@@ -115,7 +115,7 @@ public class HelperMenu {
 
   
         public void printForeignCurrencyAccountEURWithInterestMenu() {
-            System.out.println("------ Foreign Currency Account (EUR) with Interest Menu ------");
+        System.out.println("------ Foreign Currency Account (EUR) with Interest Menu ------");
         System.out.println("1. Exchange to another account (EUR with Interest)");
         System.out.println("0. Go back to main menu");
 
@@ -125,7 +125,7 @@ public class HelperMenu {
 
   
         public void printForeignCurrencyAccountUSDWithoutInterestMenu() {
-            System.out.println("------ Foreign Currency Account (USD) without Interest Menu ------");
+        System.out.println("------ Foreign Currency Account (USD) without Interest Menu ------");
         System.out.println("1. Exchange to TRY Account");
         System.out.println("0. Go back to main menu");
 
@@ -164,8 +164,8 @@ public class HelperMenu {
     
 
   
-        public void printInvestmentAccountMenu() {
-            System.out.println("------ Investment Account Menu ------");
+    public void printInvestmentAccountMenu() {
+        System.out.println("------ Investment Account Menu ------");
         System.out.println("1. Buy Stocks");
         System.out.println("2. Buy Funds");
         System.out.println("0. Go back to main menu");
@@ -173,6 +173,12 @@ public class HelperMenu {
         System.out.print("Enter your choice: ");
     }
     
-
+	public void printAccountGroupMenu() {
+	    System.out.println("------ Account Group Menu ------");
+	    System.out.println("1. Check Balance");
+	    System.out.println("2. Go back to main menu");
+	    System.out.print("Enter your choice: ");
+	    }
+        
 
 }

@@ -19,8 +19,8 @@ public class HelperMenu {
         System.out.println("3. Create Account Group");
         System.out.println("4. Select An Account For Operation");
         System.out.println("5. Select An Account Group For Operation");
-        System.out.println("7. Check Expected Balance");
-        System.out.println("8. Back to Main Menu");
+        System.out.println("6. Check Expected Balance");
+        System.out.println("7. Back to Main Menu");
         System.out.print("Enter your choice: ");
     }
     

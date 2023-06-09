@@ -18,7 +18,7 @@ public class Bank {
     private EUR eurCur;
     private USD usdCur;
     private TRY tryCur;
-    private XAU auxCur;		
+    private XAU xauCur;		
     private Map<Integer, Double> interestRates;
     private int currentDay;
 
@@ -30,11 +30,17 @@ public class Bank {
         eurCur = new EUR(24.97);
         usdCur = new USD(23.22);
         tryCur = new  TRY(1);
-        auxCur = new XAU(1.94);
+        xauCur = new XAU(1.94);
         //interestRates = new HashMap<>();
         currentDay = 0;
     }
-    
+    public double convert(Currency sourceCurrency, Currency targetCurrency, double amount) {
+        double sourceRate = sourceCurrency.getRate();
+        double targetRate = targetCurrency.getRate();
+        
+        double targetAmount = amount * sourceRate / targetRate;
+        return targetAmount;
+    }
     public List<Stock> getStocks() {
 		return stocks;
 	}
@@ -101,12 +107,12 @@ public class Bank {
 		this.tryCur = tryCur;
 	}
 
-	public XAU getAuxCur() {
-		return auxCur;
+	public XAU getxauCur() {
+		return xauCur;
 	}
 
-	public void setAuxCur(XAU auxCur) {
-		this.auxCur = auxCur;
+	public void setxauCur(XAU xauCur) {
+		this.xauCur = xauCur;
 	}
 	
 	

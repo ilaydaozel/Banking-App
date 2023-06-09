@@ -34,7 +34,32 @@ public class AccountGroup extends AbstractAccount{
 	public void setAccounts(List<AbstractAccount> accounts) {
 		this.accounts = accounts;
 	}
-
+	
+	public double getSingleAccountGroupBalance() {
+		//for only the accounts that are under one accountgroup
+		double totalBalance = 0;
+		for (AbstractAccount curAccount : this.accounts) {
+            if (!(curAccount instanceof AccountGroup)) {
+            	totalBalance += curAccount.getBalance();
+            }
+		}
+		return totalBalance;
+	}
+	
+	public double getTotalAccountGroupBalance() {
+		double totalBalance = 0;
+		//gets first its own balance
+		totalBalance += getSingleAccountGroupBalance();
+		//traverses through all accountgroups under this accountgroup to get the whole balance
+		for (AbstractAccount curAccountGroup : accounts) {
+            if (curAccountGroup instanceof AccountGroup) {
+            	totalBalance += ((AccountGroup)curAccountGroup).getSingleAccountGroupBalance();
+            }
+		}
+		//set etmeli mi?
+		return totalBalance;	
+	}
+	
 	@Override
 	public void display() {
        System.out.println("+Account Group: " + name);

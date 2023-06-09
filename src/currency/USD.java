@@ -6,5 +6,9 @@ public class USD extends Currency{
 		super(rate);
 		// TODO Auto-generated constructor stub
 	}
-
+	@Override
+	public String toString() {
+		return "USD";
+	}
+	
 }

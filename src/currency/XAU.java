@@ -6,5 +6,10 @@ public class XAU extends Currency {
 		super(rate);
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "XAU";
+	}
+	
 
 }

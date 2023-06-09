@@ -1,17 +1,16 @@
 package menu;
 
 import java.util.Scanner;
+
+import account.RegularAccountWithInterest;
 import helpers.HelperIO;
 import helpers.HelperMenu;
-import user.Client;
 
 public class RegularAccountTRYWithInterestMenu  {
-    private static Scanner scanner = new Scanner(System.in);
-
     HelperIO helperIO = new HelperIO();
     HelperMenu helperMenu = new HelperMenu();
 
-    public void RegularAccountTRYWithInterestMenu () {
+    public void RegularAccountTRYWithInterestMenu(RegularAccountWithInterest account) {
         boolean exit = false;
         while (!exit) {
             helperMenu.printRegularAccountTRYWithInterestMenu ();
@@ -19,10 +18,10 @@ public class RegularAccountTRYWithInterestMenu  {
 
             switch (choice) {
                 case 1:
-                    // Logic to deposit money
-                    System.out.println("Depositing money...");
+                	System.out.print("Balance:");
+                	account.getBalance();
                     break;
-                case 0:
+                case 2:
                     // Go back to the main menu
                     exit = true;
                     break;

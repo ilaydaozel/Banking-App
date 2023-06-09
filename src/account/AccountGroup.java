@@ -39,7 +39,7 @@ public class AccountGroup extends AbstractAccount{
 	public void display() {
        System.out.println("+Account Group: " + name);
         for (AbstractAccount component : accounts) {
-        	System.out.print("----");
+        	System.out.print("--");
             component.display();
         }
 	}

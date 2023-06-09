@@ -1,7 +1,7 @@
 package accountFactory;
 
 public class AccountFactoryFactory {
-	private int idCounter = 0;
+	private int idCounter = 1;
 	
 	public AccountFactory createAccountFactory(String factoryType) {
 		AccountFactory accountFactory;

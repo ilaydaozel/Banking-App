@@ -2,6 +2,7 @@ package user;
 
 import account.AbstractAccount;
 import account.AccountGroup;
+import account.RegularAccountWithoutInterest;
 
 public class Client {
 	private String username;
@@ -10,6 +11,7 @@ public class Client {
     public Client(String username) {
     	this.username = username;
         this.topAccountGroup = new AccountGroup("Top Account Group");
+        topAccountGroup.addAccount(new RegularAccountWithoutInterest(0));
     }
 
 	public String getUsername() {

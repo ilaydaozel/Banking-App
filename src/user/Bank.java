@@ -8,6 +8,7 @@ import java.util.Map;
 
 import account.AccountGroup;
 import currency.*;
+import enums.CurrencyType;
 
 
 // Bank class
@@ -34,41 +35,28 @@ public class Bank {
         //interestRates = new HashMap<>();
         currentDay = 0;
     }
-    public double convert(Currency sourceCurrency, Currency targetCurrency, double amount) {
-        double sourceRate = getSourceRate(sourceCurrency);
-        double targetRate = getTargetRate(targetCurrency);
+    public double convert(CurrencyType sourceCurrency, CurrencyType targetCurrency, double amount) {
+        double sourceRate = getCurrencyRateOf(sourceCurrency);
+        double targetRate = getCurrencyRateOf(targetCurrency);
         
-        double targetAmount = amount * sourceRate / targetRate;
+        double targetAmount = amount * (sourceRate / targetRate);
         return targetAmount;
     }
     
-    private double getSourceRate(Currency sourceCurrency) {
-        if (sourceCurrency instanceof EUR) {
+    private double getCurrencyRateOf(CurrencyType sourceCurrency) {
+        if (sourceCurrency.equals(eurCur.toString())) {
             return eurCur.getRate();
-        } else if (sourceCurrency instanceof USD) {
+        } else if (sourceCurrency.equals(usdCur.toString())) {
             return usdCur.getRate();
-        } else if (sourceCurrency instanceof TRY) {
+        } else if (sourceCurrency.equals(tryCur.toString())) {
             return tryCur.getRate();
-        } else if (sourceCurrency instanceof XAU) {
+        } else if (sourceCurrency.equals(xauCur.toString())) {
             return xauCur.getRate();
         }
         
         return 0.0;
     }
     
-    private double getTargetRate(Currency targetCurrency) {
-        if (targetCurrency instanceof EUR) {
-            return eurCur.getRate();
-        } else if (targetCurrency instanceof USD) {
-            return usdCur.getRate();
-        } else if (targetCurrency instanceof TRY) {
-            return tryCur.getRate();
-        } else if (targetCurrency instanceof XAU) {
-            return xauCur.getRate();
-        }
-        
-        return 0.0;
-    }
     public List<Stock> getStocks() {
 		return stocks;
 	}

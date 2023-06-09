@@ -18,8 +18,7 @@ public class RegularAccountTRYWithInterestMenu  {
 
             switch (choice) {
                 case 1:
-                	System.out.print("Balance:");
-                	account.getBalance();
+                	System.out.println("Balance:" + account.getBalance());
                     break;
                 case 2:
                     // Go back to the main menu

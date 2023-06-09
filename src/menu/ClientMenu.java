@@ -188,11 +188,11 @@ public class ClientMenu{
         if(selectedAccount != null) {
         	if (selectedAccount instanceof RegularAccountWithInterest) {
         		RegularAccountTRYWithInterestMenu menu = new RegularAccountTRYWithInterestMenu();
-        		menu.RegularAccountTRYWithInterestMenu();
+        		menu.RegularAccountTRYWithInterestMenu((RegularAccountWithInterest)selectedAccount);
             } 	
         	else if (selectedAccount instanceof RegularAccountWithoutInterest) {
         		RegularAccountTRYWithoutInterestMenu menu = new RegularAccountTRYWithoutInterestMenu();
-        		menu.displayRegularAccountTRYWithoutInterestMenu();
+        		menu.displayRegularAccountTRYWithoutInterestMenu((RegularAccountWithoutInterest)selectedAccount);
             }
         	else if (selectedAccount instanceof GoldAccountWithInterest) {
         		GoldAccountXAUWithInterestMenu menu = new GoldAccountXAUWithInterestMenu();

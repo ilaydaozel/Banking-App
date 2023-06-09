@@ -9,7 +9,13 @@ public class RegularAccountWithoutInterest extends AbstractRegularAccount implem
 		// TODO Auto-generated constructor stub
 	}
 	public void deposit(double amount) {
-		super.setBalance(getBalance() + amount);
+		if(amount>0) {
+			super.setBalance(getBalance() + amount);
+		}
+		else {
+			System.out.println("Invalid amount. Amount must be a positive number.");
+		}
+
 	}
 	@Override
 	public void display() {

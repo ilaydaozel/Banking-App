@@ -27,7 +27,9 @@ public abstract class AbstractForeignCurrencyAccount extends AbstractAccount {
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	
+	public abstract void exchangeToThis(AbstractAccount exchangeAccount, double amount);
+	
+	public abstract void exchangeFromThis(AbstractAccount exchangeAccount, double amount);
 
 }

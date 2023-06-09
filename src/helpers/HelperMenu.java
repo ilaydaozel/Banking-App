@@ -103,9 +103,10 @@ public class HelperMenu {
 
   
         public void printForeignCurrencyAccountEURWithoutInterestMenu() {
-        System.out.println("------ Foreign Currency Account (EUR) without Interest Menu ------");
+        System.out.println("------ Foreign Currency Account without Interest Menu ------");
         System.out.println("1. Exchange to TRY Account");
-        System.out.println("0. Go back to main menu");
+        System.out.println("2. Exchange From TRY Account");
+        System.out.println("3. Go back to main menu");
 
         System.out.print("Enter your choice: ");
         }
@@ -115,7 +116,7 @@ public class HelperMenu {
         public void printForeignCurrencyAccountEURWithInterestMenu() {
         System.out.println("------ Foreign Currency Account (EUR) with Interest Menu ------");
         System.out.println("1. Exchange to another account (EUR with Interest)");
-        System.out.println("0. Go back to main menu");
+        System.out.println("2. Go back to main menu");
 
         System.out.print("Enter your choice: ");
         }

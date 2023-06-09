@@ -1,5 +1,7 @@
 package account;
 
+import enums.CurrencyType;
+
 public abstract class AbstractRegularAccount extends AbstractAccount{
 	private int id;
 	public AbstractRegularAccount(int id) {
@@ -12,5 +14,8 @@ public abstract class AbstractRegularAccount extends AbstractAccount{
 	public void setId(int id) {
 		this.id = id;
 	}
+	public abstract void exchangeToThis(AbstractAccount exchangeAccount, CurrencyType exchangeAccountType,  double amount);
+	
+	public abstract void exchangeFromThis(AbstractAccount exchangeAccount, CurrencyType exchangeAccountType, double amount);
 
 }

@@ -1,6 +1,8 @@
 package menu;
 
 import java.util.Scanner;
+
+import account.ForeignCurrencyAccountWithInterest;
 import helpers.HelperIO;
 import helpers.HelperMenu;
 import user.Client;
@@ -11,7 +13,7 @@ public class ForeignCurrencyAccountWithoutInterestMenu  {
     HelperIO helperIO = new HelperIO();
     HelperMenu helperMenu = new HelperMenu();
 
-    public void ForeignCurrencyAccountEURWithoutInterestMenu () {
+    public void ForeignCurrencyAccountEURWithoutInterestMenu (ForeignCurrencyAccountWithInterest foreignAccount) {
         boolean exit = false;
         while (!exit) {
             helperMenu.printForeignCurrencyAccountEURWithoutInterestMenu ();
@@ -19,10 +21,12 @@ public class ForeignCurrencyAccountWithoutInterestMenu  {
 
             switch (choice) {
             case 1:
+            	
+            	foreignAccount.exchangeFromThis(destAccount, amount);
                 // Logic to exchange to a TRY account
                 System.out.println("Exchanging to a TRY account...");
                 break;
-            case 0:
+            case 2:
                 // Go back to the main menu
                 break;
             default:

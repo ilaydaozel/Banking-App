@@ -173,12 +173,16 @@ public class ClientMenu{
         System.out.println("newAccount group" + accountGroup.toString());
         System.out.println();
     }
-
-    public void selectAccountAll() {
+    public AbstractAccount selectAnAccount() {
     	client.getAccountGroup().display();
         System.out.print("Enter the id of the account: ");
         int selectedAccountId = HelperIO.readIntegerInput();
         AbstractAccount selectedAccount = client.getAccountGroup().getSelectedAccountByIdAllGroups(selectedAccountId);
+        return selectedAccount;
+    }
+
+    public void selectAccountAll() {
+    	AbstractAccount selectedAccount = selectAnAccount();
         if(selectedAccount != null) {
         	if (selectedAccount instanceof RegularAccountWithInterest) {
         		RegularAccountTRYWithInterestMenu menu = new RegularAccountTRYWithInterestMenu();
@@ -201,8 +205,39 @@ public class ClientMenu{
         		menu.displayMenu();
             }
         	else if (selectedAccount instanceof ForeignCurrencyAccountWithoutInterest) {
-        		ForeignCurrencyAccountWithoutInterestMenu menu = new ForeignCurrencyAccountWithoutInterestMenu();
-        		menu.ForeignCurrencyAccountEURWithoutInterestMenu();
+        		/*ForeignCurrencyAccountWithoutInterestMenu menu = new ForeignCurrencyAccountWithoutInterestMenu();
+        		menu.ForeignCurrencyAccountEURWithoutInterestMenu();*/
+        		helperMenu.printForeignCurrencyAccountEURWithoutInterestMenu();
+                int choice = helperIO.readIntegerInput();
+                switch (choice) {
+                case 1:
+                	System.out.println("Select a regular account without interest to make exchange to:");
+                	AbstractAccount destAccount = selectAnAccount();
+                	if(destAccount instanceof RegularAccountWithoutInterest) {
+                		CurrencyType accountCurrency = ((AbstractForeignCurrencyAccount)selectedAccount).getCurrencyType();
+                		System.out.println("Your balance: " + selectedAccount.getBalance() + " " + accountCurrency);
+                		System.out.println("To be exchanged account's balance: " + destAccount.getBalance() + " TRY");
+                		System.out.println("Enter exchange amount (" + accountCurrency + "):" );
+                		double exchangeAmount = helperIO.readDoubleInput();
+                        System.out.println("Exchanging to a TRY account...");
+                		((AbstractForeignCurrencyAccount)selectedAccount).exchangeFromThis(destAccount, exchangeAmount);
+                		System.out.println("Your updated balance: " + selectedAccount.getBalance() + " " + accountCurrency);
+                		System.out.println("To be exchanged account's current balance: " + destAccount.getBalance() + " TRY");
+                	}
+                	else {
+                		System.out.println("The account you selected is not a regular account without interest. Select again! ");
+                	}
+                	
+
+                    break;
+                case 2:
+                    // Go back to the main menu
+                	
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
+                }
             }
 
         	else if (selectedAccount instanceof InvestmentAccount) {

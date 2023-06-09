@@ -28,8 +28,8 @@ public class Bank {
         funds = new ArrayList<>();
         clients = new ArrayList<>();
         clients.add(new Client("ilayda"));
-        eurCur = new EUR(24.97);
-        usdCur = new USD(23.22);
+        eurCur = new EUR(20.0);
+        usdCur = new USD(10.0);
         tryCur = new  TRY(1);
         xauCur = new XAU(1.94);
         //interestRates = new HashMap<>();
@@ -38,19 +38,21 @@ public class Bank {
     public double convert(CurrencyType sourceCurrency, CurrencyType targetCurrency, double amount) {
         double sourceRate = getCurrencyRateOf(sourceCurrency);
         double targetRate = getCurrencyRateOf(targetCurrency);
+        System.out.println("sourceRate" + sourceRate);
+        System.out.println("targetRate" + targetRate);
         
         double targetAmount = amount * (sourceRate / targetRate);
         return targetAmount;
     }
     
     private double getCurrencyRateOf(CurrencyType sourceCurrency) {
-        if (sourceCurrency.equals(eurCur.toString())) {
+        if (sourceCurrency.toString().equals(eurCur.toString())) {
             return eurCur.getRate();
-        } else if (sourceCurrency.equals(usdCur.toString())) {
+        } else if (sourceCurrency.toString().equals(usdCur.toString())) {
             return usdCur.getRate();
-        } else if (sourceCurrency.equals(tryCur.toString())) {
+        } else if (sourceCurrency.toString().equals(tryCur.toString())) {
             return tryCur.getRate();
-        } else if (sourceCurrency.equals(xauCur.toString())) {
+        } else if (sourceCurrency.toString().equals(xauCur.toString())) {
             return xauCur.getRate();
         }
         
@@ -123,11 +125,11 @@ public class Bank {
 		this.tryCur = tryCur;
 	}
 
-	public XAU getxauCur() {
+	public XAU getXauCur() {
 		return xauCur;
 	}
 
-	public void setxauCur(XAU xauCur) {
+	public void setXauCur(XAU xauCur) {
 		this.xauCur = xauCur;
 	}
 	

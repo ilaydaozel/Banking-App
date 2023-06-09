@@ -117,7 +117,7 @@ public class BankMenu{
                     bank.getUsdCur().setRate(currencyRate);
                     break;
                 case 3:
-                    bank.getAuxCur().setRate(currencyRate);
+                    bank.getXauCur().setRate(currencyRate);
                     break;
                 case 4:
                     bank.getTryCur().setRate(currencyRate);

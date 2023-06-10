@@ -4,6 +4,7 @@ import java.util.*;
 
 import enums.CurrencyType;
 import enums.ForeignCurrencyAccountType;
+import interfaces.IWithInterest;
 
 public class AccountGroup extends AbstractAccount{
 	private String name;
@@ -42,6 +43,9 @@ public class AccountGroup extends AbstractAccount{
 		double totalBalance = 0;
 		for (AbstractAccount curAccount : this.accounts) {
             if (!(curAccount instanceof AccountGroup)) {
+            	if(curAccount instanceof IWithInterest) {
+            		((IWithInterest) curAccount).updateInterest();
+            	}
             	totalBalance += curAccount.getBalance();
             }
 		}

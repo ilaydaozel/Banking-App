@@ -11,7 +11,7 @@ import user.Client;
 
 public class RegularAccountTRYWithInterestMenu  {
 
-    public RegularAccountTRYWithInterestMenu(RegularAccountWithInterest account, Client client) {
+    public RegularAccountTRYWithInterestMenu(RegularAccountWithInterest regularAccount, Client client) {
     	HelperClient helperClient = new HelperClient(client);
         HelperIO helperIO = new HelperIO();
         HelperMenu helperMenu = new HelperMenu();
@@ -23,14 +23,14 @@ public class RegularAccountTRYWithInterestMenu  {
 
             switch (choice) {
                 case 1:
-                	System.out.println("Balance:" + account.getBalance());
+                	System.out.println("Balance:" + regularAccount.getBalance());
                     break;
                 case 2:
                 	System.out.println("Select a regular account without interest to make exchange to:");
                 	AbstractAccount destAccount = helperClient.selectAnAccount();
                     System.out.println("Enter exchange amount (TRY):");
                     double exchangeAmount = helperIO.readDoubleInput();
-                	account.exchange(destAccount, exchangeAmount);
+                    regularAccount.exchange(destAccount, exchangeAmount);
                     break;
                 case 0:
                     // Go back to the main menu

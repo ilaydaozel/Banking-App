@@ -192,26 +192,7 @@ public class ClientMenu{
         		new ForeignCurrencyAccountWithInterestMenu((ForeignCurrencyAccountWithInterest) selectedAccount, client);
             }
         	else if (selectedAccount instanceof ForeignCurrencyAccountWithoutInterest) {
-        		/*ForeignCurrencyAccountWithoutInterestMenu menu = new ForeignCurrencyAccountWithoutInterestMenu();
-        		menu.ForeignCurrencyAccountEURWithoutInterestMenu();*/
-        		helperMenu.printForeignCurrencyAccountEURWithoutInterestMenu();
-                int choice = helperIO.readIntegerInput();
-                switch (choice) {
-                case 1:
-                	System.out.println("Select a regular account without interest to make exchange to:");
-                	AbstractAccount destAccount = helperClient.selectAnAccount();
-                    System.out.println("Enter exchange amount (TRY):");
-                    double exchangeAmount = helperIO.readDoubleInput();
-                	((ForeignCurrencyAccountWithoutInterest) selectedAccount).exchange(destAccount, choice);
-
-                    break;
-                case 2:
-                	
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-                    break;
-                }
+        		new ForeignCurrencyAccountWithoutInterestMenu((ForeignCurrencyAccountWithoutInterest) selectedAccount, client);
             }
 
         	else if (selectedAccount instanceof InvestmentAccount) {

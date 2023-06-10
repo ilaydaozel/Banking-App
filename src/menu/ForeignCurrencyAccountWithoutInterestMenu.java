@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import account.AbstractAccount;
 import account.ForeignCurrencyAccountWithInterest;
+import account.ForeignCurrencyAccountWithoutInterest;
 import helpers.HelperClient;
 import helpers.HelperIO;
 import helpers.HelperMenu;
@@ -11,7 +12,7 @@ import user.Client;
 
 public class ForeignCurrencyAccountWithoutInterestMenu  {
 
-    public ForeignCurrencyAccountWithoutInterestMenu(ForeignCurrencyAccountWithInterest foreignAccount, Client client) {
+    public ForeignCurrencyAccountWithoutInterestMenu(ForeignCurrencyAccountWithoutInterest foreignAccount, Client client) {
         Scanner scanner = new Scanner(System.in);
         HelperClient helperClient = new HelperClient(client);
         HelperIO helperIO = new HelperIO();

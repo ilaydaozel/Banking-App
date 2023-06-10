@@ -2,6 +2,8 @@ package menu;
 
 import java.util.Scanner;
 
+import currency.Currency;
+import enums.CurrencyType;
 import helpers.HelperIO;
 import helpers.HelperMenu;
 import user.Bank;
@@ -131,14 +133,43 @@ public class BankMenu{
 
 
     private void setInterestRate() {
-        System.out.print("Enter the account type (1-9): ");
-        int accountType = readIntegerInput();
+        System.out.println("Select the currency type:");
+        System.out.println("1. EUR");
+        System.out.println("2. USD");
+        System.out.println("3. TRY");
+        System.out.println("4. XAU");
+
+        System.out.print("Enter the currency number (1-4): ");
+        int currencyNumber = readIntegerInput();
+
+        CurrencyType currencyType = null;
+
+        switch (currencyNumber) {
+            case 1:
+                currencyType = currencyType.EUR;
+                break;
+            case 2:
+                currencyType = currencyType.USD;
+                break;
+            case 3:
+                currencyType = currencyType.TRY;
+                break;
+            case 4:
+                currencyType = currencyType.XAU;
+                break;
+            default:
+                System.out.println("Invalid currency number.");
+                return;
+        }
+
         System.out.print("Enter the interest rate: ");
         double interestRate = helperIO.readDoubleInput();
-        bank.setInterestRate(accountType, interestRate);
-        System.out.println("Interest rate set successfully.");
+        bank.setInterestRate(currencyType.toString(), interestRate);
+
+        System.out.println("Interest rate for " + currencyType + " set to: " + interestRate);
         System.out.println();
     }
+
 
     private void passTime() {
         System.out.print("Enter the number of days to pass: ");

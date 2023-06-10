@@ -29,13 +29,13 @@ public class RegularAccountWithoutInterest extends AbstractRegularAccount implem
 	public void exchange(AbstractAccount targetAccount, double amount) {
 	    if (this.getBalance() >= amount) {
 	        if (targetAccount instanceof RegularAccountWithInterest) {
-	            double convertedAmount = this.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
+	            double convertedAmount = targetAccount.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
 	            // Update balances
 	            setBalance(this.getBalance() - amount);
 	            targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
 	            System.out.println("Exchanged " + convertedAmount + " "+ targetAccount.getCurrencyType().toString() + " to target account!");
 	        } else if (targetAccount instanceof IWithoutInterest) {
-	            double convertedAmount = this.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
+	            double convertedAmount = targetAccount.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
 	            // Update balances
 	            setBalance(this.getBalance() - amount);
 	            targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);

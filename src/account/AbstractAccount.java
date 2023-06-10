@@ -5,7 +5,7 @@ import user.Bank;
 
 public abstract class AbstractAccount {
 	private double balance;
-	private Bank bank = Bank.getInstance();;
+	private Bank bank = Bank.getInstance();
 	private CurrencyType currencyType;
 	
 	public AbstractAccount() {

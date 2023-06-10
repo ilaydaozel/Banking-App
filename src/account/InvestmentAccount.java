@@ -2,6 +2,7 @@ package account;
 
 import java.util.List;
 
+import investment.Commodity;
 import investment.Stock;
 import menu.InvestmentAccountMenu;
 
@@ -17,13 +18,24 @@ public class InvestmentAccount extends AbstractInvestmentAccount {
 		System.out.println("- id:" + super.getId() +" Investment");
 		
 	}
+	
 	@Override
-	public void buyCommodities() {
-		// TODO Auto-generated method stub
-		InvestmentAccountMenu menu = new InvestmentAccountMenu();
-		menu.InvestmentAccountMenu(this);
-
+	public void buyCommodity(Commodity commodity) {
+	    if (commodity != null) {
+	    	if(this.getBalance()- commodity.getValue() > 0) {
+	    		this.setBalance(this.getBalance()- commodity.getValue());
+	    		this.getCommodities().add(commodity);
+                System.out.println("Successfully purchased " + commodity.getName() + " commodity.");
+                System.out.println("New account balance: " + this.getBalance() + " "+ this.getCurrencyType()+ ".");
+        	}
+        	else {
+        		System.out.println("Insufficent balance. Please try again.");
+        	}
+	       
+	    } else {
+	        System.out.println("Invalid commodity name. Please try again.");
+	        
+	    }
 	}
-	
-	
+
 }

@@ -183,7 +183,7 @@ public class Bank {
         }
     }
 */
-    private Stock getStock(String name) {
+    public Stock getStock(String name) {
         for (Stock stock : stocks) {
             if (stock.getName().equalsIgnoreCase(name)) {
                 return stock;
@@ -192,7 +192,7 @@ public class Bank {
         return null;
     }
 
-    private Fund getFund(String name) {
+    public Fund getFund(String name) {
         for (Fund fund : funds) {
             if (fund.getName().equalsIgnoreCase(name)) {
                 return fund;

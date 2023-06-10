@@ -175,13 +175,10 @@ public class ClientMenu{
     	AbstractAccount selectedAccount = helperClient.selectAnAccount();
         if(selectedAccount != null) {
         	if (selectedAccount instanceof RegularAccountWithInterest) {
-        		RegularAccountTRYWithInterestMenu menu = new RegularAccountTRYWithInterestMenu();
-        		menu.RegularAccountTRYWithInterestMenu((RegularAccountWithInterest)selectedAccount);
+        		new RegularAccountTRYWithInterestMenu((RegularAccountWithInterest)selectedAccount, client);
             } 	
         	else if (selectedAccount instanceof RegularAccountWithoutInterest) {
-        		RegularAccountTRYWithoutInterestMenu menu = new RegularAccountTRYWithoutInterestMenu();
-        		menu.regularAccountTRYWithoutInterestMenu((RegularAccountWithoutInterest)selectedAccount, client);
-
+        		new RegularAccountTRYWithoutInterestMenu((RegularAccountWithoutInterest)selectedAccount, client);
             }
         	else if (selectedAccount instanceof GoldAccountWithInterest) {
         		GoldAccountXAUWithInterestMenu menu = new GoldAccountXAUWithInterestMenu();

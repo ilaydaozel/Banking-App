@@ -14,7 +14,6 @@ import user.Client;
 public class RegularAccountTRYWithoutInterestMenu {
 
     public RegularAccountTRYWithoutInterestMenu(RegularAccountWithoutInterest account, Client client) {
-    	Scanner scanner = new Scanner(System.in);
     	HelperClient helperClient = new HelperClient(client);
         HelperIO helperIO = new HelperIO();
         HelperMenu helperMenu = new HelperMenu();
@@ -42,7 +41,7 @@ public class RegularAccountTRYWithoutInterestMenu {
                 	AbstractAccount destAccount = helperClient.selectAnAccount();
                     System.out.println("Enter exchange amount (TRY):");
                     double exchangeAmount = helperIO.readDoubleInput();
-                	account.exchange(destAccount, choice);
+                	account.exchange(destAccount, exchangeAmount);
                     break;
                 case 0:
                     // Go back to the main menu

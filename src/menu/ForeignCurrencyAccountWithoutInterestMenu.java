@@ -2,6 +2,7 @@ package menu;
 
 import java.util.Scanner;
 
+import account.AbstractAccount;
 import account.ForeignCurrencyAccountWithInterest;
 import helpers.HelperIO;
 import helpers.HelperMenu;
@@ -21,9 +22,7 @@ public class ForeignCurrencyAccountWithoutInterestMenu  {
 
             switch (choice) {
             case 1:
-            	
                 // Logic to exchange to a TRY account
-                System.out.println("Exchanging to a TRY account...");
                 break;
             case 0:
                 // Go back to the main menu

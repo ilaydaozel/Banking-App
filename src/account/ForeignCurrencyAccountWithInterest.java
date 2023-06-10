@@ -19,13 +19,22 @@ public class ForeignCurrencyAccountWithInterest extends AbstractForeignCurrencyA
 
 	@Override
 	public void exchange(AbstractAccount targetAccount, double amount) {
-		// TODO Auto-generated method stub
-    	//calculate the amount
-        double convertedAmount = this.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
-        //update balances
-        setBalance(this.getBalance() - amount);
-        targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+		if (this.getBalance() >= amount) {
+			if (targetAccount instanceof ForeignCurrencyAccountWithoutInterest) {
+		        if (((ForeignCurrencyAccountWithoutInterest) targetAccount).getCurrencyType().equals(this.getCurrencyType())) {
+		            double convertedAmount = this.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
+		            // Update balances
+		            setBalance(this.getBalance() - amount);
+		            targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+		        }
+		        else {
+		        	System.out.println("Selected account's currency type is not " + this.getCurrencyType()+"!");
+		        }
+		    } else {
+		        System.out.println("You can only with a foreign currency account without interest(" + this.getCurrencyType() + ")!");
+		    }
+		} else {
+		    System.out.println("Your balance is not enough!");
+		}
 	}
-
-
 }

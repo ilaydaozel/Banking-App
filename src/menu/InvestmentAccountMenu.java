@@ -39,9 +39,17 @@ public class InvestmentAccountMenu  {
  		    Stock stock = account.getBank().getStock(stockName);
  		    
  		    if (stock != null) {
- 		    	account.getCommodities().add(stock);
- 		    	account.getBank().setStockValue(stockName, 0);
- 		        System.out.println("Successfully purchased " + stockName + " stocks.");
+ 		    	if(account.getBalance()- stock.getValue() > 0) {
+                	account.setBalance(account.getBalance()- stock.getValue());
+                    account.getCommodities().add(stock);
+                    System.out.println("Successfully purchased " + stockName + " stock.");
+                    System.out.println("new account balance: " + account.getBalance() + " "+ account.getCurrencyType());
+            	}
+            	else {
+            		System.out.println("Insufficent balance. Please try again.");
+            	}
+ 		    	
+ 		       
  		    } else {
  		        System.out.println("Invalid stock name. Please try again.");
  		        
@@ -82,10 +90,13 @@ public class InvestmentAccountMenu  {
                 }
                 break;
             case 3:
+            	
             	account.displayCommodities();
                 // Go back to the main menu
                 break;
             case 0:
+            	exit = true;
+            	
                 // Go back to the main menu
                 break;
             default:

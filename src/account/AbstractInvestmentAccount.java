@@ -9,7 +9,6 @@ import investment.Commodity;
 public abstract class AbstractInvestmentAccount extends AbstractAccount {
 	private int id;
 	private List<Commodity> commodities = new ArrayList<>();
-	private double totalCommodityValue;
 	
 	public AbstractInvestmentAccount(int id) {
 		super.setCurrencyType(CurrencyType.TRY);
@@ -40,7 +39,7 @@ public abstract class AbstractInvestmentAccount extends AbstractAccount {
 	}
 	public void displayCommodities() {
 	    System.out.println("=== Commodities ===");
-	    if(!commodities.isEmpty()) {
+	    if(commodities.size()>0) {
 	    	 for (Commodity commodity : commodities) {
 	 	        System.out.println(commodity.toString());
 	 	    }

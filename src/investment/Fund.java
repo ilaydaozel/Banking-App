@@ -8,6 +8,10 @@ public class Fund extends Commodity {
 		// TODO Auto-generated constructor stub
 	}
 
-
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return getName() +": "+ getValue();
+	}
 
 }

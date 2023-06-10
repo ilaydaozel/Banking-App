@@ -207,6 +207,7 @@ public class ClientMenu{
                     System.out.println("Enter exchange amount (TRY):");
                     double exchangeAmount = helperIO.readDoubleInput();
                 	((ForeignCurrencyAccountWithoutInterest) selectedAccount).exchange(destAccount, choice);
+
                     break;
                 case 2:
                 	

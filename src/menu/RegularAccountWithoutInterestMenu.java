@@ -8,9 +8,9 @@ import helpers.HelperClient;
 import helpers.HelperIO;
 import user.Client;
 
-public class RegularAccountTRYWithoutInterestMenu {
+public class RegularAccountWithoutInterestMenu {
 
-    public RegularAccountTRYWithoutInterestMenu(RegularAccountWithoutInterest account, Client client) {
+    public RegularAccountWithoutInterestMenu(RegularAccountWithoutInterest account, Client client) {
     	HelperClient helperClient = new HelperClient(client);
         HelperIO helperIO = new HelperIO();
         

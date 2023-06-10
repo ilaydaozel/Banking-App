@@ -8,7 +8,7 @@ import user.Client;
 
 public class ForeignCurrencyAccountWithInterestMenu {
 
-    public ForeignCurrencyAccountWithInterestMenu(ForeignCurrencyAccountWithInterest account, Client client) {
+    public ForeignCurrencyAccountWithInterestMenu(ForeignCurrencyAccountWithInterest foreignAccount, Client client) {
         HelperClient helperClient = new HelperClient(client);
         HelperIO helperIO = new HelperIO();
 
@@ -19,14 +19,14 @@ public class ForeignCurrencyAccountWithInterestMenu {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Balance: " + account.getBalance());
+                    System.out.println("Balance: " + foreignAccount.getBalance());
                     break;
                 case 2:
                     System.out.println("Select an account to make an exchange with:");
                     AbstractAccount destAccount = helperClient.selectAnAccount();
-                    System.out.println("Enter exchange amount (TRY):");
+                    System.out.println("Enter exchange amount (" + foreignAccount.getCurrencyType() +") :");
                     double exchangeAmount = helperIO.readDoubleInput();
-                    account.exchange(destAccount, exchangeAmount);
+                    foreignAccount.exchange(destAccount, exchangeAmount);
                     break;
                 case 0:
                     // Go back to the main menu

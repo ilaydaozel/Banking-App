@@ -6,9 +6,9 @@ import helpers.HelperClient;
 import helpers.HelperIO;
 import user.Client;
 
-public class RegularAccountTRYWithInterestMenu  {
+public class RegularAccountWithInterestMenu  {
 
-    public RegularAccountTRYWithInterestMenu(RegularAccountWithInterest account, Client client) {
+    public RegularAccountWithInterestMenu(RegularAccountWithInterest account, Client client) {
     	HelperClient helperClient = new HelperClient(client);
         HelperIO helperIO = new HelperIO();
         

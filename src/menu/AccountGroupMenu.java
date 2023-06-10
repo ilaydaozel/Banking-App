@@ -4,13 +4,12 @@ import helpers.HelperIO;
 import helpers.HelperMenu;
 
 public class AccountGroupMenu {
-	HelperIO helperIO = new HelperIO();
-    HelperMenu helperMenu = new HelperMenu();
-
-    public void AccountGroupMenu(AccountGroup account) {
+    public AccountGroupMenu(AccountGroup account) {
+    	HelperIO helperIO = new HelperIO();
+    	
         boolean exit = false;
         while (!exit) {
-            helperMenu.printAccountGroupMenu();
+            printAccountGroupMenu();
             int choice = helperIO.readIntegerInput();
 
             switch (choice) {
@@ -26,4 +25,12 @@ public class AccountGroupMenu {
             }
         }
     }
+
+	private void printAccountGroupMenu() {
+	    System.out.println("------ Account Group Menu ------");
+	    System.out.println("1. Check Balance");
+	    System.out.println("0. Go back to main menu");
+	    System.out.print("Enter your choice: ");
+	    }
+        
 }

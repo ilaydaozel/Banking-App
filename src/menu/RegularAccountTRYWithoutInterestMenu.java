@@ -3,12 +3,9 @@ package menu;
 import java.util.Scanner;
 
 import account.AbstractAccount;
-import account.ForeignCurrencyAccountWithoutInterest;
-import account.RegularAccountWithInterest;
 import account.RegularAccountWithoutInterest;
 import helpers.HelperClient;
 import helpers.HelperIO;
-import helpers.HelperMenu;
 import user.Client;
 
 public class RegularAccountTRYWithoutInterestMenu {
@@ -16,11 +13,10 @@ public class RegularAccountTRYWithoutInterestMenu {
     public RegularAccountTRYWithoutInterestMenu(RegularAccountWithoutInterest account, Client client) {
     	HelperClient helperClient = new HelperClient(client);
         HelperIO helperIO = new HelperIO();
-        HelperMenu helperMenu = new HelperMenu();
         
         boolean exit = false;
         while (!exit) {
-            helperMenu.printRegularAccountTRYWithoutInterestMenu();
+            printRegularAccountTRYWithoutInterestMenu();
             int choice = helperIO.readIntegerInput();
 
             switch (choice) {
@@ -51,6 +47,14 @@ public class RegularAccountTRYWithoutInterestMenu {
                     System.out.println("Invalid choice. Please try again.");
             }
         }
+    }
+    private void printRegularAccountTRYWithoutInterestMenu() {
+        System.out.println("------ Regular Account (TRY) without Interest Menu ------");
+        System.out.println("1. Check Balance");
+        System.out.println("2. Deposit Money");
+        System.out.println("3. Exchange");
+        System.out.println("0. Go back to main menu");
+        System.out.print("Enter your choice: ");
     }
     
 }

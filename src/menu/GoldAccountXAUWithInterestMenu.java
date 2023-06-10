@@ -7,14 +7,13 @@ import user.Client;
 
 public class GoldAccountXAUWithInterestMenu  {
     private static Scanner scanner = new Scanner(System.in);
-
     HelperIO helperIO = new HelperIO();
-    HelperMenu helperMenu = new HelperMenu();
+
 
     public void GoldAccountXAUWithInterestMenu () {
         boolean exit = false;
         while (!exit) {
-            helperMenu.printGoldAccountXAUWithInterestMenu ();
+            printGoldAccountXAUWithInterestMenu ();
             int choice = helperIO.readIntegerInput();
 
             switch (choice) {
@@ -30,6 +29,15 @@ public class GoldAccountXAUWithInterestMenu  {
         }
         }
     }
+
+    private void printGoldAccountWithInterestMenu() {
+        System.out.println("------ Gold Account (XAU) with Interest Menu ------");
+        System.out.println("1. Check Balance");
+        System.out.println("2. Exchange to another account (XAU with Interest)");
+        System.out.println("0. Go back to main menu");
+
+        System.out.print("Enter your choice: ");
+        }
+    
 }
 
-// Similar classes for other account menus

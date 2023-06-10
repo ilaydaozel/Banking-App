@@ -212,8 +212,7 @@ public class ClientMenu{
     	String groupName = scanner.nextLine();
     	AccountGroup selectedGroup = client.getAccountGroup().getAccountGroupByName(groupName);
     	if(selectedGroup != null) {
-    		AccountGroupMenu menu = new AccountGroupMenu();
-    		menu.AccountGroupMenu(selectedGroup);
+    		new AccountGroupMenu(selectedGroup);
     	}
     	else {
     		System.out.println("There is no group named as " + groupName + "! ");

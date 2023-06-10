@@ -4,7 +4,6 @@ import account.AbstractAccount;
 import account.ForeignCurrencyAccountWithInterest;
 import helpers.HelperClient;
 import helpers.HelperIO;
-import helpers.HelperMenu;
 import user.Client;
 
 public class ForeignCurrencyAccountWithInterestMenu {

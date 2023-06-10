@@ -3,11 +3,9 @@ package menu;
 import java.util.Scanner;
 
 import account.AbstractAccount;
-import account.ForeignCurrencyAccountWithInterest;
 import account.ForeignCurrencyAccountWithoutInterest;
 import helpers.HelperClient;
 import helpers.HelperIO;
-import helpers.HelperMenu;
 import user.Client;
 
 public class ForeignCurrencyAccountWithoutInterestMenu  {

@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import account.InvestmentAccount;
 import helpers.HelperIO;
-import helpers.HelperMenu;
 import investment.Fund;
 import investment.Stock;
 
@@ -14,10 +13,10 @@ public class InvestmentAccountMenu  {
     public InvestmentAccountMenu (InvestmentAccount investmentAccount) {
         Scanner scanner = new Scanner(System.in);
         HelperIO helperIO = new HelperIO();
-        HelperMenu helperMenu = new HelperMenu();
+
         boolean exit = false;
         while (!exit) {
-            helperMenu.printInvestmentAccountMenu();
+            printInvestmentAccountMenu();
             int choice = helperIO.readIntegerInput();
 
             switch (choice) {
@@ -107,6 +106,17 @@ public class InvestmentAccountMenu  {
 
         }
     }
+    
+    private void printInvestmentAccountMenu() {
+        System.out.println("------ Investment Account Menu ------");
+        System.out.println("1. Check Balance");
+        System.out.println("2. Buy Stocks");
+        System.out.println("3. Buy Funds");
+        System.out.println("4. Display Stocks and Funds");
+        System.out.println("0. Go back to main menu");
+
+        System.out.print("Enter your choice: ");
+    }
+    
 }
 
-// Similar classes for other account menus

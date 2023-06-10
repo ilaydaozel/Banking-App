@@ -155,7 +155,6 @@ public class ClientMenu{
             	}
             	
             	System.out.println("New account created successfully.");
-            	System.out.println("newAccount" + newAccount.toString());
             }
             System.out.println();
             
@@ -231,7 +230,6 @@ public class ClientMenu{
 
                     break;
                 case 2:
-                    // Go back to the main menu
                 	
                     break;
                 default:
@@ -266,7 +264,6 @@ public class ClientMenu{
     	}
     }
     
-
     private static void checkExpectedBalance() {
         /*System.out.print("Enter the account index: ");
         int accountIndex = readIntegerInput();

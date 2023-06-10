@@ -2,6 +2,7 @@ package account;
 
 import java.util.*;
 
+import enums.CurrencyType;
 import enums.ForeignCurrencyAccountType;
 
 public class AccountGroup extends AbstractAccount{
@@ -11,6 +12,7 @@ public class AccountGroup extends AbstractAccount{
 	public AccountGroup(String name) {
 		this.name = name;
 		this.accounts = new ArrayList<AbstractAccount>();
+		super.setCurrencyType(CurrencyType.TRY);
 	}
 
 	public void addAccount(AbstractAccount account) {

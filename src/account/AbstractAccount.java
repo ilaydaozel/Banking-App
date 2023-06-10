@@ -1,10 +1,12 @@
 package account;
 
+import enums.CurrencyType;
 import user.Bank;
 
 public abstract class AbstractAccount {
 	private double balance;
 	private Bank bank;
+	private CurrencyType currencyType;
 	
 	public AbstractAccount() {
 		this.balance = 0;
@@ -23,6 +25,14 @@ public abstract class AbstractAccount {
 
 	public void setBank(Bank bank) {
 		this.bank = bank;
+	}
+
+	public CurrencyType getCurrencyType() {
+		return currencyType;
+	}
+
+	public void setCurrencyType(CurrencyType currencyType) {
+		this.currencyType = currencyType;
 	}
 
 	public abstract void display();

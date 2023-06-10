@@ -6,6 +6,7 @@ public abstract class AbstractRegularAccount extends AbstractAccount{
 	private int id;
 	public AbstractRegularAccount(int id) {
 		this.setId(id);
+		super.setCurrencyType(CurrencyType.TRY);
 		// TODO Auto-generated constructor stub
 	}
 	public int getId() {

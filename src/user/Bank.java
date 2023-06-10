@@ -38,8 +38,6 @@ public class Bank {
     public double convert(CurrencyType sourceCurrency, CurrencyType targetCurrency, double amount) {
         double sourceRate = getCurrencyRateOf(sourceCurrency);
         double targetRate = getCurrencyRateOf(targetCurrency);
-        System.out.println("sourceRate" + sourceRate);
-        System.out.println("targetRate" + targetRate);
         
         double targetAmount = amount * (sourceRate / targetRate);
         return targetAmount;

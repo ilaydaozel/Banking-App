@@ -19,7 +19,6 @@ public class HelperMenu {
         System.out.println("3. Create Account Group");
         System.out.println("4. Select An Account For Operation");
         System.out.println("5. Select An Account Group For Operation");
-        System.out.println("6. Check Expected Balance");
         System.out.println("0. Back to Main Menu");
         System.out.print("Enter your choice: ");
     }
@@ -71,13 +70,14 @@ public class HelperMenu {
     //bank menu
     public void printBankMenu() {
         System.out.println("--- Bank Menu ---");
-        System.out.println("1. Create Stock");
-        System.out.println("2. Create Fund");
-        System.out.println("3. Set Stock Value");
-        System.out.println("4. Set Fund Value");
-        System.out.println("5. Set Currency Rate");
-        System.out.println("6. Set Interest Rate");
-        System.out.println("7. Pass Time");
+        System.out.println("1. Display Commodities");
+        System.out.println("2. Create Stock");
+        System.out.println("3. Create Fund");
+        System.out.println("4. Set Stock Value");
+        System.out.println("5. Set Fund Value");
+        System.out.println("6. Set Currency Rate");
+        System.out.println("7. Set Interest Rate");
+        System.out.println("8. Pass Time");
         System.out.println("0. Back to Main Menu");
         System.out.print("Enter your choice: ");
     }

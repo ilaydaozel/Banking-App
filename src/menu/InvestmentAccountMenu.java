@@ -10,12 +10,11 @@ import investment.Fund;
 import investment.Stock;
 
 public class InvestmentAccountMenu  {
-    private static Scanner scanner = new Scanner(System.in);
 
-    HelperIO helperIO = new HelperIO();
-    HelperMenu helperMenu = new HelperMenu();
-
-    public void InvestmentAccountMenu (InvestmentAccount investmentAccount) {
+    public InvestmentAccountMenu (InvestmentAccount investmentAccount) {
+        Scanner scanner = new Scanner(System.in);
+        HelperIO helperIO = new HelperIO();
+        HelperMenu helperMenu = new HelperMenu();
         boolean exit = false;
         while (!exit) {
             helperMenu.printInvestmentAccountMenu();

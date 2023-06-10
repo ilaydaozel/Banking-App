@@ -170,6 +170,24 @@ public class Bank {
             fund.setValue(value);
         }
     }
+ 
+    public Stock deleteStock(String name) {
+        for (Stock stock : stocks) {
+            if (stock.getName().equalsIgnoreCase(name)) {
+                stocks.remove(stock);
+            }
+        }
+        return null;
+    }
+
+    public Fund deleteFund(String name) {
+        for (Fund fund : funds) {
+            if (fund.getName().equalsIgnoreCase(name)) {
+                funds.remove(fund);
+            }
+        }
+        return null;
+    }
 
     public void setInterestRate(int accountType, double rate) {
         interestRates.put(accountType, rate);

@@ -22,8 +22,10 @@ public class Bank {
     private XAU xauCur;		
     private Map<Integer, Double> interestRates;
     private int currentDay;
-
-    public Bank() {
+    //singleton class pattern
+    private static final Bank instance = new Bank();
+    
+    private Bank() {
         stocks = new ArrayList<>();
         funds = new ArrayList<>();
         clients = new ArrayList<>();
@@ -35,6 +37,11 @@ public class Bank {
         //interestRates = new HashMap<>();
         currentDay = 0;
     }
+    //eager instantiation
+    public static Bank getInstance() {
+        return instance;
+    }
+    
     public double convert(CurrencyType sourceCurrency, CurrencyType targetCurrency, double amount) {
         double sourceRate = getCurrencyRateOf(sourceCurrency);
         double targetRate = getCurrencyRateOf(targetCurrency);

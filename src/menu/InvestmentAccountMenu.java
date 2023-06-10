@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import account.InvestmentAccount;
-import helpers.HelperIO;
+import helpers.*;
 import investment.Fund;
 import investment.Stock;
 
@@ -13,6 +13,7 @@ public class InvestmentAccountMenu  {
     public InvestmentAccountMenu (InvestmentAccount investmentAccount) {
         Scanner scanner = new Scanner(System.in);
         HelperIO helperIO = new HelperIO();
+        HelperBank helperBank = new HelperBank(investmentAccount.getBank());
 
         boolean exit = false;
         while (!exit) {
@@ -24,49 +25,32 @@ public class InvestmentAccountMenu  {
             	System.out.println("Balance:" + investmentAccount.getBalance());
             	break;
             case 2:
-       		 System.out.println("=== Stocks ===");
- 		    // Display the available stocks
-       		 
- 		    List<Stock> stocks = investmentAccount.getBank().getStocks();
- 		    for (Stock stock : stocks) {
- 		        System.out.println(stock.getName() + " - Current Value: " + stock.getValue());
- 		    }
-
- 		    // Get user input
- 		    System.out.print("Enter the name of the stock you want to buy: ");
- 		    String stockName = scanner.next();
-
- 		    // Perform the stock purchase
- 		    Stock stock = investmentAccount.getBank().getStock(stockName);
- 		    
- 		    if (stock != null) {
- 		    	if(investmentAccount.getBalance()- stock.getValue() > 0) {
- 		    		investmentAccount.setBalance(investmentAccount.getBalance()- stock.getValue());
- 		    		investmentAccount.getCommodities().add(stock);
-                    System.out.println("Successfully purchased " + stockName + " stock.");
-                    System.out.println("new account balance: " + investmentAccount.getBalance() + " "+ investmentAccount.getCurrencyType());
-            	}
-            	else {
-            		System.out.println("Insufficent balance. Please try again.");
-            	}
- 		    	
- 		       
- 		    } else {
- 		        System.out.println("Invalid stock name. Please try again.");
- 		        
- 		    }
-                // Logic to buy stocks
-                
-                break;
+	       		helperBank.displayStocks();
+	 		    // Get user input
+	 		    System.out.print("Enter the name of the stock you want to buy: ");
+	 		    String stockName = scanner.next();
+	 		    Stock stock = investmentAccount.getBank().getStock(stockName);
+	 		    
+	 		    if (stock != null) {
+	 		    	if(investmentAccount.getBalance()- stock.getValue() > 0) {
+	 		    		investmentAccount.setBalance(investmentAccount.getBalance()- stock.getValue());
+	 		    		investmentAccount.getCommodities().add(stock);
+	                    System.out.println("Successfully purchased " + stockName + " stock.");
+	                    System.out.println("new account balance: " + investmentAccount.getBalance() + " "+ investmentAccount.getCurrencyType());
+	            	}
+	            	else {
+	            		System.out.println("Insufficent balance. Please try again.");
+	            	}
+	 		       
+	 		    } else {
+	 		        System.out.println("Invalid stock name. Please try again.");
+	 		        
+	 		    }
+	                // Logic to buy stocks
+	                
+	                break;
             case 3:
-                System.out.println("=== Funds ===");
-                // Display the available funds
-
-                List<Fund> funds = investmentAccount.getBank().getFunds();
-                for (Fund fund : funds) {
-                    System.out.println(fund.getName() + " - Current Value: " + fund.getValue());
-                }
-
+            	helperBank.displayFunds();
                 // Get user input
                 System.out.print("Enter the name of the fund you want to buy: ");
                 String fundName = scanner.next();
@@ -106,6 +90,8 @@ public class InvestmentAccountMenu  {
 
         }
     }
+    
+
     
     private void printInvestmentAccountMenu() {
         System.out.println("------ Investment Account Menu ------");

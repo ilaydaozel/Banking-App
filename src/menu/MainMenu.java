@@ -10,18 +10,54 @@ import user.*;
 public class MainMenu{
 	private static Scanner scanner = new Scanner(System.in);  
 	private static Bank bank;
-	HelperIO helperIO = new HelperIO();
-	HelperMenu helperMenu = new HelperMenu();
+	private Client client;
+	private HelperIO helperIO = new HelperIO();
 	
 	public MainMenu(Bank bank) {
 		this.bank = bank;
+		
 	}
 	
-	public void printMenu() {
-		helperMenu.printMainMenu();
+	public void performMainMenu() {
+		
+		HelperMenu helperMenu = new HelperMenu();
+        BankMenu bankMenu = new BankMenu(bank);
+
+
+        boolean exit = false;
+        while (!exit) {
+    		helperMenu.printMainMenu();
+            int choice = helperIO.readIntegerInput();
+
+            switch (choice) {
+            case 1:
+                createClient();
+                break;
+            case 2:
+            	Client currentClient = selectClient();
+            	if( client != null) {
+            		this.client = currentClient;
+            		ClientMenu clientMenu = new ClientMenu(client);
+            		clientMenu.clientMenu();
+            	}
+            	break;
+            case 3:
+            	bankMenu.bankMenu();
+            	break;
+            case 4:
+            	exit =true;
+            	System.out.println("You exit the app!");
+            	break;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+                System.out.println();
+                break;
+	        }
+	    }
 	}
+
 	
-    public static void createClient() {
+    private static void createClient() {
         System.out.print("Enter the client's name: ");
         String name = scanner.nextLine();
         Client client = new Client(name);
@@ -30,7 +66,7 @@ public class MainMenu{
         System.out.println();
     }
 
-    public Client selectClient() {
+    private Client selectClient() {
     	List<Client> clients = bank.getClients();
     	Client currentClient = null;
     	

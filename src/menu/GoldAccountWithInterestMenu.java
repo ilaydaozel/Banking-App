@@ -8,7 +8,7 @@ import user.Client;
 
 public class GoldAccountWithInterestMenu  {
 	
-    public void GoldAccountWithInterestMenu (GoldAccountWithInterest goldAccount, Client client) {
+    public GoldAccountWithInterestMenu (GoldAccountWithInterest goldAccount, Client client) {
         HelperIO helperIO = new HelperIO();
         HelperClient helperClient = new HelperClient(client);
         boolean exit = false;

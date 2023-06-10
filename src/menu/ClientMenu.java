@@ -175,18 +175,16 @@ public class ClientMenu{
     	AbstractAccount selectedAccount = helperClient.selectAnAccount();
         if(selectedAccount != null) {
         	if (selectedAccount instanceof RegularAccountWithInterest) {
-        		new RegularAccountTRYWithInterestMenu((RegularAccountWithInterest)selectedAccount, client);
+        		new RegularAccountWithInterestMenu((RegularAccountWithInterest)selectedAccount, client);
             } 	
         	else if (selectedAccount instanceof RegularAccountWithoutInterest) {
-        		new RegularAccountTRYWithoutInterestMenu((RegularAccountWithoutInterest)selectedAccount, client);
+        		new RegularAccountWithoutInterestMenu((RegularAccountWithoutInterest)selectedAccount, client);
             }
         	else if (selectedAccount instanceof GoldAccountWithInterest) {
-        		GoldAccountXAUWithInterestMenu menu = new GoldAccountXAUWithInterestMenu();
-        		menu.GoldAccountXAUWithInterestMenu();
+        		new GoldAccountWithInterestMenu((GoldAccountWithInterest) selectedAccount, client);
             }
         	else if (selectedAccount instanceof GoldAccountWithoutInterest) {
-        		GoldAccountXAUWithoutInterestMenu menu = new GoldAccountXAUWithoutInterestMenu();
-        		menu.GoldAccountXAUWithoutInterestMenu();
+        		new GoldAccountWithoutInterestMenu((GoldAccountWithoutInterest) selectedAccount, client);
             }
         	else if (selectedAccount instanceof ForeignCurrencyAccountWithInterest) {
         		new ForeignCurrencyAccountWithInterestMenu((ForeignCurrencyAccountWithInterest) selectedAccount, client);

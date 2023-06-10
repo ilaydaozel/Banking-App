@@ -43,6 +43,15 @@ public class RegularAccountWithInterest extends AbstractRegularAccount implement
 	public void resetInterestDay() {
 		setInterestStartDate(getBank().getCurrentDay());
 	}
+
+	public void updateInterest() {
+		  double totalDays = getBank().getCurrentDay() - getInterestStartDate();
+		    if (totalDays > 0) {
+		        double interestRate = getBank().getInterestRate(getCurrencyType().toString());
+		        double compoundInterest = calculateCompoundInterest(getBalance(), interestRate, totalDays);    
+		        setBalance(getBalance() + compoundInterest);
+		    } 
+	}
 	public boolean endInterest() {
 	    double totalDays = getBank().getCurrentDay() - getInterestStartDate();
 	    if (totalDays > 0) {
@@ -53,7 +62,7 @@ public class RegularAccountWithInterest extends AbstractRegularAccount implement
 	        System.out.println(getCurrencyType().toString() + " account new balance: " + getBalance());
 	        return true;
 	    } else {
-	        System.out.println("Exchange Failed. 0 days has passed since interest started.");
+	        System.out.println("0 days has passed since interest started.");
 	        return false;
 	    }
 	}
@@ -63,5 +72,12 @@ public class RegularAccountWithInterest extends AbstractRegularAccount implement
 	    double compoundInterest = principal * Math.pow(dailyRate, totalDays) - principal;
 	    return compoundInterest;
 	}
+	public double checkExpectedBalance(int days) {
+	    double interestRate = getBank().getInterestRate(getCurrencyType().toString());
+	    double compoundInterest = calculateCompoundInterest(getBalance(), interestRate, days);
+	    double expectedBalance = getBalance() + compoundInterest;
+	    return expectedBalance;
+	}
+
 }
 

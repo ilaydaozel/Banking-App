@@ -71,4 +71,20 @@ public class ForeignCurrencyAccountWithInterest extends AbstractForeignCurrencyA
 	    double compoundInterest = principal * Math.pow(dailyRate, totalDays) - principal;
 	    return compoundInterest;
 	}
+	public double checkExpectedBalance(int days) {
+	    double interestRate = getBank().getInterestRate(getCurrencyType().toString());
+	    double compoundInterest = calculateCompoundInterest(getBalance(), interestRate, days);
+	    double expectedBalance = getBalance() + compoundInterest;
+	    return expectedBalance;
+	}
+	
+	public void updateInterest() {
+		  double totalDays = getBank().getCurrentDay() - getInterestStartDate();
+		    if (totalDays > 0) {
+		        double interestRate = getBank().getInterestRate(getCurrencyType().toString());
+		        double compoundInterest = calculateCompoundInterest(getBalance(), interestRate, totalDays);    
+		        setBalance(getBalance() + compoundInterest);
+		    } 
+	}
+	
 }

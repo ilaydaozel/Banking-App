@@ -216,8 +216,7 @@ public class ClientMenu{
             }
 
         	else if (selectedAccount instanceof InvestmentAccount) {
-        		InvestmentAccountMenu menu = new InvestmentAccountMenu();
-        		menu.InvestmentAccountMenu((InvestmentAccount) selectedAccount);
+        		new InvestmentAccountMenu((InvestmentAccount) selectedAccount);
             }
 
         }

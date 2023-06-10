@@ -24,14 +24,28 @@ public class RegularAccountWithoutInterest extends AbstractRegularAccount implem
 		System.out.println("- id:" + super.getId() +" Regular Account Without Interest");
 		
 	}
-
+	
 	@Override
 	public void exchange(AbstractAccount targetAccount, double amount) {
-		// TODO Auto-generated method stub
-    	//calculate the amount
-        double convertedAmount = this.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
-        //update balances
-        setBalance(this.getBalance() - amount);
-        targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+	    if (this.getBalance() >= amount) {
+	        if (targetAccount instanceof RegularAccountWithInterest) {
+	            double convertedAmount = this.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
+	            // Update balances
+	            setBalance(this.getBalance() - amount);
+	            targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+	            System.out.println("Exchanged " + convertedAmount + " "+ targetAccount.getCurrencyType().toString() + " to target account!");
+	        } else if (targetAccount instanceof IWithoutInterest) {
+	            double convertedAmount = this.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
+	            // Update balances
+	            setBalance(this.getBalance() - amount);
+	            targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+	            System.out.println("Exchanged " + convertedAmount + " "+ targetAccount.getCurrencyType().toString() + " to target account!");
+	        } else {
+	            System.out.println("You can only exchange between accounts without interest or a regular account with interest (TRY)!");
+	        }
+	    } else {
+	        System.out.println("Your balance is not enough!");
+	    }
 	}
+
 }

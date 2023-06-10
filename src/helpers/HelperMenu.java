@@ -87,6 +87,7 @@ public class HelperMenu {
         System.out.println("------ Regular Account (TRY) without Interest Menu ------");
         System.out.println("1. Check Balance");
         System.out.println("2. Deposit Money");
+        System.out.println("3. Exchange");
         System.out.println("0. Go back to main menu");
         System.out.print("Enter your choice: ");
     }
@@ -96,6 +97,7 @@ public class HelperMenu {
     public void printRegularAccountTRYWithInterestMenu() {
         System.out.println("------ Regular Account (TRY) with Interest Menu ------");
         System.out.println("1. Check Balance");
+        System.out.println("2. Exchange");
         System.out.println("0. Go back to main menu");
         System.out.print("Enter your choice: ");
         }

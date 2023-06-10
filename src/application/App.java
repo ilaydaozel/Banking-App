@@ -11,14 +11,13 @@ import user.Client;
 import helpers.*;
 
 public class App {
-    private static Bank bank;
+    private static Bank bank= Bank.getInstance();;
     private static MainMenu mainMenu;
     private static ClientMenu clientMenu;
     private static BankMenu bankMenu;
     private static Client currentClient;
     
 	public static void main(String[] args) {
-		bank = new Bank();
         mainMenu = new MainMenu(bank);
         bankMenu = new BankMenu(bank);
         HelperIO helperIO = new HelperIO();

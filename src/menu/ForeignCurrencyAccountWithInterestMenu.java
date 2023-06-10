@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package menu;
 
 import account.AbstractAccount;
 import account.ForeignCurrencyAccountWithInterest;
@@ -12,11 +12,10 @@ public class ForeignCurrencyAccountWithInterestMenu {
     public ForeignCurrencyAccountWithInterestMenu(ForeignCurrencyAccountWithInterest account, Client client) {
         HelperClient helperClient = new HelperClient(client);
         HelperIO helperIO = new HelperIO();
-        HelperMenu helperMenu = new HelperMenu();
 
         boolean exit = false;
         while (!exit) {
-            helperMenu.printForeignCurrencyAccountWithInterestMenu();
+            printForeignCurrencyAccountWithInterestMenu();
             int choice = helperIO.readIntegerInput();
 
             switch (choice) {
@@ -38,6 +37,15 @@ public class ForeignCurrencyAccountWithInterestMenu {
                     System.out.println("Invalid choice. Please try again.");
             }
         }
+    }
+    
+    private void printForeignCurrencyAccountWithInterestMenu() {
+        System.out.println("------ Foreign Currency Account (USD) with Interest Menu ------");
+        System.out.println("1. Check Balance");
+        System.out.println("2. Exchange");
+        System.out.println("0. Go back to main menu");
+
+        System.out.print("Enter your choice: ");
     }
 
 }

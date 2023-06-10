@@ -114,14 +114,6 @@ public class HelperMenu {
 
 
 
-    public void printForeignCurrencyAccountWithInterestMenu() {
-        System.out.println("------ Foreign Currency Account (USD) with Interest Menu ------");
-        System.out.println("1. Check Balance");
-        System.out.println("2. Exchange");
-        System.out.println("0. Go back to main menu");
-
-        System.out.print("Enter your choice: ");
-    }
 
 
 

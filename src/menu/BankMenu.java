@@ -45,7 +45,7 @@ public class BankMenu{
                 case 7:
                     passTime();
                     break;
-                case 8:
+                case 0:
                     exit = true;
                     break;
                 default:

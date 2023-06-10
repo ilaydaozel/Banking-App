@@ -65,5 +65,12 @@ public class GoldAccountWithInterest extends AbstractGoldAccount implements IWit
 	    double compoundInterest = principal * Math.pow(dailyRate, totalDays) - principal;
 	    return compoundInterest;
 	}
+	public double checkExpectedBalance(int days) {
+	    double interestRate = getBank().getInterestRate(getCurrencyType().toString());
+	    double compoundInterest = calculateCompoundInterest(getBalance(), interestRate, days);
+	    double expectedBalance = getBalance() + compoundInterest;
+	    return expectedBalance;
+	}
+
 
 }

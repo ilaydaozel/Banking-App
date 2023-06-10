@@ -28,7 +28,7 @@ public abstract class AbstractInvestmentAccount extends AbstractAccount {
 		this.commodities = assets;
 	}
 	
-	public abstract void buyCommodities();
+	public abstract void buyCommodity(Commodity commodity);
 	
 	public double getTotalCommodityValue() {
 	    double totalValue = 0.0;

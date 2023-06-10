@@ -44,12 +44,24 @@ public class AccountGroup extends AbstractAccount{
 		for (AbstractAccount curAccount : this.accounts) {
             if (!(curAccount instanceof AccountGroup)) {
             	if(curAccount instanceof IWithInterest) {
+            		//calculate amount with interest and add it
             		((IWithInterest) curAccount).updateInterest();
+            		totalBalance += curAccount.getBalance();
             	}
-            	if(curAccount instanceof InvestmentAccount) {
+            	else if (curAccount.getCurrencyType() != CurrencyType.TRY) {
+            		//convert the money to try and add it
+            		double convertedToTRYBalance= getBank().convert(curAccount.getCurrencyType(), CurrencyType.TRY, curAccount.getBalance());
+            		totalBalance += convertedToTRYBalance;
+            	}
+            	else if(curAccount instanceof InvestmentAccount) {
+            		//get the commodity values and add it
             		totalBalance += ((InvestmentAccount) curAccount).getTotalCommodityValue();
+            		totalBalance += curAccount.getBalance();
             	}
-            	totalBalance += curAccount.getBalance();
+            	else {
+                	totalBalance += curAccount.getBalance();
+            	}
+
             }
 		}
 		return totalBalance;
@@ -65,7 +77,6 @@ public class AccountGroup extends AbstractAccount{
             	totalBalance += ((AccountGroup)curAccountGroup).getSingleAccountGroupBalance();
             }
 		}
-		//set etmeli mi?
 		return totalBalance;	
 	}
 	

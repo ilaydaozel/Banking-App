@@ -35,10 +35,13 @@ public class MainMenu{
                 break;
             case 2:
             	Client currentClient = selectClient();
-            	if( client != null) {
+            	if( currentClient != null) {
             		this.client = currentClient;
             		ClientMenu clientMenu = new ClientMenu(client);
             		clientMenu.clientMenu();
+            	}
+            	else {
+            		System.out.println("Select a valid client!");
             	}
             	break;
             case 3:

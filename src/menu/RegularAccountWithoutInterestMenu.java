@@ -21,8 +21,8 @@ public class RegularAccountWithoutInterestMenu {
 
             switch (choice) {
             	case 1:
-                	System.out.println("Balance:" + account.getBalance());
-                	
+                	System.out.println("Balance:" + account.getBalance() + " " + account.getCurrencyType());
+                	System.out.println();
                     break;
                 case 2:
                     // Logic to deposit money
@@ -30,14 +30,17 @@ public class RegularAccountWithoutInterestMenu {
                 	double amount = helperIO.readDoubleInput();
                     System.out.println("Depositing money...");
                     account.deposit(amount);
-                    System.out.println("New balance:"+ account.getBalance());                   
+                    System.out.println("New balance:"+ account.getBalance());   
+                    System.out.println();
                     break;
                 case 3:
                 	System.out.println("Select a regular account without interest to make exchange to:");
                 	AbstractAccount destAccount = helperClient.selectAnAccount();
+                	System.out.println("Your current balance: " + account.getBalance());
                     System.out.println("Enter exchange amount (TRY):");
                     double exchangeAmount = helperIO.readDoubleInput();
                 	account.exchange(destAccount, exchangeAmount);
+                	System.out.println();
                     break;
                 case 0:
                     // Go back to the main menu

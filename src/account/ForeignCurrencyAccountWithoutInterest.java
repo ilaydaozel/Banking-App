@@ -23,7 +23,7 @@ public class ForeignCurrencyAccountWithoutInterest extends AbstractForeignCurren
 	@Override
     public void exchange( AbstractAccount targetAccount, double amount) {
 		if (this.getBalance() >= amount) {
-		    if (targetAccount instanceof RegularAccountWithInterest) {
+		    if (targetAccount instanceof RegularAccountWithoutInterest) {
 		        double convertedAmount = this.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
 		        // Update balances
 		        setBalance(this.getBalance() - amount);

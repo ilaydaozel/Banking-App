@@ -18,14 +18,17 @@ public class GoldAccountWithInterestMenu  {
 
             switch (choice) {
             case 1:
-                System.out.println("Balance: " + goldAccount.getBalance());
+                System.out.println("Balance: " + goldAccount.getBalance() + " " + goldAccount.getCurrencyType());
+                System.out.println();
                 break;
             case 2:
                 System.out.println("Select an account to make an exchange with:");
                 AbstractAccount destAccount = helperClient.selectAnAccount();
+                System.out.println("Your current balance: " + goldAccount.getBalance());
                 System.out.println("Enter exchange amount (XAU):");
                 double exchangeAmount = helperIO.readDoubleInput();
                 goldAccount.exchange(destAccount, exchangeAmount);
+                System.out.println();
                 break;
             case 0:
                 // Go back to the main menu

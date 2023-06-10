@@ -19,14 +19,17 @@ public class RegularAccountWithInterestMenu  {
 
             switch (choice) {
                 case 1:
-                	System.out.println("Balance:" + account.getBalance());
+                	System.out.println("Balance:" + account.getBalance() + " " + account.getCurrencyType());
+                	System.out.println();
                     break;
                 case 2:
                 	System.out.println("Select a regular account without interest to make exchange to:");
                 	AbstractAccount destAccount = helperClient.selectAnAccount();
+                	System.out.println("Your current balance: " + account.getBalance());
                     System.out.println("Enter exchange amount (TRY):");
                     double exchangeAmount = helperIO.readDoubleInput();
                 	account.exchange(destAccount, exchangeAmount);
+                	System.out.println();
                     break;
                 case 0:
                     // Go back to the main menu

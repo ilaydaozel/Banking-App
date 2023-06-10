@@ -22,14 +22,16 @@ public class ForeignCurrencyAccountWithoutInterestMenu  {
 
             switch (choice) {
             case 1:
-                System.out.println("Balance: " + foreignAccount.getBalance());
+                System.out.println("Balance: " + foreignAccount.getBalance() + " " + foreignAccount.getCurrencyType());
                 break;
             case 2:
                 System.out.println("Select an account to make an exchange with:");
                 AbstractAccount destAccount = helperClient.selectAnAccount();
+                System.out.println("Your current balance: " + foreignAccount.getBalance());
                 System.out.println("Enter exchange amount (" + foreignAccount.getCurrencyType() +") :");
                 double exchangeAmount = helperIO.readDoubleInput();
                 foreignAccount.exchange(destAccount, exchangeAmount);
+                System.out.println();
                 break;
             case 0:
                 // Go back to the main menu

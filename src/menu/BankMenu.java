@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import currency.Currency;
 import enums.CurrencyType;
+import helpers.HelperBank;
 import helpers.HelperIO;
 import helpers.HelperMenu;
 import user.Bank;
@@ -14,9 +15,11 @@ public class BankMenu{
 	private static Scanner scanner = new Scanner(System.in);  
 	HelperIO helperIO = new HelperIO();
 	HelperMenu helperMenu = new HelperMenu();
+	HelperBank helperBank;
 	
 	public BankMenu(Bank bank) {
 		this.bank = bank;
+		this.helperBank = new HelperBank(this.bank);
 	}
 	
     public void bankMenu() {
@@ -26,26 +29,41 @@ public class BankMenu{
             int choice = readIntegerInput();
 
             switch (choice) {
-                case 1:
-                    createStock();
-                    break;
+            	case 1:
+            		System.out.println("---Commodities---");
+	            	helperBank.displayFunds();
+	            	helperBank.displayStocks();
+	            	System.out.println();
+	            	break;
                 case 2:
-                    createFund();
+                    createStock();
+                    System.out.println();
                     break;
                 case 3:
-                    setStockValue();
+                    createFund();
+                    System.out.println();
                     break;
                 case 4:
-                    setFundValue();
+                	helperBank.displayStocks();
+                    setStockValue();
+                    System.out.println();
                     break;
                 case 5:
-                    setCurrencyRate();
+                	helperBank.displayFunds();
+                    setFundValue();
+                    System.out.println();
                     break;
                 case 6:
-                    setInterestRate();
+                    setCurrencyRate();
+                    System.out.println();
                     break;
                 case 7:
+                    setInterestRate();
+                    System.out.println();
+                    break;
+                case 8:
                     passTime();
+                    System.out.println();
                     break;
                 case 0:
                     exit = true;

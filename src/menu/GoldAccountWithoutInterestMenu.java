@@ -22,16 +22,17 @@ public class GoldAccountWithoutInterestMenu  {
 
             switch (choice) {
             case 1:
-                // Logic to exchange to a TRY account
-                System.out.println("Exchanging to a TRY account...");
+            	System.out.println("Balance: " + goldAccount.getBalance() + " " + goldAccount.getCurrencyType());
+                System.out.println();
                 break;
             case 2:
                 System.out.println("Select an account to make an exchange with:");
                 AbstractAccount destAccount = helperClient.selectAnAccount();
+                System.out.println("Your current balance: " + goldAccount.getBalance());
                 System.out.println("Enter exchange amount (XAU):");
                 double exchangeAmount = helperIO.readDoubleInput();
                 goldAccount.exchange(destAccount, exchangeAmount);
-                // Go back to the main menu
+                System.out.println();
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");

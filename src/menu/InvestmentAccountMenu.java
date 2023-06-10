@@ -23,6 +23,7 @@ public class InvestmentAccountMenu  {
             switch (choice) {
             case 1:
             	System.out.println("Balance:" + investmentAccount.getBalance());
+            	System.out.println();
             	break;
             case 2:
 	       		helperBank.displayStocks();
@@ -31,6 +32,7 @@ public class InvestmentAccountMenu  {
 	 		    String stockName = scanner.next();
 	 		    Stock stock = investmentAccount.getBank().getStock(stockName);
 	 		    investmentAccount.buyCommodity(stock);
+	 		    System.out.println();
 	                
 	            break;
             case 3:
@@ -42,7 +44,7 @@ public class InvestmentAccountMenu  {
                 // Perform the fund purchase
                 Fund fund = investmentAccount.getBank().getFund(fundName);
                 investmentAccount.buyCommodity(fund);
-
+                System.out.println();
                 break;
             case 4:
             	investmentAccount.displayCommodities();

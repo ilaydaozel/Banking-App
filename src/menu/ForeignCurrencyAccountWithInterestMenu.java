@@ -1,30 +1,43 @@
-package menu;
-
 import java.util.Scanner;
 
+import account.AbstractAccount;
+import account.ForeignCurrencyAccountWithInterest;
+import helpers.HelperClient;
+import helpers.HelperIO;
+import helpers.HelperMenu;
+import user.Client;
+
 public class ForeignCurrencyAccountWithInterestMenu {
-    public static void displayMenu() {
-        System.out.println("------ Foreign Currency Account with Interest Menu ------");
-        System.out.println("1. Exchange to another account ( with Interest)");
-        System.out.println("0. Go back to main menu");
 
-        System.out.print("Enter your choice: ");
-    }
+    public ForeignCurrencyAccountWithInterestMenu(ForeignCurrencyAccountWithInterest account, Client client) {
+        HelperClient helperClient = new HelperClient(client);
+        HelperIO helperIO = new HelperIO();
+        HelperMenu helperMenu = new HelperMenu();
 
-    public static void handleChoice() {
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+        boolean exit = false;
+        while (!exit) {
+            helperMenu.printForeignCurrencyAccountWithInterestMenu();
+            int choice = helperIO.readIntegerInput();
 
-        switch (choice) {
-            case 1:
-                // Logic to exchange to another account (EUR with interest)
-                System.out.println("Exchanging to another account (with interest)...");
-                break;
-            case 0:
-                // Go back to the main menu
-                break;
-            default:
-                System.out.println("Invalid choice. Please try again.");
+            switch (choice) {
+                case 1:
+                    System.out.println("Balance: " + account.getBalance());
+                    break;
+                case 2:
+                    System.out.println("Select an account to make an exchange with:");
+                    AbstractAccount destAccount = helperClient.selectAnAccount();
+                    System.out.println("Enter exchange amount (TRY):");
+                    double exchangeAmount = helperIO.readDoubleInput();
+                    account.exchange(destAccount, exchangeAmount);
+                    break;
+                case 0:
+                    // Go back to the main menu
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
         }
     }
+
 }

@@ -10,12 +10,11 @@ import investment.Fund;
 import investment.Stock;
 
 public class InvestmentAccountMenu  {
-    private static Scanner scanner = new Scanner(System.in);
 
-    HelperIO helperIO = new HelperIO();
-    HelperMenu helperMenu = new HelperMenu();
-
-    public void InvestmentAccountMenu (InvestmentAccount account) {
+    public InvestmentAccountMenu (InvestmentAccount investmentAccount) {
+        Scanner scanner = new Scanner(System.in);
+        HelperIO helperIO = new HelperIO();
+        HelperMenu helperMenu = new HelperMenu();
         boolean exit = false;
         while (!exit) {
             helperMenu.printInvestmentAccountMenu();
@@ -23,10 +22,13 @@ public class InvestmentAccountMenu  {
 
             switch (choice) {
             case 1:
+            	System.out.println("Balance:" + investmentAccount.getBalance());
+            	break;
+            case 2:
        		 System.out.println("=== Stocks ===");
  		    // Display the available stocks
        		 
- 		    List<Stock> stocks = account.getBank().getStocks();
+ 		    List<Stock> stocks = investmentAccount.getBank().getStocks();
  		    for (Stock stock : stocks) {
  		        System.out.println(stock.getName() + " - Current Value: " + stock.getValue());
  		    }
@@ -36,14 +38,14 @@ public class InvestmentAccountMenu  {
  		    String stockName = scanner.next();
 
  		    // Perform the stock purchase
- 		    Stock stock = account.getBank().getStock(stockName);
+ 		    Stock stock = investmentAccount.getBank().getStock(stockName);
  		    
  		    if (stock != null) {
- 		    	if(account.getBalance()- stock.getValue() > 0) {
-                	account.setBalance(account.getBalance()- stock.getValue());
-                    account.getCommodities().add(stock);
+ 		    	if(investmentAccount.getBalance()- stock.getValue() > 0) {
+ 		    		investmentAccount.setBalance(investmentAccount.getBalance()- stock.getValue());
+ 		    		investmentAccount.getCommodities().add(stock);
                     System.out.println("Successfully purchased " + stockName + " stock.");
-                    System.out.println("new account balance: " + account.getBalance() + " "+ account.getCurrencyType());
+                    System.out.println("new account balance: " + investmentAccount.getBalance() + " "+ investmentAccount.getCurrencyType());
             	}
             	else {
             		System.out.println("Insufficent balance. Please try again.");
@@ -57,11 +59,11 @@ public class InvestmentAccountMenu  {
                 // Logic to buy stocks
                 
                 break;
-            case 2:
+            case 3:
                 System.out.println("=== Funds ===");
                 // Display the available funds
 
-                List<Fund> funds = account.getBank().getFunds();
+                List<Fund> funds = investmentAccount.getBank().getFunds();
                 for (Fund fund : funds) {
                     System.out.println(fund.getName() + " - Current Value: " + fund.getValue());
                 }
@@ -71,14 +73,14 @@ public class InvestmentAccountMenu  {
                 String fundName = scanner.next();
 
                 // Perform the fund purchase
-                Fund fund = account.getBank().getFund(fundName);
+                Fund fund = investmentAccount.getBank().getFund(fundName);
                 
                 if (fund != null) {
-                	if(account.getBalance()- fund.getValue() > 0) {
-                    	account.setBalance(account.getBalance()- fund.getValue());
-                        account.getCommodities().add(fund);
+                	if(investmentAccount.getBalance()- fund.getValue() > 0) {
+                		investmentAccount.setBalance(investmentAccount.getBalance()- fund.getValue());
+                		investmentAccount.getCommodities().add(fund);
                         System.out.println("Successfully purchased " + fundName + " fund.");
-                        System.out.println("new account balance: " + account.getBalance() + " "+ account.getCurrencyType());
+                        System.out.println("new account balance: " + investmentAccount.getBalance() + " "+ investmentAccount.getCurrencyType());
                 	}
                 	else {
                 		System.out.println("Insufficent balance. Please try again.");
@@ -89,9 +91,9 @@ public class InvestmentAccountMenu  {
                     System.out.println("Invalid fund name. Please try again.");
                 }
                 break;
-            case 3:
+            case 4:
             	
-            	account.displayCommodities();
+            	investmentAccount.displayCommodities();
                 // Go back to the main menu
                 break;
             case 0:

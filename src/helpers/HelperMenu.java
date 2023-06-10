@@ -102,31 +102,11 @@ public class HelperMenu {
         System.out.print("Enter your choice: ");
         }
     
-
   
-        public void printForeignCurrencyAccountEURWithoutInterestMenu() {
-        System.out.println("------ Foreign Currency Account without Interest Menu ------");
-        System.out.println("1. Exchange");
-        System.out.println("0. Go back to main menu");
-
-        System.out.print("Enter your choice: ");
-        }
-    
-
-  
-        public void printForeignCurrencyAccountEURWithInterestMenu() {
-        System.out.println("------ Foreign Currency Account (EUR) with Interest Menu ------");
-        System.out.println("1. Exchange to another account (EUR with Interest)");
-        System.out.println("0. Go back to main menu");
-
-        System.out.print("Enter your choice: ");
-        }
-    
-
-  
-        public void printForeignCurrencyAccountUSDWithoutInterestMenu() {
+    public void printForeignCurrencyAccounWithoutInterestMenu() {
         System.out.println("------ Foreign Currency Account (USD) without Interest Menu ------");
-        System.out.println("1. Exchange to TRY Account");
+        System.out.println("1. Check Balance");
+        System.out.println("2. Exchange");
         System.out.println("0. Go back to main menu");
 
         System.out.print("Enter your choice: ");
@@ -134,19 +114,13 @@ public class HelperMenu {
 
 
 
-    public void printForeignCurrencyAccountUSDWithInterestMenu() {
-        System.out.println("------ Foreign Currency Account (USD) with Interest Menu ------");
-        System.out.println("1. Exchange to another account (USD with Interest)");
-        System.out.println("0. Go back to main menu");
-
-        System.out.print("Enter your choice: ");
-    }
 
 
 
-    public void printGoldAccountXAUWithoutInterestMenu() {
+    public void printGoldAccountWithoutInterestMenu() {
         System.out.println("------ Gold Account (XAU) without Interest Menu ------");
-        System.out.println("1. Exchange to TRY Account");
+        System.out.println("1. Check Balance");
+        System.out.println("2. Exchange");
         System.out.println("0. Go back to main menu");
 
         System.out.print("Enter your choice: ");
@@ -154,9 +128,10 @@ public class HelperMenu {
 
 
 
-    public void printGoldAccountXAUWithInterestMenu() {
+    public void printGoldAccountWithInterestMenu() {
         System.out.println("------ Gold Account (XAU) with Interest Menu ------");
-        System.out.println("1. Exchange to another account (XAU with Interest)");
+        System.out.println("1. Check Balance");
+        System.out.println("2. Exchange to another account (XAU with Interest)");
         System.out.println("0. Go back to main menu");
 
         System.out.print("Enter your choice: ");
@@ -166,9 +141,10 @@ public class HelperMenu {
   
     public void printInvestmentAccountMenu() {
         System.out.println("------ Investment Account Menu ------");
-        System.out.println("1. Buy Stocks");
-        System.out.println("2. Buy Funds");
-        System.out.println("3. Display Stocks and Funds");
+        System.out.println("1. Check Balance");
+        System.out.println("2. Buy Stocks");
+        System.out.println("3. Buy Funds");
+        System.out.println("4. Display Stocks and Funds");
         System.out.println("0. Go back to main menu");
 
         System.out.print("Enter your choice: ");

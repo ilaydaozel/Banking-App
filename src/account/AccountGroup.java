@@ -46,6 +46,9 @@ public class AccountGroup extends AbstractAccount{
             	if(curAccount instanceof IWithInterest) {
             		((IWithInterest) curAccount).updateInterest();
             	}
+            	if(curAccount instanceof InvestmentAccount) {
+            		totalBalance += ((InvestmentAccount) curAccount).getTotalCommodityValue();
+            	}
             	totalBalance += curAccount.getBalance();
             }
 		}

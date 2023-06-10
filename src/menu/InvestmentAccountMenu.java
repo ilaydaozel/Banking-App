@@ -64,11 +64,19 @@ public class InvestmentAccountMenu  {
 
                 // Perform the fund purchase
                 Fund fund = account.getBank().getFund(fundName);
-
+                
                 if (fund != null) {
-                    account.getCommodities().add(fund);
-                    account.getBank().setFundValue(fundName, 0);
-                    System.out.println("Successfully purchased " + fundName + " fund.");
+                	if(account.getBalance()- fund.getValue() > 0) {
+                    	account.setBalance(account.getBalance()- fund.getValue());
+                        account.getCommodities().add(fund);
+                        System.out.println("Successfully purchased " + fundName + " fund.");
+                        System.out.println("new account balance: " + account.getBalance() + " "+ account.getCurrencyType());
+                	}
+                	else {
+                		System.out.println("Insufficent balance. Please try again.");
+                	}
+                	break;
+                    
                 } else {
                     System.out.println("Invalid fund name. Please try again.");
                 }

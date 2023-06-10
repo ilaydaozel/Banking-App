@@ -24,5 +24,9 @@ public abstract class Commodity {
 	public void setValue(double value) {
 		this.value = value;
 	}
-	 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.name + this.value;
+	}
 }

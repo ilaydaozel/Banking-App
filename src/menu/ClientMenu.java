@@ -46,9 +46,6 @@ public class ClientMenu{
                 case 5:
                 	selectAccountGroupAll();
                 	break;
-                case 6:
-                    checkExpectedBalance();
-                    break;
                 case 0:
                     exit = true;
                     break;
@@ -167,7 +164,6 @@ public class ClientMenu{
         AccountGroup accountGroup = new AccountGroup(groupName);
         client.addToTopAccountGroup(accountGroup);
         System.out.println("Account group created successfully.");
-        System.out.println("newAccount group" + accountGroup.toString());
         System.out.println();
     }
 
@@ -192,7 +188,6 @@ public class ClientMenu{
         	else if (selectedAccount instanceof ForeignCurrencyAccountWithoutInterest) {
         		new ForeignCurrencyAccountWithoutInterestMenu((ForeignCurrencyAccountWithoutInterest) selectedAccount, client);
             }
-
         	else if (selectedAccount instanceof InvestmentAccount) {
         		new InvestmentAccountMenu((InvestmentAccount) selectedAccount);
             }
@@ -217,19 +212,4 @@ public class ClientMenu{
     	}
     }
     
-    private static void checkExpectedBalance() {
-        /*System.out.print("Enter the account index: ");
-        int accountIndex = readIntegerInput();
-
-        if (accountIndex >= 0 && accountIndex < currentClient.getNumAccounts()) {
-            Account account = currentClient.getAccount(accountIndex);
-            System.out.print("Enter the number of days in the future: ");
-            int days = readIntegerInput();
-            double expectedBalance = account.calculateFutureBalance(days);
-            System.out.println("Expected Balance (after " + days + " days): " + expectedBalance);
-        } else {
-            System.out.println("Invalid account index. Please try again.");
-        }
-        System.out.println();*/
-    }
 }

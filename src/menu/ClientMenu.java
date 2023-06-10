@@ -189,8 +189,7 @@ public class ClientMenu{
         		menu.GoldAccountXAUWithoutInterestMenu();
             }
         	else if (selectedAccount instanceof ForeignCurrencyAccountWithInterest) {
-        		ForeignCurrencyAccountWithInterestMenu menu = new ForeignCurrencyAccountWithInterestMenu();
-        		menu.displayMenu();
+        		new ForeignCurrencyAccountWithInterestMenu((ForeignCurrencyAccountWithInterest) selectedAccount, client);
             }
         	else if (selectedAccount instanceof ForeignCurrencyAccountWithoutInterest) {
         		/*ForeignCurrencyAccountWithoutInterestMenu menu = new ForeignCurrencyAccountWithoutInterestMenu();

@@ -73,6 +73,10 @@ public class InvestmentAccountMenu  {
                     System.out.println("Invalid fund name. Please try again.");
                 }
                 break;
+            case 3:
+            	account.displayCommodities();
+                // Go back to the main menu
+                break;
             case 0:
                 // Go back to the main menu
                 break;

@@ -1,5 +1,6 @@
 package account;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import enums.CurrencyType;
@@ -7,7 +8,7 @@ import investment.Commodity;
 
 public abstract class AbstractInvestmentAccount extends AbstractAccount {
 	private int id;
-	private List <Commodity> commodities;
+	private List<Commodity> commodities = new ArrayList<>();
 	
 	public AbstractInvestmentAccount(int id) {
 		super.setCurrencyType(CurrencyType.TRY);

@@ -22,7 +22,7 @@ public class ForeignCurrencyAccountWithoutInterestMenu  {
             switch (choice) {
             case 1:
             	
-            	foreignAccount.exchangeFromThis(destAccount, amount);
+            	foreignAccount.exchange(destAccount, amount);
                 // Logic to exchange to a TRY account
                 System.out.println("Exchanging to a TRY account...");
                 break;

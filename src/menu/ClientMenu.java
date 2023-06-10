@@ -15,10 +15,12 @@ public class ClientMenu{
 	private Client client;
 	HelperIO helperIO = new HelperIO();
 	HelperMenu helperMenu = new HelperMenu();
+	HelperClient helperClient;
     AccountFactoryFactory accountFactoryFactory = new AccountFactoryFactory();
 	
 	public ClientMenu(Client currentClient) {
 		this.client = currentClient;
+		this.helperClient = new HelperClient(currentClient);
 	}
 	
     public void clientMenu() {
@@ -30,7 +32,7 @@ public class ClientMenu{
 
             switch (choice) {
             	case 1:
-            		displayAccounts();
+            		helperClient.displayAccounts();
             		break;
                 case 2:
                     createAccount();
@@ -56,11 +58,7 @@ public class ClientMenu{
         }
     }
  
-    private void displayAccounts() {
-		client.getAccountGroup().display();
-		
-	}
-    
+
     private AccountGroup selectAccountGroup() {
     	//display all the account group types and select one
     	List<AbstractAccount> accountList =  client.getAccountGroup().getAccounts();
@@ -172,16 +170,9 @@ public class ClientMenu{
         System.out.println("newAccount group" + accountGroup.toString());
         System.out.println();
     }
-    public AbstractAccount selectAnAccount() {
-    	client.getAccountGroup().display();
-        System.out.print("Enter the id of the account: ");
-        int selectedAccountId = HelperIO.readIntegerInput();
-        AbstractAccount selectedAccount = client.getAccountGroup().getSelectedAccountByIdAllGroups(selectedAccountId);
-        return selectedAccount;
-    }
 
     public void selectAccountAll() {
-    	AbstractAccount selectedAccount = selectAnAccount();
+    	AbstractAccount selectedAccount = helperClient.selectAnAccount();
         if(selectedAccount != null) {
         	if (selectedAccount instanceof RegularAccountWithInterest) {
         		RegularAccountTRYWithInterestMenu menu = new RegularAccountTRYWithInterestMenu();
@@ -189,7 +180,8 @@ public class ClientMenu{
             } 	
         	else if (selectedAccount instanceof RegularAccountWithoutInterest) {
         		RegularAccountTRYWithoutInterestMenu menu = new RegularAccountTRYWithoutInterestMenu();
-        		menu.displayRegularAccountTRYWithoutInterestMenu((RegularAccountWithoutInterest)selectedAccount);
+        		menu.regularAccountTRYWithoutInterestMenu((RegularAccountWithoutInterest)selectedAccount, client);
+
             }
         	else if (selectedAccount instanceof GoldAccountWithInterest) {
         		GoldAccountXAUWithInterestMenu menu = new GoldAccountXAUWithInterestMenu();
@@ -211,23 +203,10 @@ public class ClientMenu{
                 switch (choice) {
                 case 1:
                 	System.out.println("Select a regular account without interest to make exchange to:");
-                	AbstractAccount destAccount = selectAnAccount();
-                	if(destAccount instanceof RegularAccountWithoutInterest) {
-                		CurrencyType accountCurrency = ((AbstractForeignCurrencyAccount)selectedAccount).getCurrencyType();
-                		System.out.println("Your balance: " + selectedAccount.getBalance() + " " + accountCurrency);
-                		System.out.println("To be exchanged account's balance: " + destAccount.getBalance() + " TRY");
-                		System.out.println("Enter exchange amount (" + accountCurrency + "):" );
-                		double exchangeAmount = helperIO.readDoubleInput();
-                        System.out.println("Exchanging to a TRY account...");
-                		((AbstractForeignCurrencyAccount)selectedAccount).exchange(destAccount, exchangeAmount);
-                		System.out.println("Your updated balance: " + selectedAccount.getBalance() + " " + accountCurrency);
-                		System.out.println("To be exchanged account's current balance: " + destAccount.getBalance() + " TRY");
-                	}
-                	else {
-                		System.out.println("The account you selected is not a regular account without interest. Select again! ");
-                	}
-                	
-
+                	AbstractAccount destAccount = helperClient.selectAnAccount();
+                    System.out.println("Enter exchange amount (TRY):");
+                    double exchangeAmount = helperIO.readDoubleInput();
+                	((ForeignCurrencyAccountWithoutInterest) selectedAccount).exchange(destAccount, choice);
                     break;
                 case 2:
                 	

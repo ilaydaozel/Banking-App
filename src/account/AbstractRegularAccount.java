@@ -1,8 +1,9 @@
 package account;
 
 import enums.CurrencyType;
+import interfaces.IExchangable;
 
-public abstract class AbstractRegularAccount extends AbstractAccount{
+public abstract class AbstractRegularAccount extends AbstractAccount implements IExchangable{
 	private int id;
 	public AbstractRegularAccount(int id) {
 		this.setId(id);
@@ -15,8 +16,5 @@ public abstract class AbstractRegularAccount extends AbstractAccount{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public abstract void exchangeToThis(AbstractAccount exchangeAccount, CurrencyType exchangeAccountType,  double amount);
-	
-	public abstract void exchangeFromThis(AbstractAccount exchangeAccount, CurrencyType exchangeAccountType, double amount);
 
 }

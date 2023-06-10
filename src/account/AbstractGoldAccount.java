@@ -1,8 +1,9 @@
 package account;
 
 import enums.CurrencyType;
+import interfaces.IExchangable;
 
-public abstract class AbstractGoldAccount extends AbstractAccount {
+public abstract class AbstractGoldAccount extends AbstractAccount implements IExchangable {
 	private int id;
 	
 	public AbstractGoldAccount(int id) {
@@ -19,8 +20,4 @@ public abstract class AbstractGoldAccount extends AbstractAccount {
 		this.id = id;
 	}
 
-	
-	public void exchange(CurrencyType source) {
-		
-	}
 }

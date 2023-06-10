@@ -26,14 +26,12 @@ public class RegularAccountWithoutInterest extends AbstractRegularAccount implem
 	}
 
 	@Override
-	public void exchangeToThis(AbstractAccount exchangeAccount, CurrencyType exchangeAccountType, double amount) {
+	public void exchange(AbstractAccount targetAccount, double amount) {
 		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void exchangeFromThis(AbstractAccount exchangeAccount, CurrencyType exchangeAccountType, double amount) {
-		// TODO Auto-generated method stub
-		
+    	//calculate the amount
+        double convertedAmount = this.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
+        //update balances
+        setBalance(this.getBalance() - amount);
+        targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
 	}
 }

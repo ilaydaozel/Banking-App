@@ -20,7 +20,7 @@ public class Bank {
     private USD usdCur;
     private TRY tryCur;
     private XAU xauCur;		
-    private Map<Integer, Double> interestRates;
+
     private int currentDay;
     //singleton class pattern
     private static final Bank instance = new Bank();
@@ -30,10 +30,10 @@ public class Bank {
         funds = new ArrayList<>();
         clients = new ArrayList<>();
         clients.add(new Client("ilayda"));
-        eurCur = new EUR(20.0);
-        usdCur = new USD(10.0);
-        tryCur = new  TRY(1);
-        xauCur = new XAU(1.94);
+        eurCur = new EUR(20.0,0.03);
+        usdCur = new USD(10.0,0.04);
+        tryCur = new  TRY(1,0.02);
+        xauCur = new XAU(45.0,0.05);
         //interestRates = new HashMap<>();
         currentDay = 0;
     }
@@ -89,14 +89,6 @@ public class Bank {
 	}
 
 	
-	public Map<Integer, Double> getInterestRates() {
-		return interestRates;
-	}
-
-	public void setInterestRates(Map<Integer, Double> interestRates) {
-		this.interestRates = interestRates;
-	}
-
 	public int getCurrentDay() {
 		return currentDay;
 	}
@@ -189,9 +181,48 @@ public class Bank {
         return null;
     }
 
-    public void setInterestRate(int accountType, double rate) {
-        interestRates.put(accountType, rate);
+    public void setInterestRate(String accountType, double rate) {
+        switch (accountType) {
+            case "EUR":
+                getEurCur().setDailyInterestRate(rate);
+                System.out.println("Interest rate for EUR set to: " + rate);
+                break;
+            case "USD":
+                getUsdCur().setDailyInterestRate(rate);
+                System.out.println("Interest rate for USD set to: " + rate);
+                break;
+            case "TRY":
+                getTryCur().setDailyInterestRate(rate);
+                System.out.println("Interest rate for TRY set to: " + rate);
+                break;
+            case "XAU":
+                getXauCur().setDailyInterestRate(rate);
+                System.out.println("Interest rate for XAU set to: " + rate);
+                break;
+            default:
+                System.out.println("Invalid currency type.");
+                break;
+        }
     }
+    public double getInterestRate(String accountType) {
+        switch (accountType) {
+            case "EUR":
+                return getEurCur().getDailyInterestRate();
+            case "USD":      
+                return getUsdCur().getDailyInterestRate();
+                
+            case "TRY":
+                return getTryCur().getDailyInterestRate();
+            case "XAU":
+                return getXauCur().getDailyInterestRate();
+            default:
+                System.out.println("Invalid currency type.");
+                
+                return 0.0;
+        }
+    }
+
+
 /*
     private void calculateInterest() {
         for (Client client : clients) {

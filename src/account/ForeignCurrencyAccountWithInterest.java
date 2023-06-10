@@ -26,6 +26,7 @@ public class ForeignCurrencyAccountWithInterest extends AbstractForeignCurrencyA
 		            // Update balances
 		            setBalance(this.getBalance() - amount);
 		            targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+		            System.out.println("Exchanged " + convertedAmount + " "+ targetAccount.getCurrencyType().toString() + " to target account!");
 		        }
 		        else {
 		        	System.out.println("Selected account's currency type is not " + this.getCurrencyType()+"!");

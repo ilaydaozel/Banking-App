@@ -28,12 +28,14 @@ public class ForeignCurrencyAccountWithoutInterest extends AbstractForeignCurren
 		        // Update balances
 		        setBalance(this.getBalance() - amount);
 		        targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+		        System.out.println("Exchanged " + convertedAmount + " "+ targetAccount.getCurrencyType().toString() + " to target account!");
 		    } else if (targetAccount instanceof ForeignCurrencyAccountWithoutInterest) {
 		        if (((ForeignCurrencyAccountWithoutInterest) targetAccount).getCurrencyType().equals(this.getCurrencyType())) {
 		            double convertedAmount = this.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
 		            // Update balances
 		            setBalance(this.getBalance() - amount);
 		            targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+		            System.out.println("Exchanged " + convertedAmount + " "+ targetAccount.getCurrencyType().toString() + " to target account!");
 		        }
 		        else {
 		        	System.out.println("Selected account's currency type is not " + this.getCurrencyType()+"!");

@@ -219,7 +219,7 @@ public class ClientMenu{
                 		System.out.println("Enter exchange amount (" + accountCurrency + "):" );
                 		double exchangeAmount = helperIO.readDoubleInput();
                         System.out.println("Exchanging to a TRY account...");
-                		((AbstractForeignCurrencyAccount)selectedAccount).exchange(destAccount, exchangeAmount);
+                		//((AbstractForeignCurrencyAccount)selectedAccount).exchange(destAccount, exchangeAmount);
                 		System.out.println("Your updated balance: " + selectedAccount.getBalance() + " " + accountCurrency);
                 		System.out.println("To be exchanged account's current balance: " + destAccount.getBalance() + " TRY");
                 	}

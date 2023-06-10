@@ -47,7 +47,7 @@ public class ClientMenu{
                 case 6:
                     checkExpectedBalance();
                     break;
-                case 7:
+                case 0:
                     exit = true;
                     break;
                 default:

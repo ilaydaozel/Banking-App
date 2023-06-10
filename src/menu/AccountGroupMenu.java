@@ -17,7 +17,7 @@ public class AccountGroupMenu {
                 case 1:
                 	System.out.println("Balance:" + account.getTotalAccountGroupBalance());
                     break;
-                case 2:
+                case 0:
                     // Go back to the main menu
                     exit = true;
                     break;

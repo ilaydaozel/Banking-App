@@ -27,7 +27,6 @@ public class MainMenu{
         Client client = new Client(name);
         bank.addNewClient(client);
         System.out.println("Client created successfully.");
-        System.out.println(bank.getClients());
         System.out.println();
     }
 
@@ -40,11 +39,9 @@ public class MainMenu{
         }
         else {
         	System.out.println("Select a client:");
-
             for (int i = 0; i < clients.size(); i++) {
                 System.out.println((i + 1) + ". " + clients.get(i).getUsername());
             }
-
             int choice = helperIO.readIntegerInput();
             if (choice >= 1 && choice <= clients.size()) {
                 currentClient = clients.get(choice - 1);

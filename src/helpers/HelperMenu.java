@@ -7,7 +7,7 @@ public class HelperMenu {
         System.out.println("1. Create Client");
         System.out.println("2. Select Client");
         System.out.println("3. Bank Menu");
-        System.out.println("4. Exit");
+        System.out.println("0. Exit");
         System.out.print("Enter your choice: ");
     }
     
@@ -20,7 +20,7 @@ public class HelperMenu {
         System.out.println("4. Select An Account For Operation");
         System.out.println("5. Select An Account Group For Operation");
         System.out.println("6. Check Expected Balance");
-        System.out.println("7. Back to Main Menu");
+        System.out.println("0. Back to Main Menu");
         System.out.print("Enter your choice: ");
     }
     
@@ -78,7 +78,7 @@ public class HelperMenu {
         System.out.println("5. Set Currency Rate");
         System.out.println("6. Set Interest Rate");
         System.out.println("7. Pass Time");
-        System.out.println("8. Back to Main Menu");
+        System.out.println("0. Back to Main Menu");
         System.out.print("Enter your choice: ");
     }
     
@@ -87,7 +87,7 @@ public class HelperMenu {
         System.out.println("------ Regular Account (TRY) without Interest Menu ------");
         System.out.println("1. Check Balance");
         System.out.println("2. Deposit Money");
-        System.out.println("3. Go back to main menu");
+        System.out.println("0. Go back to main menu");
         System.out.print("Enter your choice: ");
     }
 
@@ -96,7 +96,7 @@ public class HelperMenu {
     public void printRegularAccountTRYWithInterestMenu() {
         System.out.println("------ Regular Account (TRY) with Interest Menu ------");
         System.out.println("1. Check Balance");
-        System.out.println("2. Go back to main menu");
+        System.out.println("0. Go back to main menu");
         System.out.print("Enter your choice: ");
         }
     
@@ -104,9 +104,8 @@ public class HelperMenu {
   
         public void printForeignCurrencyAccountEURWithoutInterestMenu() {
         System.out.println("------ Foreign Currency Account without Interest Menu ------");
-        System.out.println("1. Exchange to TRY Account");
-        System.out.println("2. Exchange From TRY Account");
-        System.out.println("3. Go back to main menu");
+        System.out.println("1. Exchange");
+        System.out.println("0. Go back to main menu");
 
         System.out.print("Enter your choice: ");
         }
@@ -116,7 +115,7 @@ public class HelperMenu {
         public void printForeignCurrencyAccountEURWithInterestMenu() {
         System.out.println("------ Foreign Currency Account (EUR) with Interest Menu ------");
         System.out.println("1. Exchange to another account (EUR with Interest)");
-        System.out.println("2. Go back to main menu");
+        System.out.println("0. Go back to main menu");
 
         System.out.print("Enter your choice: ");
         }
@@ -176,7 +175,7 @@ public class HelperMenu {
 	public void printAccountGroupMenu() {
 	    System.out.println("------ Account Group Menu ------");
 	    System.out.println("1. Check Balance");
-	    System.out.println("2. Go back to main menu");
+	    System.out.println("0. Go back to main menu");
 	    System.out.print("Enter your choice: ");
 	    }
         

@@ -35,7 +35,6 @@ public class App {
             	Client client = mainMenu.selectClient();
             	if( client != null) {
             		currentClient = client;
-            		System.out.println("Selected client: " + currentClient);
             		clientMenu = new ClientMenu(currentClient);
             		clientMenu.clientMenu();
             	}

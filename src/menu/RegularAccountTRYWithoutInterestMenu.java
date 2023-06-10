@@ -33,7 +33,7 @@ public class RegularAccountTRYWithoutInterestMenu {
                     account.deposit(amount);
                     System.out.println("New balance:"+ account.getBalance());                   
                     break;
-                case 3:
+                case 0:
                     // Go back to the main menu
                     exit = true;
                     break;

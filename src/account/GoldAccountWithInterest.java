@@ -25,7 +25,7 @@ public class GoldAccountWithInterest extends AbstractGoldAccount implements IWit
 	            targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
 	        
 		    } else {
-		        System.out.println("You can only with a gold account without interest !");
+		        System.out.println("You can only with a gold account without interest (XAU)!");
 		    }
 		} else {
 		    System.out.println("Your balance is not enough!");

@@ -39,7 +39,7 @@ public class ForeignCurrencyAccountWithoutInterest extends AbstractForeignCurren
 		        	System.out.println("Selected account's currency type is not " + this.getCurrencyType()+"!");
 		        }
 		    } else {
-		        System.out.println("You can only exchange with a regular account (TRY) or a foreign currency account with interest(" + this.getCurrencyType() + ")!");
+		        System.out.println("You can only exchange with a regular account without interest (TRY) or a foreign currency account with interest(" + this.getCurrencyType() + ")!");
 		    }
 		} else {
 		    System.out.println("Your balance is not enough!");

@@ -16,12 +16,24 @@ public class GoldAccountWithoutInterest extends AbstractGoldAccount implements I
 	}
 	@Override
 	public void exchange(AbstractAccount targetAccount, double amount) {
-		// TODO Auto-generated method stub
-    	//calculate the amount
-        double convertedAmount = this.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
-        //update balances
-        setBalance(this.getBalance() - amount);
-        targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+	    if (this.getBalance() >= amount) {
+	        if (targetAccount instanceof GoldAccountWithInterest) {
+	            double convertedAmount = this.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
+	            // Update balances
+	            setBalance(this.getBalance() - amount);
+	            targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+	        } else if (targetAccount instanceof RegularAccountWithoutInterest) {
+	            double convertedAmount = this.getBank().convert(this.getCurrencyType(), targetAccount.getCurrencyType(), amount);
+	            // Update balances
+	            setBalance(this.getBalance() - amount);
+	            targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+	        } else {
+	            System.out.println("You can only exchange between a gold account with interest (XAU) or a regular account without interest (TRY)!");
+	        }
+	    } else {
+	        System.out.println("Your balance is not enough!");
+	    }
 	}
+
 
 }

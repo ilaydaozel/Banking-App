@@ -30,25 +30,9 @@ public class InvestmentAccountMenu  {
 	 		    System.out.print("Enter the name of the stock you want to buy: ");
 	 		    String stockName = scanner.next();
 	 		    Stock stock = investmentAccount.getBank().getStock(stockName);
-	 		    
-	 		    if (stock != null) {
-	 		    	if(investmentAccount.getBalance()- stock.getValue() > 0) {
-	 		    		investmentAccount.setBalance(investmentAccount.getBalance()- stock.getValue());
-	 		    		investmentAccount.getCommodities().add(stock);
-	                    System.out.println("Successfully purchased " + stockName + " stock.");
-	                    System.out.println("new account balance: " + investmentAccount.getBalance() + " "+ investmentAccount.getCurrencyType());
-	            	}
-	            	else {
-	            		System.out.println("Insufficent balance. Please try again.");
-	            	}
-	 		       
-	 		    } else {
-	 		        System.out.println("Invalid stock name. Please try again.");
-	 		        
-	 		    }
-	                // Logic to buy stocks
+	 		    investmentAccount.buyCommodity(stock);
 	                
-	                break;
+	            break;
             case 3:
             	helperBank.displayFunds();
                 // Get user input
@@ -57,25 +41,10 @@ public class InvestmentAccountMenu  {
 
                 // Perform the fund purchase
                 Fund fund = investmentAccount.getBank().getFund(fundName);
-                
-                if (fund != null) {
-                	if(investmentAccount.getBalance()- fund.getValue() > 0) {
-                		investmentAccount.setBalance(investmentAccount.getBalance()- fund.getValue());
-                		investmentAccount.getCommodities().add(fund);
-                        System.out.println("Successfully purchased " + fundName + " fund.");
-                        System.out.println("new account balance: " + investmentAccount.getBalance() + " "+ investmentAccount.getCurrencyType());
-                	}
-                	else {
-                		System.out.println("Insufficent balance. Please try again.");
-                	}
-                	break;
-                    
-                } else {
-                    System.out.println("Invalid fund name. Please try again.");
-                }
+                investmentAccount.buyCommodity(fund);
+
                 break;
             case 4:
-            	
             	investmentAccount.displayCommodities();
                 // Go back to the main menu
                 break;

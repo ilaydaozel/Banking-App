@@ -27,6 +27,6 @@ public abstract class Commodity {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return this.name + this.value;
+		return this.name +": "+ this.value;
 	}
 }

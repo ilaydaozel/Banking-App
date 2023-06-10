@@ -17,17 +17,27 @@ public class HelperBank {
 		    // Display the available stocks
    		 
 		    List<Stock> stocks = bank.getStocks();
-		    for (Stock stock : stocks) {
-		        System.out.println(stock.getName() + " - Current Value: " + stock.getValue());
+		    if(stocks.size()> 0) {
+			    for (Stock stock : stocks) {
+			        System.out.println(stock.getName() + " - Current Value: " + stock.getValue());
+			    }
 		    }
+		    else {
+		    	System.out.println("There is no stock yet.");
+		    }
+
     }
     public void displayFunds() {
         System.out.println("=== Funds ===");
         // Display the available funds
-
         List<Fund> funds = bank.getFunds();
-        for (Fund fund : funds) {
-            System.out.println(fund.getName() + " - Current Value: " + fund.getValue());
+        if(funds.size()> 0) {
+	        for (Fund fund : funds) {
+	            System.out.println(fund.getName() + " - Current Value: " + fund.getValue());
+	        }
+        }
+        else {
+        	System.out.println("There is no fund yet.");
         }
 
     }

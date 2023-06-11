@@ -8,46 +8,53 @@ import account.*;
 import accountFactory.*;
 import enums.*;
 import helpers.*;
+import interfaces.IMenu;
 import user.*;
 
-public class ClientMenu{
+public class ClientMenu implements IMenu{
 	private static Scanner scanner = new Scanner(System.in);  
 	private Client client;
-	HelperIO helperIO = new HelperIO();
-	HelperMenu helperMenu = new HelperMenu();
-	HelperClient helperClient;
-    AccountFactoryFactory accountFactoryFactory = new AccountFactoryFactory();
+	private HelperIO helperIO = new HelperIO();
+	private HelperMenu helperMenu = new HelperMenu();
+	private HelperClient helperClient;
+    private AccountFactoryFactory accountFactoryFactory = new AccountFactoryFactory();
 	
 	public ClientMenu(Client currentClient) {
 		this.client = currentClient;
 		this.helperClient = new HelperClient(currentClient);
 	}
 	
-    public void clientMenu() {
-        HelperIO helperIO = new HelperIO();
+	@Override
+	public void handleChoice() {
         boolean exit = false;
         while (!exit) {
-            helperMenu.printClientMenu();
+            displayMenu();
             int choice = helperIO.readIntegerInput();
 
             switch (choice) {
             	case 1:
             		helperClient.displayAccounts();
+            		System.out.println();
             		break;
                 case 2:
                     createAccount();
+                    System.out.println();
                     break;
                 case 3:
                     createAccountGroup();
+                    System.out.println();
                     break;
                 case 4:
                 	selectAccountAll();
+                	System.out.println();
                 	break;
                 case 5:
                 	selectAccountGroupAll();
+                	System.out.println();
                 	break;
                 case 0:
                     exit = true;
+                    System.out.println();
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
@@ -83,15 +90,12 @@ public class ClientMenu{
     }
 
 	private void createAccount() {
-
         AbstractAccount newAccount = null;
         AccountGroup selectedGroup = null;
-        
-        //First select an account group to add
+
         try {
+            //First select an account group to add
             selectedGroup = selectAccountGroup();
-            System.out.println("Your account will be created under: "); 
-            selectedGroup.display();
             System.out.println("Enter the account type: ");
             helperMenu.printAccountTypeMenu();
             int type = helperIO.readIntegerInput();
@@ -169,29 +173,36 @@ public class ClientMenu{
 
     public void selectAccountAll() {
     	AbstractAccount selectedAccount = helperClient.selectAnAccount();
+    	IMenu selectedMenu = null;
         if(selectedAccount != null) {
         	if (selectedAccount instanceof RegularAccountWithInterest) {
-        		new RegularAccountWithInterestMenu((RegularAccountWithInterest)selectedAccount, client);
+        		selectedMenu = new RegularAccountWithInterestMenu((RegularAccountWithInterest) selectedAccount, client);      
             } 	
         	else if (selectedAccount instanceof RegularAccountWithoutInterest) {
-        		new RegularAccountWithoutInterestMenu((RegularAccountWithoutInterest)selectedAccount, client);
+        		selectedMenu = new RegularAccountWithoutInterestMenu((RegularAccountWithoutInterest) selectedAccount, client);         
             }
         	else if (selectedAccount instanceof GoldAccountWithInterest) {
-        		new GoldAccountWithInterestMenu((GoldAccountWithInterest) selectedAccount, client);
+        		selectedMenu = new GoldAccountWithInterestMenu((GoldAccountWithInterest) selectedAccount, client);
             }
         	else if (selectedAccount instanceof GoldAccountWithoutInterest) {
-        		new GoldAccountWithoutInterestMenu((GoldAccountWithoutInterest) selectedAccount, client);
+        		selectedMenu = new GoldAccountWithoutInterestMenu((GoldAccountWithoutInterest) selectedAccount, client);
             }
         	else if (selectedAccount instanceof ForeignCurrencyAccountWithInterest) {
-        		new ForeignCurrencyAccountWithInterestMenu((ForeignCurrencyAccountWithInterest) selectedAccount, client);
+        		selectedMenu = new ForeignCurrencyAccountWithInterestMenu((ForeignCurrencyAccountWithInterest) selectedAccount, client);
             }
         	else if (selectedAccount instanceof ForeignCurrencyAccountWithoutInterest) {
-        		new ForeignCurrencyAccountWithoutInterestMenu((ForeignCurrencyAccountWithoutInterest) selectedAccount, client);
+        		selectedMenu = new ForeignCurrencyAccountWithoutInterestMenu((ForeignCurrencyAccountWithoutInterest) selectedAccount, client);
             }
         	else if (selectedAccount instanceof InvestmentAccount) {
-        		new InvestmentAccountMenu((InvestmentAccount) selectedAccount);
+        		selectedMenu = new InvestmentAccountMenu((InvestmentAccount) selectedAccount);    
             }
-
+        	if(selectedMenu != null) {
+        		selectedMenu.executeMenu();
+        	}
+        	else {
+        		System.out.println("No menu selected");
+        	}
+        	
         }
         else {
         	System.out.println("Please enter a valid ID!");
@@ -211,5 +222,22 @@ public class ClientMenu{
     		System.out.println("There is no group named as " + groupName + "! ");
     	}
     }
+    
+    public void displayMenu() {
+        System.out.println("--- Client Menu ---");
+        System.out.println("1. Display Accounts");
+        System.out.println("2. Create Account");
+        System.out.println("3. Create Account Group");
+        System.out.println("4. Select An Account For Operation");
+        System.out.println("5. Select An Account Group For Operation");
+        System.out.println("0. Back to Main Menu");
+        System.out.print("Enter your choice: ");
+    }
+
+	@Override
+	public void executeMenu() {
+		handleChoice();
+		
+	}
     
 }

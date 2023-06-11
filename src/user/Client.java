@@ -10,7 +10,7 @@ public class Client {
 
     public Client(String username) {
     	this.username = username;
-        this.topAccountGroup = new AccountGroup("Top Account Group");
+        this.topAccountGroup = new AccountGroup("Top");
         topAccountGroup.addAccount(new RegularAccountWithoutInterest(0));
     }
 

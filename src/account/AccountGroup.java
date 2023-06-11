@@ -162,4 +162,12 @@ public class AccountGroup extends AbstractAccount{
 	    return null; // Account group with the given name not found
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

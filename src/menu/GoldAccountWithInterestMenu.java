@@ -44,11 +44,16 @@ public class GoldAccountWithInterestMenu implements IMenu {
 	            case 2:
 	                System.out.println("Select an account to make an exchange with:");
 	                AbstractAccount destAccount = helperClient.selectAnAccount();
-	                System.out.println("Your current balance: " + account.getBalance());
-	                System.out.println("Enter exchange amount (XAU):");
-	                double exchangeAmount = helperIO.readDoubleInput();
-	                account.exchange(destAccount, exchangeAmount);
-	                System.out.println();
+                    if(destAccount != null) {
+    	                System.out.println("Your current balance: " + account.getBalance());
+    	                System.out.println("Enter exchange amount (XAU):");
+    	                double exchangeAmount = helperIO.readDoubleInput();
+    	                account.exchange(destAccount, exchangeAmount);
+    	                System.out.println();
+                    }else {
+                    	System.out.println("There is no account with this id!");
+                    }
+
 	                break;
 	            case 3:
 	                System.out.println("Enter a day amount to calculate the expected balance:");

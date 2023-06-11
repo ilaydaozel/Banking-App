@@ -154,12 +154,18 @@ public class Bank {
         if (stock != null) {
             stock.setValue(value);
         }
+        else {
+        	System.out.println("There is no such stock in the bank!");
+        }
     }
 
     public void setFundValue(String name, double value) {
         Fund fund = getFund(name);
         if (fund != null) {
             fund.setValue(value);
+        }
+        else {
+        	System.out.println("There is no such fund in the bank!");
         }
     }
  

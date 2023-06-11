@@ -2,7 +2,7 @@ package account;
 
 import interfaces.IWithoutInterest;
 
-public class RegularAccountWithoutInterest extends AbstractRegularAccount{
+public class RegularAccountWithoutInterest extends AbstractRegularAccount implements IWithoutInterest{
 
     public RegularAccountWithoutInterest(int id) {
         super(id);
@@ -23,15 +23,19 @@ public class RegularAccountWithoutInterest extends AbstractRegularAccount{
 
     @Override
     public void exchange(AbstractAccount targetAccount, double amount) {
-        if (getBalance() >= amount) {
-            if (isExchangeAllowed(targetAccount)) {
-                performExchange(targetAccount, amount);
+    	if (!targetAccount.equals(this)) {
+            if (getBalance() >= amount) {
+                if (isExchangeAllowed(targetAccount)) {
+                    performExchange(targetAccount, amount);
+                } else {
+                    System.out.println("You can only exchange between accounts without interest, investment accounts, or regular accounts with interest!");
+                }
             } else {
-                System.out.println("You can only exchange between accounts without interest, investment accounts, or regular accounts with interest!");
+                System.out.println("Your balance is not enough!");
             }
-        } else {
-            System.out.println("Your balance is not enough!");
-        }
+    	}else {
+    		System.out.println("You can't exchange to the account itself, please choose another account!");
+    	}
     }
 
     private boolean isExchangeAllowed(AbstractAccount targetAccount) {

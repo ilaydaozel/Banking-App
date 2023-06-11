@@ -2,39 +2,43 @@ package menu;
 
 import java.util.Scanner;
 
-import currency.Currency;
 import enums.CurrencyType;
 import helpers.HelperBank;
 import helpers.HelperIO;
 import helpers.HelperMenu;
+import interfaces.IMenu;
 import user.Bank;
-import user.Client;
 
-public class BankMenu{
-	private Bank bank;
-	private static Scanner scanner = new Scanner(System.in);  
-	HelperIO helperIO = new HelperIO();
-	HelperMenu helperMenu = new HelperMenu();
-	HelperBank helperBank;
-	
-	public BankMenu(Bank bank) {
-		this.bank = bank;
-		this.helperBank = new HelperBank(this.bank);
-	}
-	
-    public void bankMenu() {
+public class BankMenu implements IMenu {
+
+    private Bank bank;
+    private static Scanner scanner = new Scanner(System.in);
+    private HelperIO helperIO = new HelperIO();
+    private HelperMenu helperMenu = new HelperMenu();
+    private HelperBank helperBank;
+
+    public BankMenu(Bank bank) {
+        this.bank = bank;
+        this.helperBank = new HelperBank(this.bank);
+    }
+
+    @Override
+    public void displayMenu() {
+        helperMenu.printBankMenu();
+    }
+
+    @Override
+    public void handleChoice() {
         boolean exit = false;
         while (!exit) {
-        	helperMenu.printBankMenu();
+            displayMenu();
             int choice = readIntegerInput();
 
             switch (choice) {
-            	case 1:
-            		System.out.println("---Commodities---");
-	            	helperBank.displayFunds();
-	            	helperBank.displayStocks();
-	            	System.out.println();
-	            	break;
+                case 1:
+                	helperBank.displayCommodities();
+                    System.out.println();
+                    break;
                 case 2:
                     createStock();
                     System.out.println();
@@ -44,12 +48,12 @@ public class BankMenu{
                     System.out.println();
                     break;
                 case 4:
-                	helperBank.displayStocks();
+                    helperBank.displayStocks();
                     setStockValue();
                     System.out.println();
                     break;
                 case 5:
-                	helperBank.displayFunds();
+                    helperBank.displayFunds();
                     setFundValue();
                     System.out.println();
                     break;
@@ -74,13 +78,17 @@ public class BankMenu{
         }
     }
 
+    @Override
+    public void executeMenu() {
+        handleChoice();
+    }
 
     private void createStock() {
         System.out.print("Enter the stock name: ");
         String stockName = scanner.nextLine();
         System.out.print("Enter the stock value: ");
         double stockValue = helperIO.readDoubleInput();
-        bank.createStock(stockName,stockValue);
+        bank.createStock(stockName, stockValue);
         System.out.println("Stock created successfully.");
         System.out.println();
     }
@@ -90,7 +98,7 @@ public class BankMenu{
         String fundName = scanner.nextLine();
         System.out.print("Enter the fund value: ");
         double fundValue = helperIO.readDoubleInput();
-        bank.createFund(fundName,fundValue);
+        bank.createFund(fundName, fundValue);
         System.out.println("Fund created successfully.");
         System.out.println();
     }
@@ -128,27 +136,35 @@ public class BankMenu{
         } else {
             System.out.print("Enter the currency rate: ");
             double currencyRate = helperIO.readDoubleInput();
-            
+
+            CurrencyType currencyType;
+
             switch (currencyCode) {
                 case 1:
+                    currencyType = CurrencyType.EUR;
                     bank.getEurCur().setRate(currencyRate);
                     break;
                 case 2:
+                    currencyType = CurrencyType.USD;
                     bank.getUsdCur().setRate(currencyRate);
                     break;
                 case 3:
+                    currencyType = CurrencyType.XAU;
                     bank.getXauCur().setRate(currencyRate);
                     break;
                 case 4:
+                    currencyType = CurrencyType.TRY;
                     bank.getTryCur().setRate(currencyRate);
                     break;
+                default:
+                    System.out.println("Invalid currency code.");
+                    return;
             }
 
             System.out.println("Currency rate set successfully.");
             System.out.println();
         }
     }
-
 
     private void setInterestRate() {
         System.out.println("Select the currency type:");
@@ -160,20 +176,20 @@ public class BankMenu{
         System.out.print("Enter the currency number (1-4): ");
         int currencyNumber = readIntegerInput();
 
-        CurrencyType currencyType = null;
+        CurrencyType currencyType;
 
         switch (currencyNumber) {
             case 1:
-                currencyType = currencyType.EUR;
+                currencyType = CurrencyType.EUR;
                 break;
             case 2:
-                currencyType = currencyType.USD;
+                currencyType = CurrencyType.USD;
                 break;
             case 3:
-                currencyType = currencyType.TRY;
+                currencyType = CurrencyType.TRY;
                 break;
             case 4:
-                currencyType = currencyType.XAU;
+                currencyType = CurrencyType.XAU;
                 break;
             default:
                 System.out.println("Invalid currency number.");
@@ -187,7 +203,6 @@ public class BankMenu{
         System.out.println("Interest rate for " + currencyType + " set to: " + interestRate);
         System.out.println();
     }
-
 
     private void passTime() {
         System.out.print("Enter the number of days to pass: ");
@@ -206,6 +221,5 @@ public class BankMenu{
             }
         }
     }
-
-
 }
+

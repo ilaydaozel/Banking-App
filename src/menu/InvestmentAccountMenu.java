@@ -28,12 +28,16 @@ public class InvestmentAccountMenu implements IMenu {
     }
 
     @Override
-    public void handleChoice(int choice) {
+    public void handleChoice() {
         Scanner scanner = new Scanner(System.in);
         HelperIO helperIO = new HelperIO();
         HelperBank helperBank = new HelperBank(investmentAccount.getBank());
-
-        switch (choice) {
+        
+        boolean exit = false;
+        while (!exit) {
+        	displayMenu();
+        	int choice = helperIO.readIntegerInput();
+            switch (choice) {
             case 1:
                 System.out.println("Balance: " + investmentAccount.getBalance());
                 System.out.println();
@@ -60,20 +64,22 @@ public class InvestmentAccountMenu implements IMenu {
                 break;
             case 4:
                 investmentAccount.displayCommodities();
+                System.out.println();
                 break;
             case 0:
+            	exit = true;
+            	System.out.println();
                 // Go back to the main menu
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+        }
+
     }
     @Override
     public void executeMenu() {
-        displayMenu();
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
-        handleChoice(choice);
+        handleChoice();
     }
 }
 

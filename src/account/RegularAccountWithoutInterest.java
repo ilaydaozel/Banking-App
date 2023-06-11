@@ -18,7 +18,7 @@ public class RegularAccountWithoutInterest extends AbstractRegularAccount implem
 
     @Override
     public void display() {
-        System.out.println("- id: " + getId() + " Regular Account Without Interest");
+        System.out.println("- id:" + getId() + " Regular Account Without Interest");
     }
 
     @Override
@@ -37,14 +37,16 @@ public class RegularAccountWithoutInterest extends AbstractRegularAccount implem
     		System.out.println("You can't exchange to the account itself, please choose another account!");
     	}
     }
-
-    private boolean isExchangeAllowed(AbstractAccount targetAccount) {
+    
+    @Override
+    public boolean isExchangeAllowed(AbstractAccount targetAccount) {
         return targetAccount instanceof RegularAccountWithInterest ||
                 targetAccount instanceof IWithoutInterest ||
                 targetAccount instanceof InvestmentAccount;
     }
-
-    private void performExchange(AbstractAccount targetAccount, double amount) {
+    
+    @Override
+    public void performExchange(AbstractAccount targetAccount, double amount) {
         double convertedAmount = targetAccount.getBank().convert(getCurrencyType(), targetAccount.getCurrencyType(), amount);
         // Update balances
         setBalance(getBalance() - amount);

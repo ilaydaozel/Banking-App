@@ -41,4 +41,10 @@ public class HelperBank {
         }
 
     }
+    
+    public void displayCommodities() {
+    	System.out.println("=== Commodities ===");
+    	displayStocks();
+    	displayFunds();
+    }
 }

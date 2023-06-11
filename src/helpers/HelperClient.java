@@ -11,12 +11,13 @@ public class HelperClient {
 	}
 	
     public void displayAccounts() {
+    	System.out.println("=== Accounts ===");
 		client.getAccountGroup().display();
 		
 	}
     
     public AbstractAccount selectAnAccount() {
-    	client.getAccountGroup().display();
+    	displayAccounts();
         System.out.print("Enter the id of the account: ");
         int selectedAccountId = HelperIO.readIntegerInput();
         AbstractAccount selectedAccount = client.getAccountGroup().getSelectedAccountByIdAllGroups(selectedAccountId);

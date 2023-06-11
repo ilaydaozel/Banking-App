@@ -1,3 +1,4 @@
+
 package menu;
 
 import account.AbstractAccount;
@@ -11,6 +12,7 @@ public class RegularAccountWithoutInterestMenu implements IMenu {
 
     private RegularAccountWithoutInterest account;
     private Client client;
+    private HelperIO helperIO = new HelperIO();
 
     public RegularAccountWithoutInterestMenu(RegularAccountWithoutInterest account, Client client) {
         this.account = account;
@@ -28,49 +30,54 @@ public class RegularAccountWithoutInterestMenu implements IMenu {
     }
 
     @Override
-    public void handleChoice(int choice) {
+    public void handleChoice() {
         HelperClient helperClient = new HelperClient(client);
-        HelperIO helperIO = new HelperIO();
 
-        switch (choice) {
-            case 1:
-                System.out.println("Balance: " + account.getBalance() + " " + account.getCurrencyType());
-                System.out.println();
-                break;
-            case 2:
-                System.out.println("Enter the amount to deposit:");
-                double amount = helperIO.readDoubleInput();
-                System.out.println("Depositing money...");
-                account.deposit(amount);
-                System.out.println("New balance: " + account.getBalance());
-                System.out.println();
-                break;
-            case 3:
-                System.out.println("You can exchange to...");
-                System.out.println("Regular Account With Interest");
-                System.out.println("All accounts without interest");
-                System.out.println("Investment Account");
-                System.out.println("Select an account without interest to make an exchange to:");
-                AbstractAccount destAccount = helperClient.selectAnAccount();
-                System.out.println("Your current balance: " + account.getBalance());
-                System.out.println("Enter exchange amount (TRY):");
-                double exchangeAmount = helperIO.readDoubleInput();
-                account.exchange(destAccount, exchangeAmount);
-                System.out.println();
-                break;
-            case 0:
-                // Go back to the main menu
-                break;
-            default:
-                System.out.println("Invalid choice. Please try again.");
+        boolean exit = false;
+        while (!exit) {
+            displayMenu();
+            int choice = helperIO.readIntegerInput();
+            switch (choice) {
+                case 1:
+                    System.out.println("Balance: " + account.getBalance() + " " + account.getCurrencyType());
+                    System.out.println();
+                    break;
+                case 2:
+                    System.out.println("Enter the amount to deposit:");
+                    double amount = helperIO.readDoubleInput();
+                    System.out.println("Depositing money...");
+                    account.deposit(amount);
+                    System.out.println("New balance: " + account.getBalance());
+                    System.out.println();
+                    break;
+                case 3:
+                	System.out.println();
+                    System.out.println("You can exchange to...");
+                    System.out.println("Regular Account With Interest");
+                    System.out.println("All accounts without interest");
+                    System.out.println("Investment Account");
+                    System.out.println();
+                    System.out.println("Select an account without interest to make an exchange to:");
+                    AbstractAccount destAccount = helperClient.selectAnAccount();
+                    System.out.println("Your current balance: " + account.getBalance());
+                    System.out.println("Enter exchange amount (TRY):");
+                    double exchangeAmount = helperIO.readDoubleInput();
+                    account.exchange(destAccount, exchangeAmount);
+                    System.out.println();
+                    break;
+                case 0:
+                    exit = true;
+                    System.out.println();
+                    // Go back to the main menu
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
         }
     }
-    
+
     @Override
     public void executeMenu() {
-        displayMenu();
-        HelperIO helperIO = new HelperIO();
-        int choice = helperIO.readIntegerInput();
-        handleChoice(choice);
+        handleChoice();
     }
 }

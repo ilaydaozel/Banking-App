@@ -11,6 +11,7 @@ public class RegularAccountWithInterestMenu implements IMenu {
 
     private RegularAccountWithInterest account;
     private Client client;
+    private HelperIO helperIO = new HelperIO();
 
     public RegularAccountWithInterestMenu(RegularAccountWithInterest account, Client client) {
         this.account = account;
@@ -30,7 +31,6 @@ public class RegularAccountWithInterestMenu implements IMenu {
     @Override
     public void handleChoice(int choice) {
         HelperClient helperClient = new HelperClient(client);
-        HelperIO helperIO = new HelperIO();
 
         switch (choice) {
             case 1:

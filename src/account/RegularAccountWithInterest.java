@@ -12,7 +12,7 @@ public class RegularAccountWithInterest extends AbstractRegularAccount implement
 
     @Override
     public void display() {
-        System.out.println("- id: " + super.getId() + " Regular Account With Interest");
+        System.out.println("- id:" + super.getId() + " Regular Account With Interest");
     }
 
     @Override
@@ -23,7 +23,7 @@ public class RegularAccountWithInterest extends AbstractRegularAccount implement
                     if (isExchangeAllowed(targetAccount)) {
                         performExchange(targetAccount, amount);
                     } else {
-                        System.out.println("You can only exchange with a regular account without interest (TRY)!");
+                        System.out.println("You can only exchange with a regular account(TRY)!");
                     }
                 } else {
                     System.out.println("Your balance is not enough!");
@@ -34,12 +34,13 @@ public class RegularAccountWithInterest extends AbstractRegularAccount implement
     	}
         
     }
-
-    private boolean isExchangeAllowed(AbstractAccount targetAccount) {
-        return targetAccount instanceof RegularAccountWithoutInterest;
+    
+    @Override
+    public boolean isExchangeAllowed(AbstractAccount targetAccount) {
+        return targetAccount instanceof AbstractRegularAccount;
     }
-
-    private void performExchange(AbstractAccount targetAccount, double amount) {
+    @Override
+    public void performExchange(AbstractAccount targetAccount, double amount) {
         double convertedAmount = getBank().convert(getCurrencyType(), targetAccount.getCurrencyType(), amount);
         // Update balances
         setBalance(getBalance() - amount);

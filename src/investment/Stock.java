@@ -10,7 +10,7 @@ public class Stock extends Commodity {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "name: "+ getName() +" - value: "+ getValue();
+		return "Stock name: "+ getName() +" - Value: "+ getValue();
 	}
 
 }

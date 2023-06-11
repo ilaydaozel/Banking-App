@@ -25,6 +25,7 @@ public class ForeignCurrencyAccountFactory extends AccountFactory {
 		}
 		else {
 			//default option
+			System.out.println("Default option selected");
 			account = new ForeignCurrencyAccountWithoutInterest(super.getAccountIdCounter(), CurrencyType.EUR);
 		}
 		return account;

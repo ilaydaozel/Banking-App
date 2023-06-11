@@ -23,6 +23,7 @@ public class AccountFactoryFactory {
 		}
 		else {
 			//default option
+			System.out.println("Default option selected");
 			accountFactory = new RegularAccountFactory(idCounter);
 			idCounter ++;
 		}

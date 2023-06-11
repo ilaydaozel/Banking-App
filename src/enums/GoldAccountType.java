@@ -1,8 +1,8 @@
 package enums;
 
 public enum GoldAccountType {
-    WITHOUT_INTEREST(1, "Gold Account (XAU) without Interest"),
-    WITH_INTEREST(2, "Gold Account (XAU) with Interest");
+    WITHOUT_INTEREST(1, "withoutInterest"),
+    WITH_INTEREST(2, "withInterest");
 
     private final int value;
     private final String name;

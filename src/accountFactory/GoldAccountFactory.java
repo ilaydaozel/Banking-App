@@ -16,6 +16,7 @@ public class GoldAccountFactory extends AccountFactory {
 			account = new GoldAccountWithoutInterest(super.getAccountIdCounter());
 		} else {
 			// default option
+			System.out.println("Default option selected");
 			account = new GoldAccountWithoutInterest(super.getAccountIdCounter());
 		}
 		return account;

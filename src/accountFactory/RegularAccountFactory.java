@@ -17,6 +17,7 @@ public class RegularAccountFactory extends AccountFactory {
             account = new RegularAccountWithoutInterest(super.getAccountIdCounter());
         } else {
             // default option
+        	System.out.println("Default option selected");
             account = new RegularAccountWithoutInterest(super.getAccountIdCounter());
         }
         return account;

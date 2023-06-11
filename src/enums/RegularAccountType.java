@@ -1,8 +1,8 @@
 package enums;
 
 public enum RegularAccountType {
-    WITHOUT_INTEREST(1, "Regular Account (TRY) without Interest"),
-    WITH_INTEREST(2, "Regular Account (TRY) with Interest");
+    WITHOUT_INTEREST(1, "withoutInterest"),
+    WITH_INTEREST(2, "withInterest");
 
     private final int value;
     private final String name;

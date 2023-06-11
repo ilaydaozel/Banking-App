@@ -44,11 +44,16 @@ public class ForeignCurrencyAccountWithInterestMenu implements IMenu {
                 case 2:
                     System.out.println("Select an account to make an exchange with:");
                     AbstractAccount targetAccount = helperClient.selectAnAccount();
-                    System.out.println("Your current balance: " + account.getBalance());
-                    System.out.println("Enter exchange amount (" + account.getCurrencyType() + "):");
-                    double exchangeAmount = helperIO.readDoubleInput();
-                    account.exchange(targetAccount, exchangeAmount);
-                    System.out.println();
+                    if(targetAccount != null) {
+                        System.out.println("Your current balance: " + account.getBalance());
+                        System.out.println("Enter exchange amount (" + account.getCurrencyType() + "):");
+                        double exchangeAmount = helperIO.readDoubleInput();
+                        account.exchange(targetAccount, exchangeAmount);
+                        System.out.println();
+                    }else {
+                    	System.out.println("There is no account with this id!");
+                    }
+
                     break;
                 case 3:
                     System.out.println("Enter a day amount to calculate the expected balance:");

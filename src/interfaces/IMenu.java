@@ -1,7 +1,8 @@
 package interfaces;
 
 public interface IMenu {
-    void displayMenu();
-    void handleChoice(int choice);
+    public void displayMenu();
+    public void handleChoice(int choice);
+    public void executeMenu();
 }
 

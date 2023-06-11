@@ -29,10 +29,14 @@ public class RegularAccountWithInterestMenu implements IMenu {
     }
 
     @Override
-    public void handleChoice(int choice) {
+    public void handleChoice() {
         HelperClient helperClient = new HelperClient(client);
 
-        switch (choice) {
+        boolean exit = false;
+        while (!exit) {
+        	displayMenu();
+        	int choice = helperIO.readIntegerInput();
+        	switch (choice) {
             case 1:
                 System.out.println("Balance: " + account.getBalance() + " " + account.getCurrencyType());
                 System.out.println();
@@ -54,21 +58,21 @@ public class RegularAccountWithInterestMenu implements IMenu {
                 System.out.println();
                 break;
             case 0:
+            	exit = true;
+            	System.out.println();
                 // Go back to the main menu
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
+        }
+
+        
     }
     
     @Override
     public void executeMenu() {
-        boolean exit = false;
-        while (!exit) {
-            displayMenu();
-            int choice = helperIO.readIntegerInput();
-            handleChoice(choice);
-        }
+    	handleChoice();
     }
 }
 

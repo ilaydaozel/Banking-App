@@ -37,8 +37,9 @@ public abstract class AbstractInvestmentAccount extends AbstractAccount {
 	    }
 	    return totalValue;
 	}
+	
 	public void displayCommodities() {
-	    System.out.println("=== Commodities ===");
+	    System.out.println("=== Your Commodities ===");
 	    if(commodities.size()>0) {
 	    	 for (Commodity commodity : commodities) {
 	 	        System.out.println(commodity.toString());

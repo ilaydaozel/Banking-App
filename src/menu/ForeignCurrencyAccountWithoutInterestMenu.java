@@ -7,22 +7,39 @@ import account.ForeignCurrencyAccountWithoutInterest;
 import helpers.HelperClient;
 import helpers.HelperIO;
 import user.Client;
+import interfaces.IMenu;
 
-public class ForeignCurrencyAccountWithoutInterestMenu  {
+public class ForeignCurrencyAccountWithoutInterestMenu implements IMenu {
+
+    private ForeignCurrencyAccountWithoutInterest foreignAccount;
+    private Client client;
+    private HelperIO helperIO = new HelperIO();
 
     public ForeignCurrencyAccountWithoutInterestMenu(ForeignCurrencyAccountWithoutInterest foreignAccount, Client client) {
-        Scanner scanner = new Scanner(System.in);
-        HelperClient helperClient = new HelperClient(client);
-        HelperIO helperIO = new HelperIO();
+        this.foreignAccount = foreignAccount;
+        this.client = client;
+    }
 
+    @Override
+    public void displayMenu() {
+        System.out.println("------ Foreign Currency Account (USD) without Interest Menu ------");
+        System.out.println("1. Check Balance");
+        System.out.println("2. Exchange");
+        System.out.println("0. Go back to main menu");
+        System.out.print("Enter your choice: ");
+    }
+
+    @Override
+    public void handleChoice() {
+        HelperClient helperClient = new HelperClient(client);
         boolean exit = false;
         while (!exit) {
-        	printForeignCurrencyAccounWithoutInterestMenu();
+            displayMenu();
             int choice = helperIO.readIntegerInput();
-
             switch (choice) {
             case 1:
                 System.out.println("Balance: " + foreignAccount.getBalance() + " " + foreignAccount.getCurrencyType());
+                System.out.println();
                 break;
             case 2:
                 System.out.println("Select an account to make an exchange with:");
@@ -34,22 +51,18 @@ public class ForeignCurrencyAccountWithoutInterestMenu  {
                 System.out.println();
                 break;
             case 0:
+            	exit = true;
+            	System.out.println();
                 // Go back to the main menu
-                exit = true;
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
-      }
-    }    
-    
-    private void printForeignCurrencyAccounWithoutInterestMenu() {
-        System.out.println("------ Foreign Currency Account (USD) without Interest Menu ------");
-        System.out.println("1. Check Balance");
-        System.out.println("2. Exchange");
-        System.out.println("0. Go back to main menu");
-
-        System.out.print("Enter your choice: ");
+      }       
     }
 
+    @Override
+    public void executeMenu() {
+        handleChoice();
+    }
 }

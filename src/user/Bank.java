@@ -20,7 +20,6 @@ public class Bank {
     private USD usdCur;
     private TRY tryCur;
     private XAU xauCur;		
-
     private int currentDay;
     //singleton class pattern
     private static final Bank instance = new Bank();
@@ -34,7 +33,6 @@ public class Bank {
         usdCur = new USD(10.0,0.04);
         tryCur = new  TRY(1,0.02);
         xauCur = new XAU(45.0,0.05);
-        //interestRates = new HashMap<>();
         currentDay = 0;
     }
     //eager instantiation
@@ -169,22 +167,32 @@ public class Bank {
         }
     }
  
-    public Stock deleteStock(String name) {
+    public void deleteStock(String name) {
+    	boolean found = false;
         for (Stock stock : stocks) {
             if (stock.getName().equalsIgnoreCase(name)) {
                 stocks.remove(stock);
+                System.out.println("Stock named " + name + " deleted.");
+                found= true;
             }
         }
-        return null;
+        if (!found) {
+        	System.out.println("No such stock named " + name + " found.");
+        }
     }
 
-    public Fund deleteFund(String name) {
+    public void deleteFund(String name) {
+    	boolean found = false;
         for (Fund fund : funds) {
             if (fund.getName().equalsIgnoreCase(name)) {
                 funds.remove(fund);
+                System.out.println("Fund named " + name + " deleted.");
+                found= true;
             }
         }
-        return null;
+        if (!found) {
+        	System.out.println("No such fund named " + name + " found.");
+        }
     }
 
     public void setInterestRate(String accountType, double rate) {
@@ -228,23 +236,6 @@ public class Bank {
         }
     }
 
-
-/*
-    private void calculateInterest() {
-        for (Client client : clients) {
-            List<AccountGroup> accounts = (List<AccountGroup>) client.getAccountGroup();
-            for (AccountGroup account : accounts) {
-                if (((Account) account).hasInterest() && !((Account) account).isInterestBlocked()) {
-                    int accountType = ((Object) account).getType();
-                    double interestRate = interestRates.getOrDefault(accountType, 0.0);
-                    double balance = account.getBalance();
-                    double interest = balance * interestRate * currentDay;
-                    account.addInterest(interest);
-                }
-            }
-        }
-    }
-*/
     public Stock getStock(String name) {
         for (Stock stock : stocks) {
             if (stock.getName().equalsIgnoreCase(name)) {

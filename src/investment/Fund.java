@@ -11,7 +11,7 @@ public class Fund extends Commodity {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return getName() +": "+ getValue();
+		return "Fund name: "+ getName() +" - Value: "+ getValue();
 	}
 
 }

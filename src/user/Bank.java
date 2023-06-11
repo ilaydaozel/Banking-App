@@ -28,7 +28,6 @@ public class Bank {
         stocks = new ArrayList<>();
         funds = new ArrayList<>();
         clients = new ArrayList<>();
-        clients.add(new Client("ilayda"));
         eurCur = new EUR(20.0,0.03);
         usdCur = new USD(10.0,0.04);
         tryCur = new  TRY(1,0.02);

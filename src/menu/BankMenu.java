@@ -24,7 +24,17 @@ public class BankMenu implements IMenu {
 
     @Override
     public void displayMenu() {
-        helperMenu.printBankMenu();
+        System.out.println("--- Bank Menu ---");
+        System.out.println("1. Display Commodities");
+        System.out.println("2. Create Stock");
+        System.out.println("3. Create Fund");
+        System.out.println("4. Set Stock Value");
+        System.out.println("5. Set Fund Value");
+        System.out.println("6. Set Currency Rate");
+        System.out.println("7. Set Interest Rate");
+        System.out.println("8. Pass Time");
+        System.out.println("0. Back to Main Menu");
+        System.out.print("Enter your choice: ");
     }
 
     @Override
@@ -32,7 +42,7 @@ public class BankMenu implements IMenu {
         boolean exit = false;
         while (!exit) {
             displayMenu();
-            int choice = readIntegerInput();
+            int choice = helperIO.readIntegerInput();
 
             switch (choice) {
                 case 1:
@@ -174,7 +184,7 @@ public class BankMenu implements IMenu {
         System.out.println("4. XAU");
 
         System.out.print("Enter the currency number (1-4): ");
-        int currencyNumber = readIntegerInput();
+        int currencyNumber = helperIO.readIntegerInput();
 
         CurrencyType currencyType;
 
@@ -206,20 +216,11 @@ public class BankMenu implements IMenu {
 
     private void passTime() {
         System.out.print("Enter the number of days to pass: ");
-        int days = readIntegerInput();
+        int days = helperIO.readIntegerInput();
         bank.passTime(days);
         System.out.println("Time passed successfully.");
         System.out.println();
     }
 
-    private static int readIntegerInput() {
-        while (true) {
-            try {
-                return Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter an integer.");
-            }
-        }
-    }
 }
 

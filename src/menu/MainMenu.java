@@ -8,6 +8,7 @@ import helpers.HelperMenu;
 import interfaces.IMenu;
 import user.Bank;
 import user.Client;
+import account.AccountGroup;
 
 public class MainMenu implements IMenu {
 
@@ -79,7 +80,9 @@ public class MainMenu implements IMenu {
         String name = scanner.nextLine();
         Client client = new Client(name);
         bank.addNewClient(client);
-        System.out.println("Client created successfully.");
+        System.out.println("User named " + client.getUsername()+ " is created!");
+        System.out.println("An account group named " + ((AccountGroup) client.getAccountGroup()).getName() + " is created for " + client.getUsername());
+        System.out.println("A regular account without interest is created for " + client.getUsername());
         System.out.println();
     }
 

@@ -22,7 +22,7 @@ public class GoldAccountWithInterest extends AbstractGoldAccount implements IWit
                     if (isExchangeAllowed(targetAccount)) {
                         performExchange(targetAccount, amount);
                     } else {
-                        System.out.println("You can only exchange with a gold account(XAU)!");
+                        System.out.println("You can only exchange with a gold account (XAU)!");
                     }
                 } else {
                     System.out.println("Your balance is not enough!");
@@ -33,11 +33,13 @@ public class GoldAccountWithInterest extends AbstractGoldAccount implements IWit
         }
     }
 
-    private boolean isExchangeAllowed(AbstractAccount targetAccount) {
+    @Override
+    public boolean isExchangeAllowed(AbstractAccount targetAccount) {
         return targetAccount instanceof AbstractGoldAccount;
     }
 
-    private void performExchange(AbstractAccount targetAccount, double amount) {
+    @Override
+    public void performExchange(AbstractAccount targetAccount, double amount) {
         double convertedAmount = getBank().convert(getCurrencyType(), targetAccount.getCurrencyType(), amount);
         // Update balances
         setBalance(getBalance() - amount);

@@ -67,8 +67,9 @@ public class ClientMenu implements IMenu{
     	//display all the account group types and select one
     	List<AbstractAccount> accountList =  client.getAccountGroup().getAccounts();
     	List<AccountGroup> accountGroupList = new ArrayList<AccountGroup>();
+    	System.out.println("=== Your Account Groups ===");
     	System.out.println("Select an Account Group:");
-    	System.out.println("1. +AccountGroup: Top Account Group");
+    	System.out.println("1. +AccountGroup:" + client.getAccountGroup().getName());
     	accountGroupList.add(client.getAccountGroup());
     	int count = 2;
     	for(int i = 0; i< accountList.size(); i++) {

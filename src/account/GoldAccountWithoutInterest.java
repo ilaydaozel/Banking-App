@@ -1,5 +1,6 @@
 package account;
 
+import interfaces.IWithInterest;
 import interfaces.IWithoutInterest;
 
 public class GoldAccountWithoutInterest extends AbstractGoldAccount implements IWithoutInterest{
@@ -10,7 +11,7 @@ public class GoldAccountWithoutInterest extends AbstractGoldAccount implements I
 	
 	@Override
 	public void display() {
-		System.out.println("- id:" + super.getId() +" Gold Account Without Interest");
+		System.out.println("- id:" + super.getId() +" Gold Account XAU Without Interest");
 		
 	}
 	
@@ -33,10 +34,14 @@ public class GoldAccountWithoutInterest extends AbstractGoldAccount implements I
 	
     @Override
     public void performExchange(AbstractAccount targetAccount, double amount) {
-        double convertedAmount = targetAccount.getBank().convert(getCurrencyType(), targetAccount.getCurrencyType(), amount);
+        double convertedAmount = getBank().convert(getCurrencyType(), targetAccount.getCurrencyType(), amount);
         // Update balances
         setBalance(getBalance() - amount);
         targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+        if (targetAccount instanceof IWithInterest) {
+        	//set interest start day 
+        	((IWithInterest) targetAccount).resetInterestDay();
+        }
         System.out.println("Exchanged " + convertedAmount + " " + targetAccount.getCurrencyType().toString() + " to target account!");
     }
 

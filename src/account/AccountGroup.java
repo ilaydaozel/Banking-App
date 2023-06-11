@@ -89,12 +89,12 @@ public class AccountGroup extends AbstractAccount{
         }
 	}
 	
-	public void displayGroupName() {
+	public void displayAllGroupsName() {
 		System.out.println("+Account Group: " + name);
 		for(int i = 0; i< accounts.size(); i++) {
     		AbstractAccount currentAccount = accounts.get(i);
     		if(currentAccount instanceof AccountGroup) {
-    			((AccountGroup)currentAccount).displayGroupName();
+    			((AccountGroup)currentAccount).displayAllGroupsName();
     		}
     	}
 	}

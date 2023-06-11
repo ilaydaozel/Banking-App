@@ -22,7 +22,7 @@ public enum ForeignCurrencyAccountType {
         return name;
     }
     public static boolean isValue(int num) {
-        for (GoldAccountType type : GoldAccountType.values()) {
+        for (ForeignCurrencyAccountType type : ForeignCurrencyAccountType.values()) {
             if (type.getValue() == num) {
                 return true;
             }

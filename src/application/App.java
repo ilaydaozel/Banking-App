@@ -9,6 +9,6 @@ public class App {
 
 	public static void main(String[] args) {
 		IMenu mainMenu = new MainMenu(bank);
-        mainMenu.displayMenu();
+        mainMenu.executeMenu();
     }
 }

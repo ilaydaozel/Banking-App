@@ -27,7 +27,11 @@ public class AccountGroupMenu implements IMenu {
             int choice = helperIO.readIntegerInput();
 
             switch (choice) {
-                case 1:
+            	case 1:
+            		account.display();
+            		System.out.println();
+            		break;
+                case 2:
                     System.out.println("Balance: " + account.getTotalAccountGroupBalance());
                     System.out.println();
                     break;
@@ -47,8 +51,9 @@ public class AccountGroupMenu implements IMenu {
     }
 
     private void printAccountGroupMenu() {
-        System.out.println("------ Account Group Menu ------");
-        System.out.println("1. Check Balance");
+        System.out.println("------ Account Group Menu Of " + account.getName() + " ------");
+        System.out.println("1. Display accounts");
+        System.out.println("2. Check Balance");
         System.out.println("0. Go back to main menu");
         System.out.print("Enter your choice: ");
     }

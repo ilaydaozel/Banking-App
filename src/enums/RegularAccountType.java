@@ -12,7 +12,7 @@ public enum RegularAccountType {
         this.name = name;
     }
     public static boolean isValue(int num) {
-        for (GoldAccountType type : GoldAccountType.values()) {
+        for (RegularAccountType type : RegularAccountType.values()) {
             if (type.getValue() == num) {
                 return true;
             }

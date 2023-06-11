@@ -1,5 +1,6 @@
 package account;
 
+import interfaces.IWithInterest;
 import interfaces.IWithoutInterest;
 
 public class RegularAccountWithoutInterest extends AbstractRegularAccount implements IWithoutInterest{
@@ -18,7 +19,7 @@ public class RegularAccountWithoutInterest extends AbstractRegularAccount implem
 
     @Override
     public void display() {
-        System.out.println("- id:" + getId() + " Regular Account Without Interest");
+        System.out.println("- id:" + getId() + " Regular Account TRY Without Interest");
     }
 
     @Override
@@ -51,6 +52,10 @@ public class RegularAccountWithoutInterest extends AbstractRegularAccount implem
         // Update balances
         setBalance(getBalance() - amount);
         targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+        if (targetAccount instanceof IWithInterest) {
+        	//set interest start day 
+        	((IWithInterest) targetAccount).resetInterestDay();
+        }
         System.out.println("Exchanged " + convertedAmount + " " + targetAccount.getCurrencyType().toString() + " to target account!");
     }
 }

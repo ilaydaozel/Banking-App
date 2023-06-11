@@ -12,11 +12,12 @@ public class ForeignCurrencyAccountWithInterest extends AbstractForeignCurrencyA
 
     @Override
     public void display() {
-        System.out.println("- id:" + super.getId() + " Foreign Currency Account With Interest");
+        System.out.println("- id:" + super.getId() + " Foreign Currency "+ getCurrencyType() + " Account With Interest");
     }
 
     @Override
     public void exchange(AbstractAccount targetAccount, double amount) {
+    	System.out.println("Exchanging..");
     	if(!targetAccount.equals(this)) {
     		if (endInterest()) {
     			if (getBalance() >= amount) {
@@ -47,6 +48,10 @@ public class ForeignCurrencyAccountWithInterest extends AbstractForeignCurrencyA
         // Update balances
         setBalance(getBalance() - amount);
         targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+        if (targetAccount instanceof IWithInterest) {
+        	//set interest start day 
+        	((IWithInterest) targetAccount).resetInterestDay();
+        }
         System.out.println("Exchanged " + convertedAmount + " " + targetAccount.getCurrencyType().toString() + " to target account!");
     }
 
@@ -65,7 +70,6 @@ public class ForeignCurrencyAccountWithInterest extends AbstractForeignCurrencyA
     public boolean endInterest() {
         double totalDays = getBank().getCurrentDay() - getInterestStartDate();
         if (totalDays > 0) {
-            resetInterestDay();
             double interestRate = getBank().getInterestRate(getCurrencyType().toString());
             double compoundInterest = calculateCompoundInterest(getBalance(), interestRate, totalDays);
             setBalance(getBalance() + compoundInterest);

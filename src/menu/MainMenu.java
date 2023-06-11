@@ -15,7 +15,6 @@ public class MainMenu implements IMenu {
     private static Scanner scanner = new Scanner(System.in);
     private Bank bank;
     private Client client;
-    private HelperIO helperIO = new HelperIO();
 
     public MainMenu(Bank bank) {
         this.bank = bank;
@@ -25,30 +24,35 @@ public class MainMenu implements IMenu {
     public void handleChoice() {
         HelperMenu helperMenu = new HelperMenu();
         BankMenu bankMenu = new BankMenu(bank);
-
+        HelperIO helperIO = new HelperIO();
+        
         boolean exit = false;
         while (!exit) {
             displayMenu();
             int choice = helperIO.readIntegerInput();
-
             switch (choice) {
                 case 1:
+                	System.out.println();
                     createClient();
                     break;
                 case 2:
+                	System.out.println();
                     Client currentClient = selectClient();
+          
                     if (currentClient != null) {
                         this.client = currentClient;
                         ClientMenu clientMenu = new ClientMenu(client);
-                        clientMenu.displayMenu();
+                        System.out.println();
+                        clientMenu.executeMenu();
                     } else {
                         System.out.println("Select a valid client!");
                     }
                     break;
                 case 3:
-                    bankMenu.displayMenu();
+                	System.out.println();
+                    bankMenu.executeMenu();
                     break;
-                case 4:
+                case 0:
                     exit = true;
                     System.out.println("You exit the app!");
                     break;
@@ -87,6 +91,7 @@ public class MainMenu implements IMenu {
     }
 
     private Client selectClient() {
+    	HelperIO helperIO = new HelperIO();
         List<Client> clients = bank.getClients();
         Client currentClient = null;
 

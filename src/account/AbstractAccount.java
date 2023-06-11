@@ -9,7 +9,7 @@ public abstract class AbstractAccount {
 	private CurrencyType currencyType;
 	
 	public AbstractAccount() {
-		this.balance = 600;
+		this.balance = 0;
 	}
 	
 	public double getBalance() {

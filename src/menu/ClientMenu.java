@@ -33,22 +33,27 @@ public class ClientMenu implements IMenu{
 
             switch (choice) {
             	case 1:
+            		System.out.println();
             		helperClient.displayAccounts();
             		System.out.println();
             		break;
                 case 2:
+                	System.out.println();
                     createAccount();
                     System.out.println();
                     break;
                 case 3:
+                	System.out.println();
                     createAccountGroup();
                     System.out.println();
                     break;
                 case 4:
+                	System.out.println();
                 	selectAccountAll();
                 	System.out.println();
                 	break;
                 case 5:
+                	System.out.println();
                 	selectAccountGroupAll();
                 	System.out.println();
                 	break;
@@ -67,7 +72,6 @@ public class ClientMenu implements IMenu{
     	//display all the account group types and select one
     	List<AbstractAccount> accountList =  client.getAccountGroup().getAccounts();
     	List<AccountGroup> accountGroupList = new ArrayList<AccountGroup>();
-    	System.out.println("=== Your Account Groups ===");
     	System.out.println("Select an Account Group:");
     	System.out.println("1. +AccountGroup:" + client.getAccountGroup().getName());
     	accountGroupList.add(client.getAccountGroup());
@@ -75,8 +79,9 @@ public class ClientMenu implements IMenu{
     	for(int i = 0; i< accountList.size(); i++) {
     		AbstractAccount currentAccount = accountList.get(i);
     		if(currentAccount instanceof AccountGroup) {
-    			System.out.print(count + ". ");
-    			currentAccount.display();
+    			System.out.print(count + ". +AccountGroup:");
+    			System.out.println(((AccountGroup) currentAccount).getName());
+    			
     			accountGroupList.add((AccountGroup) currentAccount);
     			count ++;
     		}
@@ -146,6 +151,7 @@ public class ClientMenu implements IMenu{
             } else {
                 System.out.println("Invalid account type. Please try again.");
             }
+            
             if (newAccount != null) {
             	if(selectedGroup.equals(client.getAccountGroup())) {
             		client.addToTopAccountGroup(newAccount);
@@ -198,6 +204,7 @@ public class ClientMenu implements IMenu{
         		selectedMenu = new InvestmentAccountMenu((InvestmentAccount) selectedAccount);    
             }
         	if(selectedMenu != null) {
+        		System.out.println();
         		selectedMenu.executeMenu();
         	}
         	else {
@@ -212,12 +219,15 @@ public class ClientMenu implements IMenu{
     }
     
     public void selectAccountGroupAll() {
-    	client.getAccountGroup().displayGroupName();
+		System.out.println("=== Account Groups ===");
+    	client.getAccountGroup().displayAllGroupsName();
     	System.out.print("Enter the name of the account group: ");
     	String groupName = scanner.nextLine();
     	AccountGroup selectedGroup = client.getAccountGroup().getAccountGroupByName(groupName);
     	if(selectedGroup != null) {
-    		new AccountGroupMenu(selectedGroup);
+    		AccountGroupMenu menu = new AccountGroupMenu(selectedGroup);
+    		System.out.println();
+    		menu.executeMenu();
     	}
     	else {
     		System.out.println("There is no group named as " + groupName + "! ");
@@ -225,7 +235,7 @@ public class ClientMenu implements IMenu{
     }
     
     public void displayMenu() {
-        System.out.println("--- Client Menu ---");
+        System.out.println("--- Client Menu Of " + client.getUsername() + " ---");
         System.out.println("1. Display Accounts");
         System.out.println("2. Create Account");
         System.out.println("3. Create Account Group");

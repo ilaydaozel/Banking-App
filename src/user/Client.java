@@ -43,6 +43,7 @@ public class Client {
 			if(element.equals(accountGroup)) {
 				//add an account to the given account group
 				((AccountGroup)element).addAccount(newAccount);
+				System.out.println("New account is created under account group:" + accountGroup.getName() + ".");
 			}
 		}
 	}

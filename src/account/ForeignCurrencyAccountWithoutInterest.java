@@ -2,6 +2,7 @@ package account;
 
 import currency.Currency;
 import enums.CurrencyType;
+import interfaces.IWithInterest;
 import interfaces.IWithoutInterest;
 import user.Bank;
 
@@ -16,13 +17,14 @@ public class ForeignCurrencyAccountWithoutInterest extends AbstractForeignCurren
 
 	@Override
 	public void display() {
-		System.out.println("- id:" + super.getId() +" Foreign Currency Account Without Interest");
+		System.out.println("- id:" + super.getId() +" Foreign Currency "+ getCurrencyType() + " Account Without Interest");
 		
 	}
 
 	
     @Override
     public void exchange(AbstractAccount targetAccount, double amount) {
+    	System.out.println("Exchanging..");
     	if (!targetAccount.equals(this)) {
             if (getBalance() >= amount) {
                 if (isExchangeAllowed(targetAccount)) {
@@ -45,8 +47,15 @@ public class ForeignCurrencyAccountWithoutInterest extends AbstractForeignCurren
 	}
 
 	@Override
-	public void performExchange(AbstractAccount targetAccount, double amount) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void performExchange(AbstractAccount targetAccount, double amount) {
+        double convertedAmount = getBank().convert(getCurrencyType(), targetAccount.getCurrencyType(), amount);
+        // Update balances
+        setBalance(getBalance() - amount);
+        targetAccount.setBalance(targetAccount.getBalance() + convertedAmount);
+        if (targetAccount instanceof IWithInterest) {
+        	//set interest start day 
+        	((IWithInterest) targetAccount).resetInterestDay();
+        }
+        System.out.println("Exchanged " + convertedAmount + " " + targetAccount.getCurrencyType().toString() + " to target account!");
+    }
 }

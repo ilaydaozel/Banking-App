@@ -46,41 +46,50 @@ public class BankMenu implements IMenu {
 
             switch (choice) {
                 case 1:
+                	System.out.println();
                 	helperBank.displayCommodities();
                     System.out.println();
                     break;
                 case 2:
+                	System.out.println();
                     createStock();
                     System.out.println();
                     break;
                 case 3:
+                	System.out.println();
                     createFund();
                     System.out.println();
                     break;
                 case 4:
+                	System.out.println();
                     helperBank.displayStocks();
                     setStockValue();
                     System.out.println();
                     break;
                 case 5:
+                	System.out.println();
                     helperBank.displayFunds();
                     setFundValue();
                     System.out.println();
                     break;
                 case 6:
+                	System.out.println();
                     setCurrencyRate();
                     System.out.println();
                     break;
                 case 7:
+                	System.out.println();
                     setInterestRate();
                     System.out.println();
                     break;
                 case 8:
+                	System.out.println();
                     passTime();
                     System.out.println();
                     break;
                 case 0:
                     exit = true;
+                    System.out.println();
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
